@@ -86,6 +86,43 @@ Adicionalmente  luego  de  la  comunicación  con  el  correo j.roman.stelso@fic
 
 ![](/images/modulo1/pregunta1_1.PNG)
 
+### ¿Dónde se envían los datos comprometidos?
+
+Los datos comprometidos se envían al correo m.walker.franch@ficticy.de
+
+![](/images/modulo1/pregunta2.PNG)
+
+### ¿Qué cuentas se han podido ver comprometidas? ¿Cómo podemos identificarlas?
+
+Como se puede ver a continuación cinco cuentas han sido comprometidas las cuales son:
+
+1. m.wils.smith@ficticy.us
+2. l.stephan.martin@ficticy.co.uk
+3. l.martin.fierre@ficticy.es
+4. j.rodriguez.maceda@ficticy.es
+5. s.mick.resce@ficticy.nl
+
+Debido a que el atacante reenvía un correo de confirmación de Outlook, las víctimas no sospecharían que se trata de un phishing a menos que chequearan el asunto y las personas a las que se les está reenviando dicha información.
+
+![](/images/modulo1/pregunta3.PNG)
+
+### Medidas de Mitigaciónque se pueden tomar en estos incidentes
+
+* Desconfiar de correos ajenos a la empresa.
+* Capacitación al personal y clientes acerca de los peligros al facilitar contraseñas sin percatarse del origende los correos.
+
+### Recomendaciones y Plan de Continuidad alequipo de seguridad
+
+* Llevar un historial de todos los dominios relacionados a la empresa.
+* Llevar un registro de loscorreos de losproveedores y clientes.
+* Establecer canales de comunicación más eficiente entre los distintos departamentos de la empresa.
+* Llevar un registro de las intrusiones y enviarlas a la lista negra para ser bloquedos.
+
+
+
+
+
+
 
 
 
