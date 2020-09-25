@@ -25,3 +25,5 @@ Al  comentarlo  con  el  resto  de  compañeros  del  equipo,  todos  ellos  exp
    * Logs de emails recibidos por la cuenta **m.walker.franch@ficticy.de**
    
    * Codigodel sitio web (directorio “caso 1”)
+   
+   ![](/images/Antecedentes.PNG)
