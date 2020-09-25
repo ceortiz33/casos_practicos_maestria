@@ -186,6 +186,34 @@ Como se puede observar aquí el “proveedor IT” presiona a la persona respons
 
 ![](/images/modulo1/phishing_mach.PNG)
 
+Además de hacer el cambio de la cuenta bancaria para realizar los pagos. Se realiza un phishing a lacuenta j.mach.christ@ficticy.co.ukcon la cuenta j.mach.christ@ficticy.derecordando que en el caso anterior los correos con dominio .de  para la empresa ficticy  eran  sospechosos,  dado  que   los correos son  válidos  para España,  Reino  Unido,  Países Bajos, Estados Unidos con dominios .es, .uk, nl, us respectivamente.
+
+![](/images/modulo1/mails_fresco.PNG)
+
+De acuerdo a la versión de María Protector Fresco también recibió correos sospechosos, lo cual no se refleja en los logs ya que los posibles errores en los pagos pudieran darse por cosas propias del sistema, debido a que la aprobación del cambio de cuentabancariase produjo alrededor de las 15:00 PM el día 23 de noviembre del 2017.
+
+![](/images/modulo1/mails_guest.PNG)
+
+Para este caso sepuede apreciar también un requerimiento de transferenciapor parte de j.mach.christ@ficticy.co.ukperoesta vez hacia la asistente de pagos y transferencias. En donde se puede ver a la cuenta de phishing j.mach.christ@ficticy.de
+
+![](/images/modulo1/logs_transferencias.PNG)
+
+Como  se  puede  observar  en  la  imagen  2.14  los  correos  en  color  naranja,  hay  varios intentos  de  establecer  una  comunicación  con  el  correo  del  responsable  de  los  pagos  y transferencias. Donde la comunicación no se ha establecido por ende aparece el estado “dropped”,Una vez logra dar con el correo del  responsable de transferencias se procede a realizar la ingenieria social para que se realice el cambio de cuenta bancaria.
+
+### ¿Cómo se ha podido producir el suceso?
+
+El  suceso  se  produce  debido  a  que  el  atacante  realiza  ingeniería  social  para  que  el responsable  de  los  pagos  y  transferencias  le  facilite  el  cambio  de  cuenta  bancaria, mientras el simula ser un proveedor IT, dado que al ser un contacto “seguro” podría saltarse las políticas de seguridad implantadas en la empresa ficticy.
+
+### ¿Qué método ha podido utilizar el atacante para realizar este envío dirigido?
+
+El atacante pudo haber realizado una búsqueda en Google o en otros buscadores como Bing,  las  redes  sociales  que  contenían información  delresponsable  de  los  pagos  y transferenciasque en este caso son: Facebook, LinkedIn, Infojobs.
+
+### ¿Cómo se ha podido utilizar?
+
+Al realizar la búsqueda y encontrar que Juan Philips TodoBene era el responsable de los pagos  y  transferencias  de  la  empresa  ficticy  en  España,  todo  lo  que  hizo  fue  probar combinaciones del nombre y los apellidos como se muestra a continuación.
+
+![](/images/modulo1/pregunta2_3.PNG)
+
 
 
 
