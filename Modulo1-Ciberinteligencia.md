@@ -1,6 +1,6 @@
 # Modulo 1
 
-**Caso 1 “El día 23 de noviembre de 2017 a las 10:00 am”**
+## Caso 1 “El día 23 de noviembre de 2017 a las 10:00 am”
 
 El día 23 de noviembre de 2017 a las 10:00 am recibes un correo electrónico desde una cuenta de correo corporativa de otro país, en el que se facilita un enlace a un sitio web sospechoso.
 La cuenta desde la que se envía ese mensaje es: **m.walker.franch@ficticity.de**
@@ -86,7 +86,7 @@ El siguiente correo tiene como emisor a **verify@microsoft.com**, este correo ge
 
 ![](/images/modulo1/victimasPhishing.PNG)
 
-Los siguientes correos m.will.smith@ficticy.us, l.stephan.martin@ficticy.co.uk, l.martin.freire@ficticy.es, j.rodriguez.maceda@ficticy.es y s.mick.resce@ficticy.nl responden al falso correo de recuperacion de contraseña motivo por el cual se puede concluir que estos correos fueron de aquellos que  cayeron en el phishing.
+Las cuentas de correo m.will.smith@ficticy.us, l.stephan.martin@ficticy.co.uk, l.martin.freire@ficticy.es, j.rodriguez.maceda@ficticy.es y s.mick.resce@ficticy.nl responden al falso correo de recuperacion de contraseña motivo por el cual se puede concluir que estos correos fueron de aquellos que  cayeron en el phishing.
 
 **Posibles nuevos ataques**
 
@@ -108,41 +108,41 @@ Adicionalmente  luego  de  la  comunicación  con  el  correo **j.roman.stelso@f
 
 ### ¿Dónde se envían los datos comprometidos?
 
-Los datos comprometidos se envían al correo m.walker.franch@ficticy.de
+Los datos comprometidos se envían al correo **m.walker.franch@ficticy.de**
 
 ![](/images/modulo1/pregunta2.PNG)
 
 ### ¿Qué cuentas se han podido ver comprometidas? ¿Cómo podemos identificarlas?
 
-Como se puede ver a continuación cinco cuentas han sido comprometidas las cuales son:
+Las cuentas que han sido comprometidas son:
 
-1. m.wils.smith@ficticy.us
-2. l.stephan.martin@ficticy.co.uk
-3. l.martin.fierre@ficticy.es
-4. j.rodriguez.maceda@ficticy.es
-5. s.mick.resce@ficticy.nl
+1. **m.wils.smith@ficticy.us**
+2. **l.stephan.martin@ficticy.co.uk**
+3. **l.martin.fierre@ficticy.es**
+4. **j.rodriguez.maceda@ficticy.es**
+5. **s.mick.resce@ficticy.nl**
 
 Debido a que el atacante reenvía un correo de confirmación de Outlook, las víctimas no sospecharían que se trata de un phishing a menos que chequearan el asunto y las personas a las que se les está reenviando dicha información.
 
 ![](/images/modulo1/pregunta3.PNG)
 
-### Medidas de Mitigaciónque se pueden tomar en estos incidentes
+### Medidas de Mitigación que se pueden tomar en estos incidentes
 
 * Desconfiar de correos ajenos a la empresa.
-* Capacitación al personal y clientes acerca de los peligros al facilitar contraseñas sin percatarse del origende los correos.
+* Capacitación al personal y clientes acerca de los peligros al facilitar contraseñas sin percatarse del origen de los correos.
 
 ### Recomendaciones y Plan de Continuidad alequipo de seguridad
 
 * Llevar un historial de todos los dominios relacionados a la empresa.
-* Llevar un registro de loscorreos de losproveedores y clientes.
+* Llevar un registro de los correos de losproveedores y clientes.
 * Establecer canales de comunicación más eficiente entre los distintos departamentos de la empresa.
 * Llevar un registro de las intrusiones y enviarlas a la lista negra para ser bloquedos.
 
-**Caso 2: “Unashoras mástarde a las 13:00** 
+## Caso 2: “Unashoras mástarde a las 13:00** 
 
-“Unas  horas mástarde,  a  las  13:00,  recibes  la  noticia  de  que  se  ha  realizado  una transferencia a una cuenta inusual y que el proveedor pendiente de recibir ese pago se ha quejado porque no lo ha recibido.
+“Unas  horas más tarde, a las 13:00, recibes la noticia de que se ha realizado una transferencia a una cuenta inusual y que el proveedor pendiente de recibir ese pago se ha quejado porque no lo ha recibido.
 
-Al  contactar  con  los  empleados  del  departamento  de transferencias(acontinuación,  se detallan sus datos), todos confirman haber estado trabajando durante toda la semana en la oficina, siempre utilizando la red corporativa y la VPN para el uso de herramientas. Sin embargo, los tres trabajadores afirman haber recibido correos sospechosos esta semana.
+Al contactar con los empleados del departamento de transferencias(acontinuación, se detallan sus datos), todos confirman haber estado trabajando durante toda la semana en la oficina, siempre utilizando la red corporativa y la VPN para el uso de herramientas. Sin embargo, los tres trabajadores afirman haber recibido correos sospechosos esta semana.
 
 **Empleados del departamento de transferencias**
 
@@ -150,7 +150,7 @@ Al  contactar  con  los  empleados  del  departamento  de transferencias(acontin
 * **Nombre:** Juan Philips Todobene | **Email:** j.philips.todobene@ficticy.es| **Puesto:** Responsable  de  pagos  y  transferencias  | **Redes  sociales  utilizadas:** Facebook, Linkedin, Infojobs.
 * **Nombre:** Sofía Labial Guest | **Email:** s.labial.guest@ficticy.es| **Puesto:** Asistente de  pagos  y  transferencias  | **Redes  sociales  utilizadas:** Facebook,  Linkedin, Infojobs, Tuenti.
 
-**Informaciónfacilitada para el análisis**
+**Información facilitada para el análisis**
 
 * Logs de correos recibidos.
 * Logs de acceso a las cuentas de correo.
@@ -164,7 +164,7 @@ Al  contactar  con  los  empleados  del  departamento  de transferencias(acontin
 
 ![](/images/modulo1/logs_acceso_caso2.PNG)
 
-se  muestran  los logs  de  acceso  de la cuenta j.phillips.todobene@ficticy.escorrespondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalíasen cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
+se muestran los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
 
 ![](/images/modulo1/logs_fresco.PNG)
 
