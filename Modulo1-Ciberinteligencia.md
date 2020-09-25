@@ -174,7 +174,7 @@ Los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondien
 
 Los logs de acceso de la cuenta **m.protector.fresco@ficticy.es** correspondiente a María Protector Fresco, responsable del departamento de nóminas, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y se registra actividad desde las 08:00 AM hasta las 15:10 PM,los días 20,21,22 y 23 de noviembre del 2017. 
 
-**Logs de acceso Sofía  Labial  Guest**
+**Logs de acceso Sofía Labial Guest**
 
 ![](/images/modulo1/logs_labial.PNG)
 
@@ -224,54 +224,62 @@ se observa la respuesta de Juan Philips al proveedor IT en el que le solicita un
 
 Como se puede observar el “proveedor IT” presiona a la persona responsable de los pagos y transferencias para que le ayude a realizar el cambio de cuenta dando fe de que le proporcionara con los documentos pertinentes para la habilitación lo más rápido posible cuando en realidad esto nunca pasó. Con esta premisa se comprueba que el vector de entrada para el fraude fue la ingeniería social, donde una persona desconocida se hace pasar por el proveedor de servicios IT, dándole más seguridad a la persona responsable para que esta le facilite con el cambio de cuenta y que pueda saltarse las protocolos de seguridad. 
 
+**Solicitud de Transferencia**
+
 ![](/images/modulo1/phishing_mach.PNG)
 
-Además de hacer el cambio de la cuenta bancaria para realizar los pagos. Se realiza un phishing a lacuenta j.mach.christ@ficticy.co.ukcon la cuenta j.mach.christ@ficticy.derecordando que en el caso anterior los correos con dominio .de  para la empresa ficticy  eran  sospechosos,  dado  que   los correos son  válidos  para España,  Reino  Unido,  Países Bajos, Estados Unidos con dominios .es, .uk, nl, us respectivamente.
+Además de hacer el cambio de la cuenta bancaria para realizar los pagos. Se realiza un phishing a la cuenta **j.mach.christ@ficticy.co.uk** con la cuenta **j.mach.christ@ficticy.de** recordando que en el caso anterior los correos con dominio **.de** para la empresa ficticy eran sospechosos, dado que los correos son  válidos para España, Reino Unido, Países Bajos, Estados Unidos con dominios .es, .uk, nl, us respectivamente.
+
+**Correos enviados a María Protector Fresco**
 
 ![](/images/modulo1/mails_fresco.PNG)
 
-De acuerdo a la versión de María Protector Fresco también recibió correos sospechosos, lo cual no se refleja en los logs ya que los posibles errores en los pagos pudieran darse por cosas propias del sistema, debido a que la aprobación del cambio de cuentabancariase produjo alrededor de las 15:00 PM el día 23 de noviembre del 2017.
+De acuerdo a la versión de María Protector Fresco también recibió correos sospechosos, lo cual no se refleja en los logs ya que los posibles errores en los pagos pudieran darse por cosas propias del sistema, debido a que la aprobación del cambio de cuenta bancaria se produjo alrededor de las 15:00 PM el día 23 de noviembre del 2017.
+
+**Correos enviados a Sofía Labial Guest**
 
 ![](/images/modulo1/mails_guest.PNG)
 
-Para este caso sepuede apreciar también un requerimiento de transferenciapor parte de j.mach.christ@ficticy.co.ukperoesta vez hacia la asistente de pagos y transferencias. En donde se puede ver a la cuenta de phishing j.mach.christ@ficticy.de
+En este caso se puede apreciar también un requerimiento de transferencia por parte de **j.mach.christ@ficticy.co.uk** pero esta vez hacia la asistente de pagos y transferencias, donde tambien aparece la cuenta de phishing **j.mach.christ@ficticy.de**
+
+**Registro de intentos por fuerza bruta para establecer comunicacion con responsable de pagos
 
 ![](/images/modulo1/logs_transferencias.PNG)
 
-Como  se  puede  observar  en  la  imagen  2.14  los  correos  en  color  naranja,  hay  varios intentos  de  establecer  una  comunicación  con  el  correo  del  responsable  de  los  pagos  y transferencias. Donde la comunicación no se ha establecido por ende aparece el estado “dropped”,Una vez logra dar con el correo del  responsable de transferencias se procede a realizar la ingenieria social para que se realice el cambio de cuenta bancaria.
+Los correos en color naranja, hay varios intentos de establecer una comunicación con el correo del responsable de los pagos y transferencias. En los casos donde la comunicación no se ha establecido aparece el estado **“dropped”** ,Una vez logra dar con el correo del responsable de transferencias se procede a realizar la ingenieria social para que se realice el cambio de cuenta bancaria.
 
 ### ¿Cómo se ha podido producir el suceso?
 
-El  suceso  se  produce  debido  a  que  el  atacante  realiza  ingeniería  social  para  que  el responsable  de  los  pagos  y  transferencias  le  facilite  el  cambio  de  cuenta  bancaria, mientras el simula ser un proveedor IT, dado que al ser un contacto “seguro” podría saltarse las políticas de seguridad implantadas en la empresa ficticy.
+El suceso se produce debido a que el atacante realiza ingeniería social para que el responsable de los pagos y transferencias le facilite el cambio de cuenta bancaria, mientras simula ser un proveedor IT, debido a que al ser un contacto “seguro” podría saltarse las políticas de seguridad implantadas en la empresa ficticy.
 
 ### ¿Qué método ha podido utilizar el atacante para realizar este envío dirigido?
 
-El atacante pudo haber realizado una búsqueda en Google o en otros buscadores como Bing,  las  redes  sociales  que  contenían información  delresponsable  de  los  pagos  y transferenciasque en este caso son: Facebook, LinkedIn, Infojobs.
+El atacante pudo haber realizado una búsqueda en Google o en otros buscadores como Bing, las redes sociales que contenían información del responsable de los pagos y transferenciasque en este caso son: Facebook, LinkedIn, Infojobs.
 
 ### ¿Cómo se ha podido utilizar?
 
-Al realizar la búsqueda y encontrar que Juan Philips TodoBene era el responsable de los pagos  y  transferencias  de  la  empresa  ficticy  en  España,  todo  lo  que  hizo  fue  probar combinaciones del nombre y los apellidos como se muestra a continuación.
+Al realizar la búsqueda y encontrar que Juan Philips TodoBene era el responsable de los pagos y transferencias de la empresa ficticy en España, todo lo que hizo fue  probar combinaciones del nombre y los apellidos como se muestra a continuación.
 
 ![](/images/modulo1/pregunta2_3.PNG)
 
 **Resumen del caso**
 
-En el caso 2 se abordo temas como el phishing la ingeniería socialy búsquedas en internet. El problema ocurre a raíz de la ingeniería social que aplica el atacante hacia la persona responsable de los pagos y transferencias. Una vez que el atacante logra convencer a esta persona que le haga el cambio de cuenta bancaria, se hace pasar por un proveedor y crea una cuenta de correo con un dominio que no existe dentro de la compañía ficticy, en este caso un domino .de que corresponde a Alemania.
+En el caso 2 se abordo temas como el phishing, la ingeniería social y búsquedas en internet. El problema ocurre a raíz de la ingeniería social que aplica el atacante hacia la persona responsable de los pagos y transferencias. Una vez que el atacante logra convencer a esta persona que le haga el cambio de cuenta bancaria, se hace pasar por un proveedor y crea una cuenta de correo con un dominio que no existe dentro de la compañía ficticy, en este caso un domino .de que corresponde a Alemania.
 
-Logrando que el pago se lo hagan al atacante con la nueva cuenta bancaria proporcionada. Para poder contactar con la cuenta j.philips.todobene@ficticy.es,se hizo muchos intentos de combinaciones para dar con la cuenta correcta usando búsqueda en internety en las redes sociales de dicha persona.De esta manera el atacante burla las políticas de seguridad y  causa  perjuicioseconómicosa  la  compañía  ficticy  al  recibir  un  pago  de  uno  de  sus proveedores.
+Logrando que el pago se lo hagan al atacante con la nueva cuenta bancaria proporcionada. Para poder contactar con la cuenta j.philips.todobene@ficticy.es, se hizo muchos intentos de combinaciones para dar con la cuenta correcta usando búsqueda en internet y en las redes sociales de dicha persona.De esta manera el atacante burla las políticas de seguridad y causa perjuicios económicos a la compañía ficticy.
 
 **Medidas de mitigaciónque se pueden tomar en estos incidentes**
 
-* No  facilitar informaciónsensible  sin  importar  el origen,  siempre  respetar  las políticasde seguridad y el debido procedimiento.
-* Ser mas cuidadoso respecto a la informaciónmostrada en redes sociales.
-* En lo posible reportar los correos sospechosos para que estos sean analizados  y detectados lo másrápidoposible.
+* No  facilitar información sensible sin importar el origen, siempre respetar las políticasde seguridad y el debido procedimiento.
+* Ser mas cuidadoso respecto a la información mostrada en redes sociales.
+* En lo posible reportar los correos sospechosos para que estos sean analizados y detectados lo más rápido posible.
 
 **Recomendaciones y plan de continuidad para el equipo de seguridad**
 
-* Crear políticasde seguridad más fuertes a la hora de facilitar informaciónsensible.
-* Notificar al departamento de seguridad cada cambio que se registre en cuanto a informaciónque facilite dinero u otros activos importantes para la empresa.
+* Crear políticas de seguridad más fuertes a la hora de facilitar información sensible.
+* Notificar al departamento de seguridad cada cambio que se registre en cuanto a información que facilite dinero u otros activos importantes para la empresa.
 
-**Caso 3: Para acabar el díaa  las  15:00**
+## Caso 3: Para acabar el díaa  las  15:00
 
 Para acabar el día, a las 15:00, empiezan a generarse múltiples alertas en los sistemas de endpoint indicando el siguiente mensaje
 
