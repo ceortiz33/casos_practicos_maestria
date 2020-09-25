@@ -78,11 +78,16 @@ El tercer y cuarto correo tienen como emisores a **m.wils.keicher@ficticy.de** y
 
 Como se puede observar en el sexto correo, al igual que el segundo se bloquean las notificaciones de un servicio. En este correo se notifica al atacante de un servicio de envío de fax por internet con **efax.com** y asunto **‘Rechnung’** que traducido sería como Proyecto de ley.
 
-En  el  séptimo  correo, esitsecurity@ficticy.deenvíaun  correo  al  atacante  con asunto Actualizaciones.En los siguientes dos correos s.mick.resce@ficticy.deenvíacorreos con asuntos nueva tarea y Re: nueva tarea respectivamente, donde el segundo correo tiene un archivo adjunto.
+En el séptimo correo **esitsecurity@ficticy.de** envía un correo al atacante con asunto **Actualizaciones** refiriendose a posibles cambios en la seguridad u otra informacion. En los siguientes dos correos **s.mick.resce@ficticy.de** envía correos con asuntos **nueva tarea** y **Re:nueva tarea** en donde el segundo correo tiene un archivo adjunto.
 
-El siguiente correo,verify@microsoft.com,este correo generalmente aparece cuando se han hecho múltiples casos para validar una contraseña o para validar que el propietario de la cuenta sea real, debido a esto el atacante se aprovecha de este correo y simula ser un correo de notificación y reenvía este correo a las víctimas. En los siguientes correos m.will.smith@ficticy.us,l.stephan.martin@ficticy.co.uk,l.martin.freire@ficticy.es,  j.rodriguez.maceda@ficticy.es, s.mick.resce@ficticy.nlresponden al atacante ,el asunto  es  RE:  FW:  Validate  Email  Account  motivo  por  el  cual  se  puede  sospechar  que  estos correos fueron aquellos que  cayeron en el phishing
+El siguiente correo tiene como emisor a **verify@microsoft.com**, este correo generalmente aparece cuando se han hecho múltiples intentos para validar una contraseña o para validar que el propietario de la cuenta sea real, debido a la naturaleza misma de este correo, el atacante se aprovecha y lo reenvia con la finalidad de obtener las credenciales de los empleados que no se percataron que es un reenvio del correo real. 
+
+**Victimas de Phishing**
 
 ![](/images/modulo1/victimasPhishing.PNG)
+
+Los siguientes correos m.will.smith@ficticy.us, l.stephan.martin@ficticy.co.uk, l.martin.freire@ficticy.es, j.rodriguez.maceda@ficticy.es y s.mick.resce@ficticy.nl responden al falso correo de recuperacion de contraseña motivo por el cual se puede concluir que estos correos fueron de aquellos que  cayeron en el phishing.
+
 
 Despuésj.mach.christ@ficticy.dey r.voil.chran@ficticy.dehacen referencia a un ‘Nuevo Proyecto’ y ‘El proyecto’ respectivamente  loque  podría  significar  futuros  ataques  a  la misma   empresa   o   a otras   como   se   muestra   en   la   imagen   1.12.   Finalmente, noreply@proveedor.deenvíaun  correo  con  un archivo  adjunto  con  el  asunto  RE: Rechnung’ que vendría a ser la respuesta del ‘Proyecto de ley’.
 
