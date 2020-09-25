@@ -50,23 +50,33 @@ Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar que el elem
 
 Los logs de este usuario registran una actividad de la cuenta de correo **m.walker.franch@ficticy.de** entre las 9:00 am y las 16:00 pm durante los días 20 al 23 de noviembre del  2017,además de tener varios accesos desde distintos rangos de  IP: 172.16.10.23-26 y 77.72.83.26
 
+**Correos enviados a m.walker.franch**
+
 ![](/images/modulo1/logs_excel.PNG)
 
-se puede observar la actividad que ha existido entre el atacante y los distintos usuarios.Entre los cuales se puede observar particularmente la interacción entre j.roman.stelso@ficticy.co.uk y m.walker.franch@ficticy.de dondeaparecen dos veces y cuyos asuntos son en la primera ocasión ‘Sector Privado’ a las 11:10 am el día20  de noviembre del 2017 y la segunda ocasión una respuesta con asunto ‘RE: Sector privado’ a las 17:15 pm al día siguiente. Una posible teoría seria que j.roman.stelso@ficticy.co.uk está filtrando información sensible y dándosela al atacante.
+En la imagen se puede observar la actividad que ha existido entre el atacante y los distintos empleados.Entre los cuales se puede destacar la interacción entre **j.roman.stelso@ficticy.co.uk** y **m.walker.franch@ficticy.de** que aparecen dos veces y cuyos asuntos son relacionados a **‘Sector Privado’**. El primero aparece a las 11:10 am el día 20 de noviembre del 2017 y la segunda ocasión es una respuesta con asunto **‘RE: Sector privado’** a las 17:15 pm al día siguiente. Una posible hipotesis sería que **j.roman.stelso@ficticy.co.uk** está filtrando información sensible y dándosela al atacante.
+
+**Logs sospechosos**
 
 ![](/images/modulo1/logs_sospechosos.PNG)
 
+**Correo de soporte de mailer bloqueado**
+
 ![](/images/modulo1/bloqueoMailer.PNG)
 
-En  el segundo  correo  muestra  como support@mailer.com envía  un correo al atacante con un asunto ‘Invoice’, mailer.com es un servicio de compra de dominios, el atacante pudo obtener su dominio de esta página motivo por el cual recibió una  factura  por  su  compra.  El atacante  bloquea  los  correos  de  esta página para  no ser rastreado poresta página.
+En el segundo correo se muestra como **support@mailer.com** envía  un correo al atacante con un asunto **‘Invoice’**. La actividad a la que se dedica mailer.com es a la compra de dominios,el atacante pudo obtener su dominio de esta página motivo por el cual recibió una factura por su compra.  El atacante  bloquea  los  correos  de  esta página para evitar las notificaciones que puedan vincularlo con mailer.com.
+
+**Posibles colaboradores**
 
 ![](/images/modulo1/posiblesColaboradores.PNG)
 
-El tercer y cuarto correo tienen como emisores  am.wils.keicher@ficticy.de y  a esitsecurity@ficticy.de con los asuntos ‘freund’  que significa amigo y ‘neues Konto’ que significa nueva cuenta, además de poseer el mismo dominio que el atacante lo que podría significar que el atacante no actuó solo.
+El tercer y cuarto correo tienen como emisores a **m.wils.keicher@ficticy.de** y a **esitsecurity@ficticy.de** con los asuntos **‘freund’** que significa amigo y **‘neues Konto’** que significa nueva cuenta, además de poseer el mismo dominio que el atacante dando a entenderque el atacante no actuó solo.
+
+**Servicio eFax Bloqueado**
 
 ![](/images/modulo1/servicioBloqueado.PNG)
 
-Como se puede observar en el sexto correo, al igual que el segundo, esenviado por un servicio  de  envío  de  fax  por  internet  llamado  efax.com con asunto ‘Rechnung’ que traducido sería algo como Proyecto de ley. El atacante bloquea los correos provenientes de este emisor.
+Como se puede observar en el sexto correo, al igual que el segundo se bloquean las notificaciones de un servicio. En este correo se notifica al atacante de un servicio de envío de fax por internet con **efax.com** y asunto **‘Rechnung’** que traducido sería como Proyecto de ley.
 
 En  el  séptimo  correo, esitsecurity@ficticy.deenvíaun  correo  al  atacante  con asunto Actualizaciones.En los siguientes dos correos s.mick.resce@ficticy.deenvíacorreos con asuntos nueva tarea y Re: nueva tarea respectivamente, donde el segundo correo tiene un archivo adjunto.
 
