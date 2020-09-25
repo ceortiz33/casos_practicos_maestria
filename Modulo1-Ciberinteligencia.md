@@ -166,7 +166,7 @@ Al contactar con los empleados del departamento de transferencias(acontinuación
 
 ![](/images/modulo1/logs_acceso_caso2.PNG)
 
-Los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
+Los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembre del 2017.
 
 **Logs de acceso María Protector Fresco**
 
@@ -180,37 +180,49 @@ Los logs de acceso de la cuenta **m.protector.fresco@ficticy.es** correspondient
 
 Los logs de acceso de la cuenta **s.labial.guest@ficticy.es** correspondiente  a  Sofía Labial Guest, asistente de pagos y transferencias, donde no se registran incongruencias en su versión ya que usa la VPN de la empresa y registra actividad desde las 08:50 AM hastalas 15:12 PM los días 20, 21,22 y 23 de noviembre del 2017.
 
-
+**Logs sospechosos en la transferencias**
 
 ![](/images/modulo1/logs_phillip.PNG)
 
-En  los  logs  de  la  actividad  de  los  correos  enviados  a j.philips.todobene@ficticy.essepuede observar tres correossospechosos provenientes de transfer@mailer.com
+En los logs de la actividad de los correos enviados a **j.philips.todobene@ficticy.es** se puede observar tres correos sospechosos provenientes de **transfer@mailer.com**
 
-Dentro  de  las  evidencias  proporcionadas  se adjunta  un  archivo.zipcodificadoque contiene los mensajes enviados por transfer@mailer.com,donde se menciona que para desbloquearlo se requiere el ID del correo sospechoso en este caso fue 27665. Una vez los archivos fueron descomprimidos se generaron tres archivos de texto:
+Dentro de las evidencias proporcionadas se adjunta un archivo.zip codificado que contiene los mensajes enviados por **transfer@mailer.com**,donde se menciona que para desbloquearlo se requiere el ID del correo sospechoso en este caso fue 27665. Una vez que se extrae el contenido del archivo .zip, se generan tres archivos de texto:
 
 * New account.msg.txt 
 * RE New account.msg.txt
 * New account (1). msg.txt
 
-El contenido de estos archivos tiene una parte codificada en formato base64. Por lo que para    poder    ver    el    contenido    se    usó    una    página    web    para    decodificar https://www.base64decode.org/.
+El contenido de estos archivos tiene una parte codificada en formato base64. Por lo tanto para ver el contenido se hace uso de una página web para decodificar https://www.base64decode.org/.
+
+**Mensaje codificado 1**
 
 ![](/images/modulo1/mensaje_cifrado.PNG)
 
+**Mensaje decodificado 1**
+
 ![](/images/modulo1/mensaje_decodificado.PNG)
 
-En  este  mensaje  el  proveedor  IT  le  solicita  el  cambio  de  la  cuenta  bancaria a j.philips.todobene@ficticy.esa la nueva cuenta INTEXER67 1026 7842 0814 5674 1236 8905
+En este mensaje el proveedor IT le solicita el cambio de la cuenta bancaria a **j.philips.todobene@ficticy.es** a la nueva cuenta INTEXER67 1026 7842 0814 5674 1236 8905
+
+**Mensaje codificado 2**
 
 ![](/images/modulo1/mensaje_codificado2.PNG)
 
+**Mensaje decodificado 2**
+
 ![](/images/modulo1/mensaje_decodificado2.PNG)
 
-se observa la respuesta de Juan Philips al proveedor IT en el que le solicita undocumento que valide el cambio de cuenta.
+se observa la respuesta de Juan Philips al proveedor IT en el que le solicita un documento que valide el cambio de cuenta.
+
+**Mensaje codificado 3**
 
 ![](/images/modulo1/mensaje_codificado3.PNG)
 
+**Mensaje decodificado 3**
+
 ![](/images/modulo1/mensaje_decodificado3.PNG)
 
-Como se puede observar aquí el “proveedor IT” presiona a la persona responsable de los pagos y transferencias para que le ayude a realizar elcambio de cuenta dando fe de que le proporcionara con los documentos pertinentes para la habilitación lo más rápido posible cuando  en  realidad  esto  nunca  pasó.  Aquí  se  puede  ver  un  caso  de  ingeniería  social mediante el cual una persona desconocida se hacepasar por el proveedor de servicios IT, dándole más seguridad a la persona responsable para que esta le facilite con el cambio de cuenta y que pueda saltarse las políticas de seguridad dado a que esta persona le entregaría los documentos después.
+Como se puede observar el “proveedor IT” presiona a la persona responsable de los pagos y transferencias para que le ayude a realizar el cambio de cuenta dando fe de que le proporcionara con los documentos pertinentes para la habilitación lo más rápido posible cuando en realidad esto nunca pasó. Con esta premisa se comprueba que el vector de entrada para el fraude fue la ingeniería social, donde una persona desconocida se hace pasar por el proveedor de servicios IT, dándole más seguridad a la persona responsable para que esta le facilite con el cambio de cuenta y que pueda saltarse las protocolos de seguridad. 
 
 ![](/images/modulo1/phishing_mach.PNG)
 
