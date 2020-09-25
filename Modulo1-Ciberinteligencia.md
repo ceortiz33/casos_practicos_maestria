@@ -279,7 +279,7 @@ Logrando que el pago se lo hagan al atacante con la nueva cuenta bancaria propor
 * Crear políticas de seguridad más fuertes a la hora de facilitar información sensible.
 * Notificar al departamento de seguridad cada cambio que se registre en cuanto a información que facilite dinero u otros activos importantes para la empresa.
 
-## Caso 3: Para acabar el díaa  las  15:00
+## Caso 3: Para acabar el día a las 15:00
 
 Para acabar el día, a las 15:00, empiezan a generarse múltiples alertas en los sistemas de endpoint indicando el siguiente mensaje
 
@@ -300,56 +300,66 @@ Al mismo tiempo, comienzan a cifrarse archivos de múltiples equipos, a los que 
 
 ![](/images/modulo1/ransomware.PNG)
 
-En el caso de un Ransomware su funciónconsiste en ‘secuestrar’los datos de la víctima, codificándolosde  tal  forma  que  estos  seaninaccesibles  sin  la  debido configuracióno introducciónde una clave en especial. En este caso en particular se guíaal usuario a correr un archivo .exe,para poderrecuperar los archivos encriptados.
+El Ransomware tiene como función ‘secuestrar’ los datos de la víctima, codificándolos de tal forma que estos sean inaccesibles sino se proporciona la clave que revierta el cifrado. En este caso en particular se guía al usuario a ejecutar un archivo .exe, para poder recuperar los archivos encriptados.
 
-En algunos casos se exige un pago  generalmente con bitcoins al autor del ransomware para que este proceda a desencriptar los archivos y de esta manera salvar la informaciónimportante de la empresa ficticy.
+En algunos casos se exige un pago  generalmente con bitcoins al autor del ransomware para que este proceda a desencriptar los archivos y de esta manera salvar la información importante de la empresa ficticy.
+
+**Trafico Permitido en el Firewall**
 
 ![](/images/modulo1/firewall.PNG)
 
-a pesar de utilizar una VPN, todo el tráfico estápermitido, lo que podríallevar a fallos en la seguridad.
+A pesar de utilizar una VPN, todo el tráfico está permitido, lo que podría llevar a fallos en la seguridad.
+
+**Logs del antivirus**
 
 ![](/images/modulo1/logs_antivirus.PNG)
 
-se  puede  apreciar  que  el  ransomware WannaCry  es  detectado,  y  se aprovecha de una vulnerabilidad existente en el sistema Windows 2008 R2 Server Pack #1,  la  cual  al  realizar  una búsquedaen  la  base  de  datos  de  Microsoft  se  encuentra que corresponde a la vulnerabilidad MS17-010
+En esta ultima imagen, se  puede  apreciar  que  el  ransomware WannaCry  es  detectado, y se aprovecha de una vulnerabilidad existente en el sistema Windows 2008 R2 Server Pack #1, que al  realizar  una búsqueda en la base de datos de Microsoft se encuentra que corresponde a la vulnerabilidad MS17-010.
+
+**Boletin de seguridad de Microsoft**
 
 ![](/images/modulo1/bulletin.PNG)
 
+**Sistemas afectados**
+
 ![](/images/modulo1/sistemas_afectados.PNG)
+
+**Logs del Firewall**
 
 ![](/images/modulo1/logs_firewall.PNG)
 
-Como se puede observar en los logs del firewall todas las peticionesse aprueban, pasandopor el puerto 445,el cual ayuda a propagar el ransomware Wanacryen el sistema.
+Los logs del firewall aprueban todas las peticiones que pasan por el puerto 445, el firewall es muy permisivo y no filtra el trafico que realmente es peligroso y del cual debe protegerse. Como no existen politicas que permitan filtrar las peticiones provenientes y hacia el puerto 445 con servicio Samba, esto ayuda a la rapida propagacion del ransomware Wanacry en el sistema.
 
 ### ¿Qué tipo de amenaza se ha sufrido?
 
-El  sistema  endpointha  sido  infectado  con  el  malware  Ransomware  Wanacry  el  cual codifica los archivos del sistema,les añade la extensiónWNCRYlo cual haceimposible leerlos sin la contraseña adecuadaque en ocasiones se encuentra dentro del sistema y en otras debe ser dada por el autor.
+El  sistema  endpoint ha sido infectado con el malware Ransomware Wanacry el cual codifica los archivos del sistema,añade la extensión **WNCRY** y hace imposible leerlos sin la contraseña adecuada que en ocasiones se encuentra dentro del sistema y en otras debe ser proporcionada por el autor.
 
 ![](/images/modulo1/files.PNG)
 
 ### ¿Cómo se ha podido producir el suceso?
 
-El  suceso  se  ha  producido  debido  a  las  pocas  medidas  de  seguridad  en  el  firewall  del sistema, donde todo trafico que entra es aprobado a pesar de utilizar una VPN, ademáspara que esto ocurriese fue necesario que el puerto 445 estuviera expuesto a Internet y asíse logro infectar.
+El  suceso  se  ha  producido  debido  a  las  pocas  medidas  de  seguridad  en  el  firewall  del sistema, donde todo trafico que entra es aprobado, a pesar de utilizar una VPN y que la comunicacion va por un tunel seguro, esto no impede que el puerto 445 este expuesto a Internet y es así como se logro infectar.
 
 ### ¿Cómo se propaga el malwarea través de la red interna?
 
-El malware se propaga a travésde la red interna mediante el puerto 445, el cual puede observarse en los logs del firewall, donde todas las peticiones a este puerto son aprobadasdebido a  las  pocas  medidas de  seguridad en  el  firewall  como  filtrosde tráficoentrante haciadistintos puertos.
+El malware se propaga a través de la red interna mediante el puerto 445, el cual puede observarse en los logs del firewall, donde todas las peticiones a este puerto son aprobadas debido a las pocas medidas de seguridad en el firewall como filtros de tráfico entrante hacia distintos puertos.
 
 ![](/images/modulo1/logs_puertos.PNG)
 
 ### ¿Qué vulnerabilidad ha podido explotarse?
 
-La vulnerabilidad que se ha explotado es la MS17-010, que afecta a los sistemas Windowsy en este caso al Windows Server 2008 R2 Service Pack 1.Una de las vulnerabilidades que permitíala ejecuciónde códigoremoto en dispositivos Windows que no hayan sido parchados.
+La vulnerabilidad que se ha explotado es la MS17-010, que afecta a los sistemas Windows y en este caso al Windows Server 2008 R2 Service Pack 1. Una de las vulnerabilidades que permitía la ejecución de código remoto en dispositivos Windows que no hayan sido parchados.
 
 ### Medidas de mitigaciónque se pueden tomar en estos incidentes.
 
-* Reportarde manera inmediata al equipo de seguridad para que décon el paradero del autor, o haga lo posible por desencriptar los archivos.
+* Reportar de manera inmediata al equipo de seguridad para dar con el paradero del autor, o que se haga lo posible por desencriptar los archivos.
 * Aislar los sistemas infectados.
-* Volvera una versiónanterior de una copiade seguridad del sistemapara poder tener un respaldo de los archivos antes que se infectaran
+* Volver a una versión anterior de una copia de seguridad del sistema para poder tener un respaldo de los archivos antes que se infectaran
 
 ### Recomendaciones y plan de continuidad que debe realizar el equipo de seguridad
 
-* Parchar  o  Actualizar  a  la últimaversiónlos  sistemas  para  corregir diversas vulnerabilidades.
-* Aplicar filtros mas rígidosal trafico entrante que pasa por el Firewall.
-* Reportar  y  comunicarse  con  otros  grupos  de  ciberseguridad  para notificarde  la presencia deun malware.
+* Parchar  o  actualizar  a  la última versión los sistemas para corregir diversas vulnerabilidades.
+* Aplicar filtros mas rígidos al trafico entrante que pasa por el Firewall.
+* Reportar y comunicar con otros grupos de ciberseguridad para notificar de la presencia de un malware.
 
 
