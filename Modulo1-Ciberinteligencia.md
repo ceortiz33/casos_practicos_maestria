@@ -68,7 +68,24 @@ En  el  séptimo  correo, esitsecurity@ficticy.deenvíaun  correo  al  atacante 
 
 El siguiente correo,verify@microsoft.com,este correo generalmente aparece cuando se han hecho múltiples casos para validar una contraseña o para validar que el propietario de la cuenta sea real, debido a esto el atacante se aprovecha de este correo y simula ser un correo de notificación y reenvía este correo a las víctimas. En los siguientes correos m.will.smith@ficticy.us,l.stephan.martin@ficticy.co.uk,l.martin.freire@ficticy.es,  j.rodriguez.maceda@ficticy.es, s.mick.resce@ficticy.nlresponden al atacante ,el asunto  es  RE:  FW:  Validate  Email  Account  motivo  por  el  cual  se  puede  sospechar  que  estos correos fueron aquellos que  cayeron en el phishing
 
-![](/images/modulo1/victimasPhishing)
+![](/images/modulo1/victimasPhishing.PNG)
+
+Despuésj.mach.christ@ficticy.dey r.voil.chran@ficticy.dehacen referencia a un ‘Nuevo Proyecto’ y ‘El proyecto’ respectivamente  loque  podría  significar  futuros  ataques  a  la misma   empresa   o   a otras   como   se   muestra   en   la   imagen   1.12.   Finalmente, noreply@proveedor.deenvíaun  correo  con  un archivo  adjunto  con  el  asunto  RE: Rechnung’ que vendría a ser la respuesta del ‘Proyecto de ley’.
+
+![](/images/modulo1/nuevosAtaques.PNG)
+
+## Identificar,  analizar  y  detallar  con  todo  lujo  de  detalles  en  el  primer caso:
+
+### ¿Cómo se ha podido producir el suceso?
+
+De  acuerdo  a  los  correos  mostrados  en  los  logs  se  puede  observar  que  el  principal sospechoso apunta a la cuenta de correo j.roman.stelso@ficticy.co.ukdebido aque pudo filtrar información de carácter confidencial al atacante, de esta forma se logra establecer el  engaño  mediante  el  phishing,  pero  al  verse  comprometida  la  información  de  una empresa con un dominio diferente da como resultado un CEO Fraud.
+
+![](/images/modulo1/pregunta1.PNG)
+
+Adicionalmente  luego  de  la  comunicación  con  el  correo j.roman.stelso@ficticy.co.ukexisten dos correos que involucran servicios de compra de dominios y mensajería por fax por internet motivo otro motivo más por el cual se puede sospechar de él. Otra cosa que se puede percatar es que son los únicos correos que se bloquean para que no puedan ser rastreados.
+
+![](/images/modulo1/pregunta1_1.PNG)
+
 
 
 
