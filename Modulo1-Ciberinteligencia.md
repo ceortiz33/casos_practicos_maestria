@@ -8,7 +8,6 @@ La cuenta desde la que se envía ese mensaje es: **m.walker.franch@ficticity.de*
 
 El asunto del correo es: FW: Validate Email Account
 
-
 El cuerpo del mensaje es:
 
 This  is to  notify  all  employees  that  we  are  validating    active  accounts.  Please,  confirm that your account is still in use by clicking the validation link below:
