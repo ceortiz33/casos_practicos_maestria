@@ -152,9 +152,23 @@ se    pueden    observar    los    logs    de    acceso    de    la   cuenta m.p
 
 ![](/images/modulo1/logs_labial.PNG)
 
+Se  observan  los  logs  de  acceso  de  la  cuenta s.labial.guest@ficticy.escorrespondiente  a  Sofía  Labial  Guest,  asistente  de  pagos  y transferencias, donde no se registran incongruencias en su versión ya que usa la VPN de la empresa y registra actividad desde las 08:50 AM hastalas 15:12 PM los días 20, 21,22 y 23 de noviembre del 2017.
 
+![](/images/modulo1/logs_phillip.PNG)
 
+En  los  logs  de  la  actividad  de  los  correos  enviados  a j.philips.todobene@ficticy.essepuede observar tres correossospechosos provenientes de transfer@mailer.com
 
+Dentro  de  las  evidencias  proporcionadas  se adjunta  un  archivo.zipcodificadoque contiene los mensajes enviados por transfer@mailer.com,donde se menciona que para desbloquearlo se requiere el ID del correo sospechoso en este caso fue 27665. Una vez los archivos fueron descomprimidos se generaron tres archivos de texto:
+
+* New account.msg.txt 
+* RE New account.msg.txt
+* New account (1). msg.txt
+
+El contenido de estos archivos tiene una parte codificada en formato base64. Por lo que para    poder    ver    el    contenido    se    usó    una    página    web    para    decodificar https://www.base64decode.org/.
+
+![](/images/modulo1/mensaje_cifrado.PNG)
+
+![](/images/modulo1/mensaje_decodificado.PNG)
 
 
 
