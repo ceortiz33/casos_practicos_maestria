@@ -54,6 +54,24 @@ se puede observar la actividad que ha existido entre el atacante y los distintos
 
 ![](/images/modulo1/bloqueoMailer.PNG)
 
+En  el segundo  correo  muestra  como support@mailer.com envía  un correo al atacante con un asunto ‘Invoice’, mailer.com es un servicio de compra de dominios, el atacante pudo obtener su dominio de esta página motivo por el cual recibió una  factura  por  su  compra.  El atacante  bloquea  los  correos  de  esta página para  no ser rastreado poresta página.
+
+![](/images/modulo1/posiblesColaboradores.PNG)
+
+El tercer y cuarto correo tienen como emisores  am.wils.keicher@ficticy.de y  a esitsecurity@ficticy.de con los asuntos ‘freund’  que significa amigo y ‘neues Konto’ que significa nueva cuenta, además de poseer el mismo dominio que el atacante lo que podría significar que el atacante no actuó solo.
+
+![](/images/modulo1/servicioBloqueado.PNG)
+
+Como se puede observar en el sexto correo, al igual que el segundo, esenviado por un servicio  de  envío  de  fax  por  internet  llamado  efax.com con asunto ‘Rechnung’ que traducido sería algo como Proyecto de ley. El atacante bloquea los correos provenientes de este emisor.
+
+En  el  séptimo  correo, esitsecurity@ficticy.deenvíaun  correo  al  atacante  con asunto Actualizaciones.En los siguientes dos correos s.mick.resce@ficticy.deenvíacorreos con asuntos nueva tarea y Re: nueva tarea respectivamente, donde el segundo correo tiene un archivo adjunto.
+
+El siguiente correo,verify@microsoft.com,este correo generalmente aparece cuando se han hecho múltiples casos para validar una contraseña o para validar que el propietario de la cuenta sea real, debido a esto el atacante se aprovecha de este correo y simula ser un correo de notificación y reenvía este correo a las víctimas. En los siguientes correos m.will.smith@ficticy.us,l.stephan.martin@ficticy.co.uk,l.martin.freire@ficticy.es,  j.rodriguez.maceda@ficticy.es, s.mick.resce@ficticy.nlresponden al atacante ,el asunto  es  RE:  FW:  Validate  Email  Account  motivo  por  el  cual  se  puede  sospechar  que  estos correos fueron aquellos que  cayeron en el phishing
+
+![](/images/modulo1/victimasPhishing)
+
+
+
 
 
 
