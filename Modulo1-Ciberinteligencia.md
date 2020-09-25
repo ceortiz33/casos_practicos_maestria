@@ -268,7 +268,40 @@ se  puede  apreciar  que  el  ransomware WannaCry  es  detectado,  y  se aprovec
 
 ![](/images/modulo1/sistemas_afectados.PNG)
 
+![](/images/modulo1/logs_firewall.PNG)
 
+Como se puede observar en los logs del firewall todas las peticionesse aprueban, pasandopor el puerto 445,el cual ayuda a propagar el ransomware Wanacryen el sistema.
 
+### ¿Qué tipo de amenaza se ha sufrido?
+
+El  sistema  endpointha  sido  infectado  con  el  malware  Ransomware  Wanacry  el  cual codifica los archivos del sistema,les añade la extensiónWNCRYlo cual haceimposible leerlos sin la contraseña adecuadaque en ocasiones se encuentra dentro del sistema y en otras debe ser dada por el autor.
+
+![](/images/modulo1/files.PNG)
+
+### ¿Cómo se ha podido producir el suceso?
+
+El  suceso  se  ha  producido  debido  a  las  pocas  medidas  de  seguridad  en  el  firewall  del sistema, donde todo trafico que entra es aprobado a pesar de utilizar una VPN, ademáspara que esto ocurriese fue necesario que el puerto 445 estuviera expuesto a Internet y asíse logro infectar.
+
+### ¿Cómo se propaga el malwarea través de la red interna?
+
+El malware se propaga a travésde la red interna mediante el puerto 445, el cual puede observarse en los logs del firewall, donde todas las peticiones a este puerto son aprobadasdebido a  las  pocas  medidas de  seguridad en  el  firewall  como  filtrosde tráficoentrante haciadistintos puertos.
+
+![](/images/modulo1/logs_puertos.PNG)
+
+### ¿Qué vulnerabilidad ha podido explotarse?
+
+La vulnerabilidad que se ha explotado es la MS17-010, que afecta a los sistemas Windowsy en este caso al Windows Server 2008 R2 Service Pack 1.Una de las vulnerabilidades que permitíala ejecuciónde códigoremoto en dispositivos Windows que no hayan sido parchados.
+
+### Medidas de mitigaciónque se pueden tomar en estos incidentes.
+
+* Reportarde manera inmediata al equipo de seguridad para que décon el paradero del autor, o haga lo posible por desencriptar los archivos.
+* Aislar los sistemas infectados.
+* Volvera una versiónanterior de una copiade seguridad del sistemapara poder tener un respaldo de los archivos antes que se infectaran
+
+### Recomendaciones y plan de continuidad que debe realizar el equipo de seguridad
+
+* Parchar  o  Actualizar  a  la últimaversiónlos  sistemas  para  corregir diversas vulnerabilidades.
+* Aplicar filtros mas rígidosal trafico entrante que pasa por el Firewall.
+* Reportar  y  comunicarse  con  otros  grupos  de  ciberseguridad  para notificarde  la presencia deun malware.
 
 
