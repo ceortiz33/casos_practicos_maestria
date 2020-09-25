@@ -170,6 +170,24 @@ El contenido de estos archivos tiene una parte codificada en formato base64. Por
 
 ![](/images/modulo1/mensaje_decodificado.PNG)
 
+En  este  mensaje  el  proveedor  IT  le  solicita  el  cambio  de  la  cuenta  bancaria a j.philips.todobene@ficticy.esa la nueva cuenta INTEXER67 1026 7842 0814 5674 1236 8905
+
+![](/images/modulo1/mensaje_codificado2.PNG)
+
+![](/images/modulo1/mensaje_decodificado2.PNG)
+
+se observa la respuesta de Juan Philips al proveedor IT en el que le solicita undocumento que valide el cambio de cuenta.
+
+![](/images/modulo1/mensaje_codificado3.PNG)
+
+![](/images/modulo1/mensaje_decodificado3.PNG)
+
+Como se puede observar aquí el “proveedor IT” presiona a la persona responsable de los pagos y transferencias para que le ayude a realizar elcambio de cuenta dando fe de que le proporcionara con los documentos pertinentes para la habilitación lo más rápido posible cuando  en  realidad  esto  nunca  pasó.  Aquí  se  puede  ver  un  caso  de  ingeniería  social mediante el cual una persona desconocida se hacepasar por el proveedor de servicios IT, dándole más seguridad a la persona responsable para que esta le facilite con el cambio de cuenta y que pueda saltarse las políticas de seguridad dado a que esta persona le entregaría los documentos después.
+
+![](/images/modulo1/phishing_mach.PNG)
+
+
+
 
 
 
