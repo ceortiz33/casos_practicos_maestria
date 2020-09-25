@@ -266,7 +266,7 @@ se  puede  apreciar  que  el  ransomware WannaCry  es  detectado,  y  se aprovec
 
 ![](/images/modulo1/bulletin.PNG)
 
-![](/images/modulo1/Sistemas_afectados.PNG)
+![](/images/modulo1/sistemas_afectados.PNG)
 
 
 
