@@ -138,7 +138,7 @@ Debido a que el atacante reenvía un correo de confirmación de Outlook, las ví
 * Establecer canales de comunicación más eficiente entre los distintos departamentos de la empresa.
 * Llevar un registro de las intrusiones y enviarlas a la lista negra para ser bloquedos.
 
-## Caso 2: “Unashoras mástarde a las 13:00** 
+## Caso 2: “Unas horas más tarde a las 13:00** 
 
 “Unas  horas más tarde, a las 13:00, recibes la noticia de que se ha realizado una transferencia a una cuenta inusual y que el proveedor pendiente de recibir ese pago se ha quejado porque no lo ha recibido.
 
@@ -162,17 +162,25 @@ Al contactar con los empleados del departamento de transferencias(acontinuación
 
 ## Antecedentes
 
+**Logs de acceso Juan Phillips Todobene**
+
 ![](/images/modulo1/logs_acceso_caso2.PNG)
 
-se muestran los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
+Los logs de acceso de la cuenta **j.phillips.todobene@ficticy.es** correspondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
+
+**Logs de acceso María Protector Fresco**
 
 ![](/images/modulo1/logs_fresco.PNG)
 
-se    pueden    observar    los    logs    de    acceso    de    la   cuenta m.protector.fresco@ficticy.escorrespondiente a María Protector Fresco, responsable del departamento de nóminas, dondeno se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y se registra actividad desde las 08:00 AM hasta las 15:10 PM,los días 20,21,22 y 23 de noviembre del 2017. 
+Los logs de acceso de la cuenta **m.protector.fresco@ficticy.es** correspondiente a María Protector Fresco, responsable del departamento de nóminas, donde no se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y se registra actividad desde las 08:00 AM hasta las 15:10 PM,los días 20,21,22 y 23 de noviembre del 2017. 
+
+**Logs de acceso Sofía  Labial  Guest**
 
 ![](/images/modulo1/logs_labial.PNG)
 
-Se  observan  los  logs  de  acceso  de  la  cuenta s.labial.guest@ficticy.escorrespondiente  a  Sofía  Labial  Guest,  asistente  de  pagos  y transferencias, donde no se registran incongruencias en su versión ya que usa la VPN de la empresa y registra actividad desde las 08:50 AM hastalas 15:12 PM los días 20, 21,22 y 23 de noviembre del 2017.
+Los logs de acceso de la cuenta **s.labial.guest@ficticy.es** correspondiente  a  Sofía Labial Guest, asistente de pagos y transferencias, donde no se registran incongruencias en su versión ya que usa la VPN de la empresa y registra actividad desde las 08:50 AM hastalas 15:12 PM los días 20, 21,22 y 23 de noviembre del 2017.
+
+
 
 ![](/images/modulo1/logs_phillip.PNG)
 
