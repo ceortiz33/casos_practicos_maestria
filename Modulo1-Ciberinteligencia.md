@@ -32,6 +32,12 @@ Al  comentarlo  con  el  resto  de  compañeros  del  equipo,  todos  ellos  exp
 
 Como se puede apreciar en la imagen, el atacante crea un archivo PHP para realizar el phishing simulando ser una página de Outlook común y corriente, de esta manera engana al usuario que no se percata del engaño, entrega su usuario y contraseña.
 
-Adicionalmente mediante la función getenv de PHP captura ladirección IP de la víctima;una vez la obtiene, la añade a $message junto al usuario y contraseña. De esta manera con dichos datos el atacante procede a enviar un correo asu cuenta personal para hacer uso de las credenciales robadas.
+Adicionalmente mediante la función getenv de PHP captura ladirección IP de la víctima;una vez la obtiene, la añade a $message junto al usuario y contraseña. De esta manera con dichos datos el atacante procede a enviar un correo a su cuenta personal para hacer uso de las credenciales robadas.
 
-Los elementos utilizados en la creación del sitio fraudulento para el caso son el botón de sign in yel entorno falso de Outlook como se muestra en las siguientes imágenes.
+Los elementos utilizados en la creación del sitio fraudulento para el caso son el botón de sign in y el entorno falso de Outlook como se muestra en las siguientes imágenes.
+
+
+Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar  que  al  localizar  el elemento  img1.jpg,  dentro  de  él existe  un  formulario con  la etiqueta  form en el  que  se ejecuta el archivo PHP
+
+
+
