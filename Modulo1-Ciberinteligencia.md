@@ -214,17 +214,59 @@ Al realizar la búsqueda y encontrar que Juan Philips TodoBene era el responsabl
 
 ![](/images/modulo1/pregunta2_3.PNG)
 
+**Resumen del caso**
 
+En el caso 2 se abordo temas como el phishing la ingeniería socialy búsquedas en internet. El problema ocurre a raíz de la ingeniería social que aplica el atacante hacia la persona responsable de los pagos y transferencias. Una vez que el atacante logra convencer a esta persona que le haga el cambio de cuenta bancaria, se hace pasar por un proveedor y crea una cuenta de correo con un dominio que no existe dentro de la compañía ficticy, en este caso un domino .de que corresponde a Alemania.
 
+Logrando que el pago se lo hagan al atacante con la nueva cuenta bancaria proporcionada. Para poder contactar con la cuenta j.philips.todobene@ficticy.es,se hizo muchos intentos de combinaciones para dar con la cuenta correcta usando búsqueda en internety en las redes sociales de dicha persona.De esta manera el atacante burla las políticas de seguridad y  causa  perjuicioseconómicosa  la  compañía  ficticy  al  recibir  un  pago  de  uno  de  sus proveedores.
 
+**Medidas de mitigaciónque se pueden tomar en estos incidentes**
 
+* No  facilitar informaciónsensible  sin  importar  el origen,  siempre  respetar  las políticasde seguridad y el debido procedimiento.
+* Ser mas cuidadoso respecto a la informaciónmostrada en redes sociales.
+* En lo posible reportar los correos sospechosos para que estos sean analizados  y detectados lo másrápidoposible.
 
+**Recomendaciones y plan de continuidad para el equipo de seguridad**
 
+* Crear políticasde seguridad más fuertes a la hora de facilitar informaciónsensible.
+* Notificar al departamento de seguridad cada cambio que se registre en cuanto a informaciónque facilite dinero u otros activos importantes para la empresa.
 
+**Caso 3: Para acabar el díaa  las  15:00**
 
+Para acabar el día, a las 15:00, empiezan a generarse múltiples alertas en los sistemas de endpoint indicando el siguiente mensaje
 
+**Mensaje sistema endpoint**
 
+“#   C:\WINDOWS\mssecsvc.exe   #   Ransom-WannaCry!7339A0EFC768   #   trojan   # deleted  #  1  #  VIRUS_DETECTED_REMOVED  #  VIRUSCAN8800  #  VirusScan Enterprise #
 
+Al mismo tiempo, comienzan a cifrarse archivos de múltiples equipos, a los que se les va añadiendo  la  extensión “. wncry”. Decara  al  análisis  del  incidente,  se  dispone  de  la siguiente información
+
+* Logs de ePO.
+* Ejemplo de ficheros creados en los sistemas infectados.
+* Capturas de pantalla de la configuración del Firewall.
+* Logs del Firewall.
+
+## Identificar, analizar y explicar con todo lujo de detalles en el tercer caso:
+
+## Antecedentes
+
+![](/images/modulo1/ransomware.PNG)
+
+En el caso de un Ransomware su funciónconsiste en ‘secuestrar’los datos de la víctima, codificándolosde  tal  forma  que  estos  seaninaccesibles  sin  la  debido configuracióno introducciónde una clave en especial. En este caso en particular se guíaal usuario a correr un archivo .exe,para poderrecuperar los archivos encriptados.
+
+En algunos casos se exige un pago  generalmente con bitcoins al autor del ransomware para que este proceda a desencriptar los archivos y de esta manera salvar la informaciónimportante de la empresa ficticy.
+
+![](/images/modulo1/firewall.PNG)
+
+a pesar de utilizar una VPN, todo el tráfico estápermitido, lo que podríallevar a fallos en la seguridad.
+
+![](/images/modulo1/logs_antivirus.PNG)
+
+se  puede  apreciar  que  el  ransomware WannaCry  es  detectado,  y  se aprovecha de una vulnerabilidad existente en el sistema Windows 2008 R2 Server Pack #1,  la  cual  al  realizar  una búsquedaen  la  base  de  datos  de  Microsoft  se  encuentra que corresponde a la vulnerabilidad MS17-010
+
+![](/images/modulo1/bulletin.PNG)
+
+![](/images/modulo1/Sistemas_afectados.PNG)
 
 
 
