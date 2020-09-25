@@ -38,15 +38,17 @@ Los datos extraidos en la campaña de phishing son: la dirección IP de la víct
 
 ![](/images/modulo1/ventana_phishing.PNG)
 
-**Inspeccion de Elementos de sitio web**
+**Inspeccion de elementos del sitio web**
 
 ![](/images/modulo1/codigoHTML.PNG)
 
 Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar que el elemento  img1.jpg tiene un  formulario done se ejecuta el archivo PHP anteriormente mencionado.
 
+**Logs de acceso m.walker.franch**
+
 ![](/images/modulo1/logs_access_walkerfranch.PNG)
 
-se   muestra la   actividad   de   la   cuenta   de   correo m.walker.franch@ficticy.de varía entre las 9:00pm y las 16:00 pm durante los días 20 de noviembre  del  2017  al  día  23  de  noviembre  del  2017,  además  de  tener  un  rango de  IP entre la 172.16.10.23-26 y una dirección de 77.72.83.26
+Los logs de este usuario registran una actividad de la cuenta de correo **m.walker.franch@ficticy.de** entre las 9:00 am y las 16:00 pm durante los días 20 al 23 de noviembre del  2017,además de tener varios accesos desde distintos rangos de  IP: 172.16.10.23-26 y 77.72.83.26
 
 ![](/images/modulo1/logs_excel.PNG)
 
