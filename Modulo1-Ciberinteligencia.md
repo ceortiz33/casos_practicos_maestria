@@ -88,10 +88,11 @@ El siguiente correo tiene como emisor a **verify@microsoft.com**, este correo ge
 
 Los siguientes correos m.will.smith@ficticy.us, l.stephan.martin@ficticy.co.uk, l.martin.freire@ficticy.es, j.rodriguez.maceda@ficticy.es y s.mick.resce@ficticy.nl responden al falso correo de recuperacion de contraseña motivo por el cual se puede concluir que estos correos fueron de aquellos que  cayeron en el phishing.
 
-
-Despuésj.mach.christ@ficticy.dey r.voil.chran@ficticy.dehacen referencia a un ‘Nuevo Proyecto’ y ‘El proyecto’ respectivamente  loque  podría  significar  futuros  ataques  a  la misma   empresa   o   a otras   como   se   muestra   en   la   imagen   1.12.   Finalmente, noreply@proveedor.deenvíaun  correo  con  un archivo  adjunto  con  el  asunto  RE: Rechnung’ que vendría a ser la respuesta del ‘Proyecto de ley’.
+**Posibles nuevos ataques**
 
 ![](/images/modulo1/nuevosAtaques.PNG)
+
+Las cuentas de correo **j.mach.christ@ficticy.de** y **r.voil.chran@ficticy.de** mencionan un **‘Nuevo Proyecto’** y **‘El proyecto’** respectivamente dando a entender que podrían haber futuros ataques a la misma empresa o a otras. Finalmente, **noreply@proveedor.de** envía un correo con un archivo adjunto y asunto **RE: Rechnung’** que vendría a ser la respuesta del **‘Proyecto de ley’** mencionado en los primeros correos.
 
 ## Identificar,  analizar  y  detallar  con  todo  lujo  de  detalles  en  el  primer caso:
 
