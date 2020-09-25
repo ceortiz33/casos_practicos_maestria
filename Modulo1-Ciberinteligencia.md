@@ -118,6 +118,39 @@ Debido a que el atacante reenvía un correo de confirmación de Outlook, las ví
 * Establecer canales de comunicación más eficiente entre los distintos departamentos de la empresa.
 * Llevar un registro de las intrusiones y enviarlas a la lista negra para ser bloquedos.
 
+**Caso 2: “Unashoras mástarde a las 13:00** 
+
+“Unas  horas mástarde,  a  las  13:00,  recibes  la  noticia  de  que  se  ha  realizado  una transferencia a una cuenta inusual y que el proveedor pendiente de recibir ese pago se ha quejado porque no lo ha recibido.
+
+Al  contactar  con  los  empleados  del  departamento  de transferencias(acontinuación,  se detallan sus datos), todos confirman haber estado trabajando durante toda la semana en la oficina, siempre utilizando la red corporativa y la VPN para el uso de herramientas. Sin embargo, los tres trabajadores afirman haber recibido correos sospechosos esta semana.
+
+**Empleados del departamento de transferencias**
+
+* **Nombre:** María Protector Fresco | **Email:** m.protector.fresco@ficticy.es| **Puesto:** responsabledel departamento de nóminas | **Redes sociales utilizadas:** Facebook, Twitter, Linkedin, Instagram.
+* **Nombre:** Juan Philips Todobene | **Email:** j.philips.todobene@ficticy.es| **Puesto:** Responsable  de  pagos  y  transferencias  | **Redes  sociales  utilizadas:** Facebook, Linkedin, Infojobs.
+* **Nombre:** Sofía Labial Guest | **Email:** s.labial.guest@ficticy.es| **Puesto:** Asistente de  pagos  y  transferencias  | **Redes  sociales  utilizadas:** Facebook,  Linkedin, Infojobs, Tuenti.
+
+**Informaciónfacilitada para el análisis**
+
+* Logs de correos recibidos.
+* Logs de acceso a las cuentas de correo.
+* Logs del MTA.
+* Correos sospechosos reportados por los empleados.
+  * Para obtener la contraseña de dicho ZIP, se debe identificar el ID del correo fraudulento.
+
+## Identificar, analizar y explicar con todo lujo de detalles en el segundo caso:
+
+## Antecedentes
+
+![](/images/modulo1/logs_acceso_caso2.PNG)
+
+se  muestran  los logs  de  acceso  de la cuenta j.phillips.todobene@ficticy.escorrespondiente a Juan Phillips Todobene, Responsable de pagos y transferencias, donde no se registran anomalíasen cuanto a su versión ya que usa la VPN de la empresa y ha tenido actividad entre las 8:00 AM a las15:20 PM desde los días 20 al 23 de noviembredel 2017.
+
+![](/images/modulo1/logs_fresco.PNG)
+
+se    pueden    observar    los    logs    de    acceso    de    la   cuenta m.protector.fresco@ficticy.escorrespondiente a María Protector Fresco, responsable del departamento de nóminas, dondeno se registran anomalías en cuanto a su versión ya que usa la VPN de la empresa y se registra actividad desde las 08:00 AM hasta las 15:10 PM,los días 20,21,22 y 23 de noviembre del 2017. 
+
+![](/images/modulo1/logs_labial.PNG)
 
 
 
