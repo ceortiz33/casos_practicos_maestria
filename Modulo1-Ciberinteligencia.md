@@ -98,11 +98,11 @@ Las cuentas de correo **j.mach.christ@ficticy.de** y **r.voil.chran@ficticy.de**
 
 ### ¿Cómo se ha podido producir el suceso?
 
-De  acuerdo  a  los  correos  mostrados  en  los  logs  se  puede  observar  que  el  principal sospechoso apunta a la cuenta de correo j.roman.stelso@ficticy.co.ukdebido aque pudo filtrar información de carácter confidencial al atacante, de esta forma se logra establecer el  engaño  mediante  el  phishing,  pero  al  verse  comprometida  la  información  de  una empresa con un dominio diferente da como resultado un CEO Fraud.
+De acuerdo a los correos mostrados en los logs se puede observar que el principal sospechoso apunta a la cuenta de correo **j.roman.stelso@ficticy.co.uk** debido a que pudo dar información de carácter confidencial al atacante, este seria el vector de entrada para realizar la campaña de phishing y engañar a los empleados de la organizacion y sustraer sus credenciales mediante un CEO Fraud.
 
 ![](/images/modulo1/pregunta1.PNG)
 
-Adicionalmente  luego  de  la  comunicación  con  el  correo j.roman.stelso@ficticy.co.ukexisten dos correos que involucran servicios de compra de dominios y mensajería por fax por internet motivo otro motivo más por el cual se puede sospechar de él. Otra cosa que se puede percatar es que son los únicos correos que se bloquean para que no puedan ser rastreados.
+Adicionalmente  luego  de  la  comunicación  con  el  correo **j.roman.stelso@ficticy.co.uk** existen dos correos que involucran servicios de compra de dominios y mensajería por fax por internet motivo otro motivo más por el cual se puede sospechar de él. Otra cosa que se puede percatar es que son los únicos correos que se bloquean para que no puedan ser rastreados.
 
 ![](/images/modulo1/pregunta1_1.PNG)
 
