@@ -42,4 +42,26 @@ Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar  que  al  l
 
 ![](/images/modulo1/codigoHTML.PNG)
 
+![](/images/modulo1/logs_access_walkerfranch.PNG)
+
+se   muestra la   actividad   de   la   cuenta   de   correo m.walker.franch@ficticy.de varía entre las 9:00pm y las 16:00 pm durante los días 20 de noviembre  del  2017  al  día  23  de  noviembre  del  2017,  además  de  tener  un  rango de  IP entre la 172.16.10.23-26 y una dirección de 77.72.83.26
+
+![](/images/modulo1/logs_excel.PNG)
+
+se puede observar la actividad que ha existido entre el atacante y los distintos usuarios.Entre los cuales se puede observar particularmente la interacción entre j.roman.stelso@ficticy.co.uk y m.walker.franch@ficticy.de dondeaparecen dos veces y cuyos asuntos son en la primera ocasión ‘Sector Privado’ a las 11:10 am el día20  de noviembre del 2017 y la segunda ocasión una respuesta con asunto ‘RE: Sector privado’ a las 17:15 pm al día siguiente. Una posible teoría seria que j.roman.stelso@ficticy.co.uk está filtrando información sensible y dándosela al atacante.
+
+![](/images/modulo1/logs_sospechosos.PNG)
+
+![](/images/modulo1/bloqueoMailer.PNG)
+
+
+
+
+
+
+
+
+
+
+
 
