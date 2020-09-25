@@ -34,13 +34,15 @@ En la imagen se muestra un archivo PHP donde se solicita el ingreso de usuario y
 
 Los datos extraidos en la campaña de phishing son: la dirección IP de la víctima mediante el comando **getenv** , el usuario y contraseña que luego son enviados a la cuenta personal del atacante para hacer uso de las credenciales robadas.
 
-Los elementos utilizados en la creación del sitio fraudulento para el caso son el botón de sign in y el entorno falso de Outlook como se muestra en las siguientes imágenes.
+**Sitio web Fraudulento**
 
 ![](/images/modulo1/ventana_phishing.PNG)
 
-Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar  que  al  localizar  el elemento  img1.jpg,  dentro  de  él existe  un  formulario con  la etiqueta  form en el  que  se ejecuta el archivo PHP
+**Inspeccion de Elementos de sitio web**
 
 ![](/images/modulo1/codigoHTML.PNG)
+
+Haciendo  una  búsqueda  por  el código  HTML  se  puede  observar que el elemento  img1.jpg tiene un  formulario done se ejecuta el archivo PHP anteriormente mencionado.
 
 ![](/images/modulo1/logs_access_walkerfranch.PNG)
 
