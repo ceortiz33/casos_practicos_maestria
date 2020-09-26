@@ -253,9 +253,21 @@ Para evitar esta vulnerabilidad es aconsejable utilizar las funciones **escapesh
 
 ![](/images/modulo3/commandfix2.PNG)
 
+### Remote File Upload
 
+Esta vulnerabilidad permite cargar archivos que pueden comprometer o incluso causar graves daños al sistema o a la base de datos. Wackopicko es una aplicación web con función de galería de imágenes tiene funciones de compra y venta de imágenes, cargar imagen, comentar. Teniendo en cuenta este contexto lo ideal sería que sólo se pudieran cargar imágenes a la aplicación es decir imágenes con extensión **jpeg, gif, png**. Sin embargo,en este caso no es así ya que permite cargar un archivo ejecutable de tipo PHP.
 
+En el menú Upload se puede cargar una imagen detallando los siguientes campos: **tag, file  name,  title, price, file**. En el campo file de no estar correctamente  validado permitirá cargar archivos ejecutables como **php-reverse-shell.php**.
 
+![](/images/modulo3/cargafile1.PNG)
+
+Como se puede observar la reverse-shell has ido cargada correctamente porlo tanto se evidencia que existe esta vulnerabilidad.
+
+![](/images/modulo3/shellcargada.PNG)
+
+El campo tag insertado anteriormente genera una carpeta dentro del directorio upload donde se guarda la shell.
+
+![](/images/modulo3/remoteshell.PNG)
 
 
 
