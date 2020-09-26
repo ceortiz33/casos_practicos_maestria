@@ -93,8 +93,19 @@ La protección web contra XSS no está habilitada o el parámetro X-XSS Protecti
 
 No se encontraron tokens Anti-CSRF en HTML
 
+## Segunda Parte
 
+Para esta segunda parte se analizara de forma manual Wackopicko en base a los resultados obtenidos de OWASP ZAP. Wackopicko es una aplicación tipo red social que  permite compartir fotos e imágenes con tus amigos, se puede comentar, recomendar y comprar las fotos que se suben al sitio.
 
+![](/images/modulo3/wackopicko.PNG)
+
+Wackopicko tiene cinco pestañas siendo estas **Home**, **Upload**, **Recent**, **Guestbook** y por último **Login**. Explorando la página se observa que el contenido de **Home** y **Upload** no puede ser accedido sin antes iniciar sesión en login.php, esto debido a que siempre se redirecciona a **localhost:8080/users/login.php**
+
+![](/images/modulo3/wackopickologin.PNG)
+
+La opcion **Recent**  muestra  las imágenes recientemente cargadas a la plataforma,ademas de redireccionar al directorio **/pictures/recent.php**.
+
+![](/images/modulo3/wackopickorecent.PNG)
 
 
 
