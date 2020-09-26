@@ -161,10 +161,23 @@ Se debe evitar el uso de caracteres especiales en search.php, se puede usar tant
 
 ![](/images/modulo3/search.PNG)
 
+![](/images/modulo3/search2.PNG)
 
+Luego de hacer estos cambios ya no muestra la alerta y queda sanitizado.
 
+![](/images/modulo3/searchfix.PNG)
 
+### Aplicación vulnerable a SQL Injection
 
+Una de las vulnerabilidades mas comunes que se encuentra en una sesión de login es SQL Injection, una vulnerabilidad sencilla de mitigar, sin embargo de no ser corregida permite que el cliente haga cualquier tipo de consulta, ganando acceso a contenido de la base de datos o incluso eliminando cuentas de usuario.
+
+Para probar si esta página es vulnerable se usara el carácterde escape ‘
+
+![](/images/modulo3/sqlinjectiontest.PNG)
+
+Al usar este carácter el sitio devuelve el siguiente resultado, por lo tanto se da por hecho que es vulnerable a la inyección SQL.
+
+![](/images/modulo3/sqloutput.PNG)
 
 
 
