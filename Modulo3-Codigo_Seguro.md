@@ -141,11 +141,25 @@ Dentro de los archivos de la máquina virtual de Wackopicko se abre el archivo g
 
 ![](/images/modulo3/guestbookentities.PNG)
 
+Además se cambia la etiqueta html que estaba predefinida a **h( $guest[“comment”])** ya que a pesar de que se ejecutara htmlentites en el parametro **comment**, este invalidaba los cambios y la sanitización solo se producía para el **name**.
 
+![](/images/modulo3/guestbookmodif2.PNG)
 
+Con los cambios realizados al archivo **guestbook.php** se logra evitar que se inyecte codigo malicioso en el formulario.
 
+![](/images/modulo3/guestbookfix.PNG)
 
+Otro sitio vulnerable a XSS es **/pictures/search.php?query=** donde al introducir **<script>alert(1);</script>** muestra otra ventana emergente.
 
+![](/images/modulo3/pictures.PNG)
+
+### Solucion
+
+Para solucionar una vulnerabilidad XSS se necesita de validación de datos,sanitizaciónde datos, escape de caracteres especiales. Con la validación de datos se puede  permitir ciertos caracteres que sean ingresados, solo numeros, letras o números y letras.Para la parte de sanitización se debe asegurar que los datos sean seguros, recordando que una vulnerabilidad de XSS tambien puede redirigir a una página insegura, se puede usar el comando **strip_tags()** para sanitizar los enlaces y se lean como texto.
+
+Se debe evitar el uso de caracteres especiales en search.php, se puede usar tanto **htmlentities()** como **htmlspecialchars()**, la única diferencia es que htmlspecialchars traduce solo  <,>,“”,“,& a entidades HTML. En cambio **htmlentities()** traduce todos los simbolos que tengan una equivalencia en codigo HTML.
+
+![](/images/modulo3/search.PNG)
 
 
 
