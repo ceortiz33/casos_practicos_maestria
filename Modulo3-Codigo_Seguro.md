@@ -209,6 +209,12 @@ Para omitir la validación de la contraseña se usara los caracteres **--** que 
 
 ![](/images/modulo3/newinjection.PNG)
 
+La query que se esta ejecutando es:
+
+**SELECT * FROM users WHERE username = ‘$user’--’AND password =SHA1(’$password’,`salt`)**
+
+Aqui se produce un error debido a que la query se malinterpeta recibiendo como usuario– .Para evitar esto se deja un espacio luego de los caracteres especiales, logrando de esta manera comentar la parte delpassword de la queryy ganando acceso.
+
 
 
 
