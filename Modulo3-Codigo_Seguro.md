@@ -25,7 +25,7 @@ Una vez aplicadas las configuraciones de proxy y las recomendaciones de puerto m
 
 ![](/images/modulo3/enumeracion.PNG)
 
-## Resultados Obtenidos
+### Resultados Obtenidos
 
 OWASP ZAP clasifica las alertas en orden de prioridad como resultado del análisis se encontraron un total de 15 alertas, 6 alertas con riesgo alto, 4 alertas de riesgo medio, 5 alertas de riesgo bajo y no se encontraron alertas de tipo informacional.
 
@@ -35,35 +35,65 @@ Para una mejor visualización del impacto de los riesgos se utilizar una represe
 
 ![](/images/modulo3/riesgocolor.PNG)
 
-## Remote OS Command Injection
+#### Remote OS Command Injection
 
 OWASP ZAP encuentra en el directorio **/passcheck.php**. Esta vulnerabilidad corresponde a ejecución no autorizada de comandos del sistema operativo. El parámetro atacado para esta vulnerabilidad es el **password**.
 
 ![](/images/modulo3/remoteos.PNG)
 
-## Cross Site Scripting Reflected
+#### Cross Site Scripting Reflected
 
 OWASP ZAP encuentra tres posibles vulnerabilidades reflejadas en  **/guestbook.php**, en **search.php?query=%22%3E%3Cscript%3Ealert%281%29%3B%3C%2Fscript%3E** y **/users/login.php** todas utilizando **<script>alert(1)</script>** como vector de ataque.
 
 ![](/images/modulo3/xssreflected.PNG)
 
-## SQL Injection
+#### SQL Injection
 
 OWASP ZAP encuentra esta vulnerabilidad por el método POST en el directorio **/users/login.php**, además utiliza la query **ZAP’AND ‘1’=’1–** para ganar acceso a la sesión.
 
 ![](/images/modulo3/sqlinjection.PNG)
 
-## Remote File Inclusion
+#### Remote File Inclusion
 
 Esta vulnerabilidad permite cargar un archivo y dependiendo del contenido del mismo se puede ganar control remoto de la máquina como es el caso de las reverse shells, exploits,etc. 
 
 ![](/images/modulo3/remotefile.PNG)
 
-## Cross Site Scripting Persistent
+#### Cross Site Scripting Persistent
 
 OWASP ZAP muestra el directorio /guestbook.php como vulnerable. A diferencia del XSS almacenado, este no se guarda en la base de datos.
 
 ![](/images/modulo3/xsspersistent.PNG)
+
+#### X-Frame Options Header Not Set
+
+OWASP ZAP enumera todos los directorios de la pagina web y muestra aquellos que no tienen habilitado el parámetro **X-Frame-Options** con 225 coincidencias.
+
+#### Application Error Disclosure
+
+Esta vulnerabilidad puede enviar un mensaje de error o warning y puede mostrar información sensible como la ubicacion de un archivo en particular.
+
+#### Directory Browsing
+
+Es posible ver la lista de directorios,se podrian revelar scripts ocultos,archivos o backups.
+
+#### Buffer Overflow
+
+Esta vulnerabilidad se caracteriza por sobreescribir espacios de memoria del proceso de fondo web.
+
+#### X-Content-Type-Options Header Missing
+
+Esta vulnerabilidad permite a versiones anteriores de Internet Explorer y Chrome realizar MIME-sniffing
+
+#### Web Browser XSS Protection Not enabled
+
+La protección web contra XSS no está habilitada o el parámetro X-XSS Protection esta deshabilitado.
+
+#### Absence of Anti-CSRF Tokens
+
+No se encontraron tokens Anti-CSRF en HTML
+
+
 
 
 
