@@ -25,9 +25,19 @@ Una vez aplicadas las configuraciones de proxy y las recomendaciones de puerto m
 
 ![](/images/modulo3/enumeracion.PNG)
 
+## Resultados Obtenidos
 
+OWASP ZAP clasifica las alertas en orden de prioridad como resultado del análisis se encontraron un total de 15 alertas, 6 alertas con riesgo alto, 4 alertas de riesgo medio, 5 alertas de riesgo bajo y no se encontraron alertas de tipo informacional.
 
+![](/images/modulo3/summaryalerts.PNG)
 
+Para una mejor visualización del impacto de los riesgos se utilizar una representación por color, siendo rojo riesgo alto, amarillo riesgo medio y verde riesgo bajo.
 
+![](/images/modulo3/riesgocolor.PNG)
 
+## Remote OS Command Injection
+
+OWASP ZAP encuentra en el directorio **/passcheck.php**. Esta vulnerabilidad corresponde a ejecución no autorizada de comandos del sistema operativo. El parámetro atacado para esta vulnerabilidad es el **password**.
+
+![](/images/modulo3/remoteos.PNG)
 
