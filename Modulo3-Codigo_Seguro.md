@@ -179,5 +179,26 @@ Al usar este carácter el sitio devuelve el siguiente resultado, por lo tanto se
 
 ![](/images/modulo3/sqloutput.PNG)
 
+La inyección se hizo en el usuario por lo que se puede deducir que la consulta realizada es del tipo:
+
+**SELECT * FROM users WHERE username = ‘$user’AND password =‘$password’**
+
+En esta query se observa que la contraseña se codifica con SHA1 y además utiliza un salt para limitar los accesos por fuerza bruta.
+
+Usando esta petición devuelve que el usuario o contraseña es invalido, debido a que el usuario user no existe en su base de datos.
+
+![](/images/modulo3/usertest.PNG)
+
+En la página oficial de Wackopicko en Github, se encuentra información sobre los usuarios permitidos. Con estos usuarios se probará nuevamente para intentar hacer un bypass de la sesión.
+
+![](/images/modulo3/validusers.PNG)
+
+Se ingresa con las credenciales como usuario **scanner1** y contraseña **scanner1**
+
+![](/images/modulo3/usuarioscanner1.PNG)
+
+
+
+
 
 
