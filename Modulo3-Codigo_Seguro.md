@@ -269,6 +269,15 @@ El campo tag insertado anteriormente genera una carpeta dentro del directorio up
 
 ![](/images/modulo3/remoteshell.PNG)
 
+En la máquina en Kali se ejecuta el listener con el comando **nc -lvnp 443**. Normalmente para ejecutar la shell remota, basta con dar clic y dicha accion habilitara  la ejecucion remota,otra forma de ejecutar la shell es mediante el comando **php -f [nombre.php]**.
+
+![](/images/modulo3/shellejecutada.PNG)
+
+Una vez que se ejecuta la shell remota ya se tiene acceso a la máquina virtual.
+
+![](/images/modulo3/shellcommand.PNG)
+
+### Solucion
 
 
 
