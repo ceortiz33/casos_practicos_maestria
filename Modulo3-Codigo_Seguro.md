@@ -123,9 +123,23 @@ Una de las vulnerabilidades mas conocidas es XSS,misma que se clasifica en **Ref
 
 El vector de entrada mas comun que produce la mayor parte de ataques XSS es la validacion incorrecta de valores en un formulario o blog no sanitizados y por dicha razon se permite cualquier tipo de entrada de datos, esto deriva en la ejecucion de comandos generalmente del tipo Javascript.El alcance de una vulnerabilidad XSS depende de la creatividad del atacante y de que tan vulnerable sea el sitio,siendo las mas comunes el robo se sesiones y cookies.
 
-Para comprobar esta vulnerabilidad  se escribe el segmento de codigo JavaScript **<script>alert(1)</script>** en el archivo guestbook.php dando como resultado la siguiente imagen mostrando un popup con el numero 1 que fue enviado como un alert.
+Para comprobar esta vulnerabilidad se escribe el segmento de codigo JavaScript **<script>alert(1)</script>** en el archivo guestbook.php dando como resultado la siguiente imagen mostrando un popup con el numero 1 que fue enviado como un alert.
 
 ![](/images/modulo3/alertxss.PNG)
+
+Para poner a prueba si se puede obtener las cookies de la sesion,se ejecuta el siguiente comando **<script>alert(document.cookie);</script>** dando como resultado lo mostrado a continuación.El resultado se guarda en el blog por lo tanto esta vulnerabilidad corresponde al XSS de tipo almacenado.
+
+![](/images/modulo3/cookies.PNG)
+
+De igual manera si se escribe la misma instruccion desde el buscador se obtiene lo siguiente, lo que corresponderia al XSS reflejado.
+
+![](/images/modulo3/cookiesreflejado.PNG)
+
+### Solucion
+
+Dentro de los archivos de la máquina virtual de Wackopicko se abre el archivo guestbook.php y se agrega **htmlentities** a los parametros recibidos via POST, es decir **name** y **comment**.
+
+![](/images/modulo3/guestbookentities.PNG)
 
 
 
