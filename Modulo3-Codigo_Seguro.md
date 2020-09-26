@@ -47,4 +47,35 @@ OWASP ZAP encuentra tres posibles vulnerabilidades reflejadas en  **/guestbook.p
 
 ![](/images/modulo3/xssreflected.PNG)
 
+## SQL Injection
+
+OWASP ZAP encuentra esta vulnerabilidad por el método POST en el directorio **/users/login.php**, además utiliza la query **ZAP’AND ‘1’=’1–** para ganar acceso a la sesión.
+
+![](/images/modulo3/sqlinjection.PNG)
+
+## Remote File Inclusion
+
+Esta vulnerabilidad permite cargar un archivo y dependiendo del contenido del mismo se puede ganar control remoto de la máquina como es el caso de las reverse shells, exploits,etc. 
+
+![](/images/modulo3/remotefile.PNG)
+
+## Cross Site Scripting Persistent
+
+OWASP ZAP muestra el directorio /guestbook.php como vulnerable. A diferencia del XSS almacenado, este no se guarda en la base de datos.
+
+![](/images/modulo3/xsspersistent.PNG)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
