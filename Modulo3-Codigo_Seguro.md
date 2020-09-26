@@ -41,3 +41,10 @@ OWASP ZAP encuentra en el directorio **/passcheck.php**. Esta vulnerabilidad cor
 
 ![](/images/modulo3/remoteos.PNG)
 
+## Cross Site Scripting Reflected
+
+OWASP ZAP encuentra tres posibles vulnerabilidades reflejadas en  **/guestbook.php**, en **search.php?query=%22%3E%3Cscript%3Ealert%281%29%3B%3C%2Fscript%3E** y **/users/login.php** todas utilizando **<script>alert(1)</script>** como vector de ataque.
+
+![](/images/modulo3/xssreflected.PNG)
+
+
