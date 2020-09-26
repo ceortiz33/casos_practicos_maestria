@@ -197,6 +197,21 @@ Se ingresa con las credenciales como usuario **scanner1** y contraseña **scanne
 
 ![](/images/modulo3/usuarioscanner1.PNG)
 
+Como este usuario se obtiene acceso al sitio. Con esto en mente se intentará hacer el bypass de la sesión mediante SQL injection utilizando el usuario scanner1.
+
+![](/images/modulo3/injectionscanner1.PNG)
+
+Si se realiza la misma query que en el caso anterior con el usuario user, se observa que muestra un error porque se esta ejecutando la validación de la contraseña con SHA1 y dado que esta no se ha proporcionado nos muestra este error.
+
+![](/images/modulo3/injectionerror.PNG)
+
+Para omitir la validación de la contraseña se usara los caracteres **--** que permite comentar todo lo que viene después.
+
+![](/images/modulo3/newinjection.PNG)
+
+
+
+
 
 
 
