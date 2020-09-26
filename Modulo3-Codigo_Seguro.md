@@ -217,13 +217,27 @@ Aqui se produce un error debido a que la query se malinterpeta recibiendo como u
 
 ![](/images/modulo3/accesosqlinjection.PNG)
 
-## Solucion
+### Solucion
 
 Una solución para evitar SQL injection es utilizar la función **real_escape_string();** que permite sanitizar las peticiones del usuario añadiendo \ a cada carácter especial como ‘, “ , null bytes como \x00y y en este caso ‘\’ ‘OR’ ‘\’1’\’ de esta forma, las petición es interpretada como un string y a pesar que es aceptada no es procesada como una query SQL.De acuerdo con la documentación en PHP este comando se puede usar tanto para la versión 5 y 7 por lo que no habría problema.
 
 ![](/images/modulo3/funcionesphp.PNG)
 
 ![](/images/modulo3/loginfix.PNG)
+
+### Remote Command Inclusion
+
+De acuerdo a los resultados en ZAP el archivo **passcheck.php** es vulnerable a la ejecucion remota de comandos.
+
+![](/images/modulo3/passcheck1.PNG)
+
+Al dar clic en check con la contraseña vacía se muestra el siguiente mensaje.
+
+![](/images/modulo3/passcheck2.PNG)
+
+En esta imagen se muestra claramente el comando que se esta empleando y el diccionario utilizado para la comparacion,en este caso se encuentra en el archivo **/etc/dictionaries-common/words**.Aquí se pueden ingresar algunos comandos, sin embargo la consulta al tener el símbolo de $ impide que algunos comandos se ejecuten de manera normal, con el comando que se puede hacer bypass a esto es con **mkdir** y un nombre; al ser una cadena de caracteres no habrá problema alguno.
+
+![](/images/modulo3/comandoaceptado.PNG)
 
 
 
