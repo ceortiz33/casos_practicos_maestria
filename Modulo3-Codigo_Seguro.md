@@ -107,6 +107,26 @@ La opcion **Recent**  muestra  las imágenes recientemente cargadas a la platafo
 
 ![](/images/modulo3/wackopickorecent.PNG)
 
+La opcion **Guestbook** muestra un formulario de opiniones que permite calificar a las publicaciones.
+
+![](/images/modulo3/wackopickoguestbook.PNG)
+
+Una vez que se ha identificado el entorno de trabajo de Wackopicko se procede a analizar las vulnerabilidades mas criticas encontradas en el escaner ZAP.
+
+### XSS Persistente y Reflejado
+
+De acuerdo a los resultados del escaner en OWASP ZAP, se menciona que un archivo que presenta esta vulnerabilidad es **/guestbook.php**. 
+
+![](/images/modulo3/guestbook.PNG)
+
+Una de las vulnerabilidades mas conocidas es XSS,misma que se clasifica en **Reflejado**, **Almacenado** y **DOM**.Como resultado del analisis se obtuvo que  Wackopicko es vulnerable a este tipo de ataque tanto del tipo reflejado como del tipo almacenado. XSS se puede producir de varias formas entre las cuales esta la validacion incorrecta de un enlace alterado en un formulario web.
+
+El vector de entrada mas comun que produce la mayor parte de ataques XSS es la validacion incorrecta de valores en un formulario o blog no sanitizados y por dicha razon se permite cualquier tipo de entrada de datos, esto deriva en la ejecucion de comandos generalmente del tipo Javascript.El alcance de una vulnerabilidad XSS depende de la creatividad del atacante y de que tan vulnerable sea el sitio,siendo las mas comunes el robo se sesiones y cookies.
+
+Para comprobar esta vulnerabilidad  se escribe el segmento de codigo JavaScript **<script>alert(1)</script>** en el archivo guestbook.php dando como resultado la siguiente imagen mostrando un popup con el numero 1 que fue enviado como un alert.
+
+![](/images/modulo3/alertxss.PNG)
+
 
 
 
