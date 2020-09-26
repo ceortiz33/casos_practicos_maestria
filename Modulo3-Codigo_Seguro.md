@@ -239,7 +239,19 @@ En esta imagen se muestra claramente el comando que se esta empleando y el dicci
 
 ![](/images/modulo3/comandoaceptado.PNG)
 
+Con ayuda del comando **sudo -l** se muestra que todos los comandos son permitidos por esta máquina, de la misma manera al revisar el directorio donde se encuentra dictionaries-common no se encontró ninguna restricción de comandos.
 
+![](/images/modulo3/restriccioncomando.PNG)
+
+Como se mencionó anteriormente al usar mkdir seguido de un nombre de archivo, en este caso **prueba**, se concatena con el símbolo $ haciendo posible el bypass para crear este archivo sin restricción alguna. Generando como resultado el archivo prueba$
+
+![](/images/modulo3/archivocreado.PNG)
+
+Para evitar esta vulnerabilidad es aconsejable utilizar las funciones **escapeshellarg()** o **escapeshellcmd()**, que son funciones de PHP que permiten sanitizar  las funciones o comandos que puedan afectar al sistema, como en este caso donde se pudo crear un directorio llamado **prueba$**. La diferencia entre ambos comandos radica en que **escapeshellarg()** permite escapar los comandos como si fueran strings con comillas simples para de esta manera no sean considerados como funciones a  ejecutar, en **cambioescapeshellcmd()** escapa metacaracteres precedidos por una barra \ para evitar que se pueda burlar el comando Shell y ejecutar la inclusión de comandos.
+
+![](/images/modulo3/commandfix1.PNG)
+
+![](/images/modulo3/commandfix2.PNG)
 
 
 
