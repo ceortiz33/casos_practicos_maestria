@@ -181,7 +181,7 @@ Al usar este carácter el sitio devuelve el siguiente resultado, por lo tanto se
 
 La inyección se hizo en el usuario por lo que se puede deducir que la consulta realizada es del tipo:
 
-**SELECT * FROM users WHERE username = ‘$user’AND password =‘$password’**
+`SELECT * FROM users WHERE username = ‘$user’AND password =‘$password’`
 
 En esta query se observa que la contraseña se codifica con SHA1 y además utiliza un salt para limitar los accesos por fuerza bruta.
 
@@ -211,7 +211,7 @@ Para omitir la validación de la contraseña se usara los caracteres **--** que 
 
 La query que se esta ejecutando es:
 
-**SELECT * FROM users WHERE username = ‘$user’--’AND password =SHA1(’$password’,`salt`)**
+```SELECT * FROM users WHERE username = ‘$user’--’AND password =SHA1(’$password’,`salt`)```
 
 Aqui se produce un error debido a que la query se malinterpeta recibiendo como usuario– .Para evitar esto se deja un espacio luego de los caracteres especiales, logrando de esta manera comentar la parte delpassword de la query y ganando acceso.
 
