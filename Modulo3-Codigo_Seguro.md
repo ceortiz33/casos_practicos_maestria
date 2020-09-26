@@ -279,6 +279,60 @@ Una vez que se ejecuta la shell remota ya se tiene acceso a la máquina virtual.
 
 ### Solucion
 
+El archivo que contiene la configuración para la validación de archivos que se cargan en upload es **piccheck.php**, por lo tanto con unos cuantos cambios se puede  corregir esta vulnerabilidad.
 
+![](/images/modulo3/pidcheckfix.PNG)
 
+La variable **$name** contiene el archivo que se carga al directorio upload, por esta razon se debería validar el tipo de extensión. Para capturar la extensión del archivo se usa el siguiente comando.
 
+`$uploaded_ext = substr($name, strrpos($name, '.') + 1);`
+
+El archivo $FILES es un array asociativo de los elementos subidos al directorio upload. En el script mostrado en piccheck.php se extrae el tipo type, del array  asociativo de la variable userfile, con esto en mente se puede usar el mismo concepto para extraer otro parámetro del array userfile. Como primer filtro se puede establecer un límite en el tamaño de los archivos que se cargan usando el comando siguiente.
+
+`$uploaded_size = $_FILES[‘userfile’][’size’];`
+
+Como segundo filtro se realiza la validación del tipo de extension. Para que sea de los tipos conocidos de imagen
+
+`if (($uploaded_ext == "jpg" || $uploaded_ext == "JPG" || $uploaded_ext == "jpeg" || $uploaded_ext =="JPEG"|| $uploaded_ext == “png’ || $uploaded_ext == “PNG” ) && ($uploaded_size < 100000)){`
+
+A pesar de tener este tipo de validación aun existen algunas formas de evitar este filtro ya que bien se podría cambiar el nombre de extensión,o cambiar el tipo MIME para que este sea considerado como el tipo que se ejecuta, es asi que algunos archivos PHP usando el MIME type de GIF o PNG pueden evitar esta verificación.
+
+Como tercer filtro se plantea lo siguiente, y sevalidael MIME typepara que coincida con el del tipo de imagen.
+
+`if($_FILES[‘userfile’][‘type’]==”image/jpeg”|| $_FILES[‘userfile’][‘type’]==”image/png”){`
+
+![](/images/modulo3/extensionfix.PNG)
+
+### Directory Browsing
+
+Si bien esta no es una vulnerabilidad critica como  tal, si podría derivar en otras vulnerabilidades mas graves, al dejar los directorios expuestos un atacante podría aprovecharse de algún software desactualizado o de algún servicio y explotarlo, además se compromete información sensible en caso de no ser correctamente configurado.En el caso de Wackopicko observamos que los directorios /cart, /pictures, /images, /upload, entre otros muestran el índicede archivos.
+
+![](/images/modulo3/browsing1.PNG)
+
+![](/images/modulo3/browsing2.PNG)
+
+![](/images/modulo3/browsing3.PNG)
+
+![](/images/modulo3/browsing4.PNG)
+
+En el caso de directorio sensibles como /upload donde se puede evidenciar que se han cargado varios archivos, si se tratase de una reverse shell esta podria ser ejecutada dando clic. De la misma manera informacion relacionada con las versiones de los servicios y aplicaciones pueden ser de gran interes para un atacante.
+
+### Solución
+
+Una posible solucion a este problema es redireccionar estos archivos a un archivo 404.php que es básicamente una pagina que muestra un mensaje, de esta forma aunque se intente acceder a los directorios mencionados anterioremente, se redireccionará al archivo 404.php mostrando el mensaje “404 Page not Found”.
+
+![](/images/modulo3/redirect1.PNG)
+
+![](/images/modulo3/redirect2.PNG)
+
+![](/images/modulo3/redirect3.PNG)
+
+### Recomendaciones
+
+Si bien Wackopicko es una aplicación web para practicar desarrollo seguro, esta viene instalada con PHP 5.0, actualmente ya existe la versión PHP 7.0,se debería siempre mantener al día las actualizaciones del sistema, debido a que incluyen mejoras en la seguridad, así como nuevas funcionalidades. De la misma manera cualquier   otra funcionalidad o  servicio integrados a la aplicación debería actualizarse porque a medida que pasa el tiempo van apareciendo nuevas vulnerabilidades y con ello nuevos exploits, en caso de no mantener los sistemas actualizados estos se vuelven más propensos a sufrir este tipo de ataques. En cuanto a la política de contraseñas no  utilizar la misma que el nombre de usuario, usar una longitud adecuada con variación entre letras, números y símbolos.
+
+En la medida posible no utilizar GET para mostrar los cambios entre usuarios, imágenes o en caso de darse procurar que esté debidamente sanitizado para no comprometer  la privacidad de los usuarios.Usar el encabezado SSL, al agregar este encabezado se convierte una aplicación HTTP en HTTPS siendo esta mas segura debido a que tanto el usuario y la contraseña no pasan en texto plano evitando que pueda ser interceptada con algún sniffer.
+
+### Conclusiones
+
+En este trabajo se desarrollaron habilidades indispensables para el desarrollo seguro como son la manipulación de código para corregir vulnerabilidades, el uso de un analizador para identificar vulnerabilidades de manera automatizada, sin olvidar que el resultado no es 100% seguro y siempre hay que comprobar para evitarfalsos positivos.Wackopicko es una aplicació nweb creada intencionalmente con fallos de seguridad, ideal para que un analista interesado en formarse en desarrollo seguro pueda practicar y tomar conciencia de lo importante que es la seguridad en una aplicación web.En esta aplicación se encontró vulnerabilidades importantes  como XSS reflejado,XSS almacenado,SQL Injection,Remote File Upload,Remote Command Inclusion. Estas pueden afectar los principios de confidencialidad, integridad y disponibilidad a tal punto que de ser un caso real afectara la reputación de la aplicación,ademásde comprometer la privacidad y los datos de los usuarios.
