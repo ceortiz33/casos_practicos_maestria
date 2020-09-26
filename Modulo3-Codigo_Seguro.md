@@ -213,7 +213,19 @@ La query que se esta ejecutando es:
 
 **SELECT * FROM users WHERE username = ‘$user’--’AND password =SHA1(’$password’,`salt`)**
 
-Aqui se produce un error debido a que la query se malinterpeta recibiendo como usuario– .Para evitar esto se deja un espacio luego de los caracteres especiales, logrando de esta manera comentar la parte delpassword de la queryy ganando acceso.
+Aqui se produce un error debido a que la query se malinterpeta recibiendo como usuario– .Para evitar esto se deja un espacio luego de los caracteres especiales, logrando de esta manera comentar la parte delpassword de la query y ganando acceso.
+
+![](/images/modulo3/accesosqlinjection.PNG)
+
+## Solucion
+
+Una solución para evitar SQL injection es utilizar la función **real_escape_string();** que permite sanitizar las peticiones del usuario añadiendo \ a cada carácter especial como ‘, “ , null bytes como \x00y y en este caso ‘\’ ‘OR’ ‘\’1’\’ de esta forma, las petición es interpretada como un string y a pesar que es aceptada no es procesada como una query SQL.De acuerdo con la documentación en PHP este comando se puede usar tanto para la versión 5 y 7 por lo que no habría problema.
+
+![](/images/modulo3/funcionesphp.PNG)
+
+![](/images/modulo3/loginfix.PNG)
+
+
 
 
 
