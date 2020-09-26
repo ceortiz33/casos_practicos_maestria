@@ -241,7 +241,7 @@ En esta imagen se muestra claramente el comando que se esta empleando y el dicci
 
 Con ayuda del comando **sudo -l** se muestra que todos los comandos son permitidos por esta máquina, de la misma manera al revisar el directorio donde se encuentra dictionaries-common no se encontró ninguna restricción de comandos.
 
-![](/images/modulo3/restriccioncomando.PNG)
+![](/images/modulo3/restriccioncomandos.PNG)
 
 Como se mencionó anteriormente al usar mkdir seguido de un nombre de archivo, en este caso **prueba**, se concatena con el símbolo $ haciendo posible el bypass para crear este archivo sin restricción alguna. Generando como resultado el archivo prueba$
 
