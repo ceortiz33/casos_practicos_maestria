@@ -113,6 +113,8 @@ Finalmente se logra salir del bucle y las siguientes instrucciones en ser ejecut
 
 3. Si, en efecto existe una estructura de control que corresponde a un lazo for, los bloques que intervienen son el bloque comparador que salta a **<+71>** cuando la condición del bucle es **true** y el bloque de instrucciones que corresponde a las instrucciones siguientes a **<+71>** que repiten su operación hasta que la variable1 sea mayor a la variable2.
 
+4. Al convertir el código mostrado a código en lenguaje C se obtuvo lo siguiente
+
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -120,8 +122,123 @@ Finalmente se logra salir del bucle y las siguientes instrucciones en ser ejecut
 int main(){
    int a=0;
    char *cadena="3jd9cjfk98hnd";
-
+   int b=strlen(cadena);
+   
+for(int d=0;d<b;d++){
+   a = a + (cadena[d] * b);
+  }
 }
+```
 
+Para llegar a esta solución que utilizaron las librerías **<stdio.h>** para los resultados de entrada y salida y **<string.h>** para mostrar las cadenas. El propio ensamblador le ha asignado las siguientes direcciones de memoria a las variables
+
++ **a**  -> DWORD PTR[ebp-0xc]
++ **b**  -> DWORD PTR[ebp-0x18]
++ **d**  -> DWORD PTR[ebp-0x14]
++ **cadena** -> DWORD PTR[ebp-0x10]
+
+A continuación,una breve descripción de cómo se llegó a la solución. Se declara la variable a inicializada en 0.
+
+`mov DWORD PTR[ebp-0xc], 0x0`
+
+Se declara el puntero char con la cadena “3jd9cjfk98hnd”.
 
 ```
+lea eax, [ebx-0x1ff8]
+mov DWORD PTR[ebp-0x10],eax
+```
+
+Se crea una variable de tipo int b para almacenar el resultado de la función strlen que devuelve el resultado del número de caracteres de una cadena.
+
+```
+sub exp,0xc
+push DWORD PTR[ebp-0x10]
+call 0x56556040 <strlen@plt>
+add esp,0x10
+mov DWORD PTR[ebp-0x18], eax
+```
+
+Las siguientes instrucciones corresponden ala estructura del lazo `for(int d =0; d<b;d++)`.
+
+```
+<+62> mov DWORD PTR[ebp-0x14],0x0
+<+69> jmp  0x5655620a <main +97>
+<+93> add DWORD PTR[ebp-0x14],0x1
+<+97> mov eax, DWORD PTR[ebp-0x14]
+<+100> cmp eax,DWORD PTR[ebp-0x18]
+<+103> jl  0x565561f0 <main+71>
+```
+
+```
+<+71> mov eax, DWORD PTR[ebp-0x14]
+<+74> add DWORD PTR[ebp-0x10],eax
+<+77> mov eax,DWORD PTR[ebp-0x10]
+<+80> movzx eax,BYTE PTR[eax]
+<+83> movsx eax,al
+<+86> imul eax,DWORD PTR[ebp-0x18]
+<+90> add DWORD PTR[ebp-0xc],eax
+```
+
+Se carga el resultado de la variable a haciala cadena “[+] Código generado: %i\n”.
+
+```
+<+105> sub esp,0x8
+<+108> push DWORD PTR[ebp-0xc]
+<+111> lea eax,[ebx-0x1fea]
+<+117> push eax
+<+118> call 0x56556030 <printf@plt>
+<+123> add esp,0x10
+<+126> mov eax,0x0
+```
+
+5. El resultado de compilar el código es el siguiente:
+
+**Codigo Compilado Resultante**
+
+![](/images/modulo5/codigocompilado.PNG)
+
+6. Al modificar la cadena en <+36> del código C anterior se produce lo siguiente.
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+   int a=0;
+   char *cadena="Congratulations!";
+   int b=strlen(cadena);
+   
+for(int d=0;d<b;d++){
+   a = a + (cadena[d] * b);
+  }
+  
+printf("[+] Codigo generado: %i\n",a);  
+}
+```
+
+El código en ensamblador es idéntico al anterior, lo que varía es la respuesta del código generado como se muestra a continuación.
+
+**Nuevo codigo compilado**
+
+![](/images/modulo5/nuevocompilado.PNG)
+
+El código generado por la cadena “Congratulations!” es **12576**
+
+**Resultados cadena "Congratulations!"**
+
+![](/images/modulo5/nuevoresultado.PNG)
+
+Código generado porla cadena “3jd9cjfk98hnd”.
+
+**Resultado cadena "3jd9cjfk98hnd"**
+
+![](/images/modulo5/resultado.PNG)
+
+## Conclusion
+
+Con base a los resultados anteriores se puede mencionar lo siguiente. El código generado depende de la longitud de la cadena, en el caso de “Congratulations!” esta tiene una longitud de 14 caracteres, dadas las condiciones del lazo for, esta se ejecutaría 13 veces antes de salir del bucle, en el caso de la cadena “3jd9cjfk98hnd” el lazo for se ejecuta 12 veces. Otra observación a tener en cuenta es que cuando se utilizan únicamente letras y símbolos este valor se incrementa en mayor proporción que si se utilizara una combinación de letras minúsculas y números.
+
+
+
+
+
