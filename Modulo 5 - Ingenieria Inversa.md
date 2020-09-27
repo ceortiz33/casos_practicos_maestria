@@ -179,7 +179,7 @@ Se realiza un desplazamiento en los indices **d** del lazo for para cada element
 <+83> movsx eax,al
 ```
 
-El resultado de eax seria `cadena[d]`, en estas instrucciones se realiza la multiplicacion de la variable b con eax, para luego sumar ese resultado a la variable a y dando como resultado esta instruccion `a = a + (cadena[d] * b);`
+El resultado de eax seria `cadena[d]`, en estas instrucciones se realiza la multiplicacion de la variable b con eax, para luego sumar ese resultado a la variable **a** y dando como resultado la instruccion `a = a + (cadena[d] * b);`
 
 ```
 <+86> imul eax,DWORD PTR[ebp-0x18]  
