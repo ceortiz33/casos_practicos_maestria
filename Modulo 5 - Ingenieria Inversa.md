@@ -81,4 +81,47 @@ Se necesita poder reutilizar dicho algoritmo de generación de códigos, por lo 
  
  ![](/images/modulo5/bloque2.PNG)
  
- 
+El siguiente bloque corresponde a lo que pasaría si el resultado de la comparación anterior fuera true, es decir se ejecuta todo este bloque desde **<+71>** hasta  **<+92>** siendo la siguiente instrucción **<+96>** dando como resultado un bucle del cual no se saldrá hasta que el resultado de la comparación sea false. 
+
+**Bloque 3**
+
+![](/images/modulo5/bloque3.PNG)
+
+Finalmente se logra salir del bucle y las siguientes instrucciones en ser ejecutadas son las siguientes.
+
+**Bloque 4**
+
+![](/images/modulo5/bloque4.PNG)
+
+2. Para crear una representaciónde un diagrama de flujo con los bloquesbásicosse crean relaciones de la siguiente manera
+
+**Diagrama de flujo**
+
+![](/images/modulo5/diagramadeflujo.PNG)
+
+**Estructura de bloques en IDA**
+
+![](/images/modulo5/bloquesida.PNG)
+
+**Primer Bloque IDA**
+
+![](/images/modulo5/primerbloqueida.PNG)
+
+**Segundo, Tercer y Cuarto bloque en IDA**
+
+![](/images/modulo5/esquema.PNG)
+
+3. Si, en efecto existe una estructura de control que corresponde a un lazo for, los bloques que intervienen son el bloque comparador que salta a **<+71>** cuando la condición del bucle es **true** y el bloque de instrucciones que corresponde a las instrucciones siguientes a **<+71>** que repiten su operación hasta que la variable1 sea mayor a la variable2.
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+   int a=0;
+   char *cadena="3jd9cjfk98hnd";
+
+}
+
+
+```
