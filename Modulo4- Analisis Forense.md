@@ -190,9 +190,9 @@ TCP 49156 listening lsass.exe
 Con este análisis de los puertos se pudo obtener lo siguiente:
 
 1. El  equipo  corresponde a un sistema operativo Windows 7 basándonos en los puertos 49152-49156.
-2. Si bien es cierto que algunos puertos comunes son utilizados para los servicios de Microsoft  como  el  135,139,445,5357  yalgunos  fueron  vulnerables  en  el  pasadocon las actualizaciones se han venido parchando. Sin embargo,el puerto  3389no es un puerto que viene habilitado pordefecto.
-3. A  pesar  que  este  equipo  esta  parchado  contra  la  vulnerabilidad  MS17-010 que previene  que  se  aproveche  la  vulnerabilidad  en  el  puerto  445  SMB. Esto no garantiza  que se  pueda  recibir  un  ataque  por  otro  puerto, en  el  enunciado  se menciona  acerca  de un  ataque  a servidorespor  lo que  presumiblemente  se  trate del   puerto   3389,   mismo   que mediante   fuerza   bruta,los   atacantes   pueden aprovechar,infectar con ransomwarey saltar a una base de datos.
-4. Este  equipo probablemente  no  cuente con  el  parche  para CVE -2019-0708que corrige el fallode seguridad en el puerto 3389.
+2. Si bien es cierto que algunos puertos comunes son utilizados para los servicios de Microsoft  como  el  135,139,445,5357  y algunos fueron vulnerables en el  pasado con las actualizaciones se han venido parchando. Sin embargo,el puerto 3389 no es un puerto que viene habilitado por defecto.
+3. A  pesar  que  este  equipo  esta  parchado  contra  la  vulnerabilidad  MS17-010 que previene  que  se  aproveche  la  vulnerabilidad  en  el  puerto  445  SMB. Esto no garantiza que se pueda recibir un ataque por otro puerto, en el enunciado se menciona acerca de un ataque a servidores por lo que presumiblemente se trate del   puerto 3389, mismo que mediante fuerza bruta,los atacantes aprovechan para infectar con ransomware y saltan a una base de datos.
+4. Este equipo probablemente no cuenta con el parche para CVE-2019-0708 que corrige el fallo de seguridad en el puerto 3389.
 
 **Implementar contramedidas para la sede de Australiade cara a que no se vuelva a repetir este tipo de incidente.**
 
