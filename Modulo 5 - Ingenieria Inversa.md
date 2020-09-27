@@ -93,7 +93,7 @@ Finalmente se logra salir del bucle y las siguientes instrucciones en ser ejecut
 
 ![](/images/modulo5/bloque4.PNG)
 
-2. Para crear una representaciónde un diagrama de flujo con los bloquesbásicosse crean relaciones de la siguiente manera
+2. Para crear una representaciónde un diagrama de flujo con los bloques básicos se crean relaciones de la siguiente manera
 
 **Diagrama de flujo**
 
@@ -169,13 +169,20 @@ Las siguientes instrucciones corresponden ala estructura del lazo `for(int d =0;
 <+103> jl  0x565561f0 <main+71>
 ```
 
+Se realiza un desplazamiento en los indices **d** del lazo for para cada elemento de la cadena `cadena[d]`
+
 ```
 <+71> mov eax, DWORD PTR[ebp-0x14]
 <+74> add DWORD PTR[ebp-0x10],eax
 <+77> mov eax,DWORD PTR[ebp-0x10]
 <+80> movzx eax,BYTE PTR[eax]
 <+83> movsx eax,al
-<+86> imul eax,DWORD PTR[ebp-0x18]
+```
+
+El resultado de eax seria `cadena[d]`, en estas instrucciones se realiza la multiplicacion de la variable b con eax, para luego sumar ese resultado a la variable a y dando como resultado esta instruccion `a = a + (cadena[d] * b);`
+
+```
+<+86> imul eax,DWORD PTR[ebp-0x18]  
 <+90> add DWORD PTR[ebp-0xc],eax
 ```
 
