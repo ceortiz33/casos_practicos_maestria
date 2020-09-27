@@ -42,7 +42,7 @@ Existen algunos riesgos para una empresa cuando se produce la fuga de informaci�
 
 Para mostrar la captura facilitada por línea de comandos se puede hacer uso de **Tshark**, un complemento que viene instalado con Wireshark. De acuerdo al enunciado  de Australia, la empresa sufrió una campaña de phishing dirigido usando una pagina falsa de Office 365, con este antecedente se busca un log con información relacionada.
 
-**Log sospechoso mostrado en Wireshark
+**Log sospechoso mostrado en Wireshark**
 
 ![](/images/modulo4/suspiciouslog.PNG)
 
@@ -50,7 +50,7 @@ Se puede realizar el mismo procedimiento usando Tshark con el siguiente comando
 
 `Tshark -r /root/Downloads/australia.pcap -Y “dns”`
 
-**Log sospechoso mostrado en Tshark
+**Log sospechoso mostrado en Tshark**
 
 ![](/images/modulo4/tsharksuspiciouslog.PNG)
 
@@ -113,13 +113,120 @@ El resultado muestra un correo y su contraseña **mgarcia@invent.com:manzana123*
 
 3 correos adicionales que pudieron haberse usado para la campaña de phishing.
 
-* hifi@invent.com:123dmr
++ hifi@invent.com:123dmr
 + hjerf@invent.com:applepup
 + jdarwin@invent.com:redcar#
 
 ## Italia
 
+**¿Se debería desconectar el equipo de la red para su análisis?**
+
+Se debería desconectar el equipo de la red únicamente cuando ya se haya realizado un análisis de la red y tomado las evidencias respectivas.
+
+**¿Qué parte hardware del servidor se debería clonar/volcar antes de apagar el equipo?**
+
+Si el equipo ya esta encendido se procede a clonar los datos más volátiles que son los datos almacenados en la memoria RAM, para esto se hace un volcado de memoria.
+
+**¿Mediante qué conocido comando se realizaría el clonado del disco duro? Escribir un ejemplo de ejecución?.**
+
+Para clonar discos se puede usar el comando dd, procurandotener los permisos necesarios de administrador es decirejecutarlo en modo root.
+
+`dd if=[archivoorigen] of=[archivedestino]`
+
+**Clonado de disco**
+
+![](/images/modulo4/clonadodico.PNG)
+
+**¿Qué habría que calcular tras el clonado del disco para verificar su integridad?**
+
+Para determinar la integridad de un disco se debe verificar su firma hash. Una firma hash es una cadena producida en base a los bits leídos del disco duro y  permite identificar cuando ha sido modificado. Cuando se termina el proceso de clonado del disco se obtiene una firma hash única que al ser modificada, esta cambia su valor. Esto es importante como investigadores forenses debido a que una modificación en la evidencia podría invalidarla.
+
+**Describa brevemente la cadena de custodia que se debe seguir para el traspaso de las evidencias al proveedor externo**
+
+La cadena de custodia son todos los procedimientos que se deben tener en consideración desde el inicio de un peritaje hasta el final donde se exponen las pruebas ante  una autoridad competente o juez. Al iniciar un procedimiento judicial se obtienen las pruebas que den sustento al delito que se ha producido, luego se asegura la   evidencia cuidadosamente para que este lo más segura posible, sea usando un tipo de embalaje o transportada por otro medio que garantice que la prueba estáen buenas condiciones para ser tratada,después son transportadas a un centro especializado donde las personas que se encuentren en posesión de la evidencia serán personas calificadas. Durante el análisis se debe garantizar la integridad de la evidencia, ya que al modificarla se invalida la prueba y pierde autenticidad. Al momento de  presentarse ante un juez se elabora un informe con toda la información recopilada de las evidencias, procedimientos y técnicas utilizados en la etapa de análisis como también un registro de aquellas personas que tuvieron acceso a la evidencia para descargos de responsabilidad y dejar constancia que el procedimiento ha sido transparente.
+
+## Madrid
+
+**¿Cómo funciona este tipo de amenaza?**
+
+El tipo de amenaza que ha impactado en la sede de Madrid es un ataque por ransomware, en particular una variante en el Ransomware XPAN que encripta los archivos con  la extensión .MS4 y pide un rescate por recuperarlos. Normalmente se distribuyen mediante la descarga de programas gratuitos de terceros,correo electrónico u otro vector de ataque diferente al producido por la falla en SMB de Microsoft.
+
+**¿Se podrían recuperar los datosa día de hoy?**
+
+A día de hoy es posible recuperar los datos mediante una copia de seguridad y reestablecer el sistema, sin embargo se sugiere utilizar una herramienta antimalware para removerlo, si la extensión .NM4 se encuentra en el buscador basta con descargar un add-on o complemento propio del navegador que permita removerlos, en el caso  del sistema operativo se puede utilizar una herramienta automatizada como SpyHunter para que analice las distintas partes del sistema y removerlo.
+
+**¿Cuál ha sido el vector de entrada utilizado por esta amenaza?**
+
+**Puertos Abiertos**
+
+![](/images/modulo4/puertosabiertos.PNG)
+
+Analizando la evidencia obtenida en spain.jpg se observa las conexiones en estado LISTENING que existen en el equipo. Este resultado se puede obtener mediante el comando.
+
+`NETSTAT -AN|FINDSTR /C:LISTENING`
+
+Los puertos que se muestran son:
+
+**Puerto 139 -> NetBIOS**
+Un puerto que hace que la red sea vulnerable a ataques informáticos, sirve para el intercambio de archivos y aplicaciones de impresoras.
+
+**Puerto 445->SMB**
+Permite compartir archivos a través de una red TCP/IP vulnerabilidad aprovechada por WannaCry pero que ya esta parchada en el sistema.
+
+**Puerto 3389/tcp-> Terminal Service**
+Este puerto es aprovechado por los atacantes de ransomware para hacer un ataque de fuerza bruta, apoderarse del servidor y luego saltarse a una base de datos y  cifrar archivos importantes. Para solucionar esto se necesita del parche de la vulnerabilidad CVE -2019-0708.
+
+**5357->Web Services on Devices Aplication Programming Interface (WSDAPI)**
+En este puerto existia una vulnerabilidad en el 2009 que corresponde a MS09-063 sin embargo esta no tiene efecto en sistemas Windows7.
+
+Los puertos **49152, 49153, 49154, 49155, 49156** son puertos habilitados por defecto en sistemas Windows 7.
+
+TCP 49152 listening wininit.exe
+TCP 49153 listening svchost.exe
+TCP 49154 listening svchost.exe
+TCP 49155 listening services.exe
+TCP 49156 listening lsass.exe
+
+Con este análisis de los puertos se pudo obtener lo siguiente:
+
+1. El  equipo  corresponde a un sistema operativo Windows 7 basándonos en los puertos 49152-49156.
+2. Si bien es cierto que algunos puertos comunes son utilizados para los servicios de Microsoft  como  el  135,139,445,5357  yalgunos  fueron  vulnerables  en  el  pasadocon las actualizaciones se han venido parchando. Sin embargo,el puerto  3389no es un puerto que viene habilitado pordefecto.
+3. A  pesar  que  este  equipo  esta  parchado  contra  la  vulnerabilidad  MS17-010 que previene  que  se  aproveche  la  vulnerabilidad  en  el  puerto  445  SMB. Esto no garantiza  que se  pueda  recibir  un  ataque  por  otro  puerto, en  el  enunciado  se menciona  acerca  de un  ataque  a servidorespor  lo que  presumiblemente  se  trate del   puerto   3389,   mismo   que mediante   fuerza   bruta,los   atacantes   pueden aprovechar,infectar con ransomwarey saltar a una base de datos.
+4. Este  equipo probablemente  no  cuente con  el  parche  para CVE -2019-0708que corrige el fallode seguridad en el puerto 3389.
+
+**Implementar contramedidas para la sede de Australiade cara a que no se vuelva a repetir este tipo de incidente.**
+
++ Implementar autenticación de dos pasos, para hacer más difícil al atacante obtener las credenciales.
++ Capacitar al personal para evitar ser victimas de campañas de phishing, a sospechar de enlaces en correos electrónicos o abstenerse de conectar pendrives que han sido encontrados en el exterior.
++ Limitar la cantidad de información que se provee por los empleados en las redes sociales, de forma que el atacante se le dificulte hacer el reconocimiento de su objetivo
++ Evitar colocar números telefónicos, cuentas bancarias o información de carácter confidencial.
+
+## Implementar contramedidas para la sede de Madrid de cara a que no se vuelva a repetir este tipo de incidente.
+
++ Para evitar un futuro incidente de este tipo, se sugiere no dejar abiertos puertos que puedan ser aprovechados por los atacantes.
++ Mantener actualizado los sistemas operativos ya  que el sistema afectado correspondia a Windows 7, que ya se encuentra descontinuado, las versiones más actualizadas  como Windows 10 vienen con parches de seguridad y se actualizan regularmente.
++ En este caso también se recomienda parchar contra la vulnerabilidad **CVE -2019-0708** de mayo del 2019 para evitar el ataque por el puerto 3389.
 
 
+## Referencias
 
+1. Análisis de logs maliciosos Wireshark
+   https://www.welivesecurity.com/la-es/2013/01/28/uso-filtros-wireshark-para-detectar-actividad-maliciosa/
+2. Tshark tutorial and filter
+   https://hackertarget.com/tshark-tutorial-and-filter-examples/
+3. Autenticacion en dos pasos,que es, como funciona y porque deberías activarla
+   https://www.xataka.com/seguridad/autenticacion-en-dos-pasos-que-es-como-funciona-y-por-que-deberias-activarla
+4. Eliminar malware PC
+   http://www.eliminarmalware.com/ransomware/nm4-ransomware-como-descifrar-archivos/
+5. Urgente aplicar parche, Microsoft vulnerabilidad CVE-2019-0708 RDP Terminal Service
+   https://medium.com/@cesarfarro/urgente-aplicar-parche-microsoft-vulnerabilidad-cve-2019-0708-rdp-donde-corre-terminal-service-f831e2778272
+6. Microsoft Security Bulletin MS09-063
+   https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-063
+7. Windows 7 Listening Ports
+   https://serverfault.com/questions/95467/windows-7-tcp-listen-ports
+8. Conocer los puertos abiertos en Windows, sus peligros y como cerrarlos
+   https://norfipc.com/recuperar/puertos-abiertos.html
+   
+
+   
 
