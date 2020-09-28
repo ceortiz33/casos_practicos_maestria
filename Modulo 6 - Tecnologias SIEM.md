@@ -12,7 +12,7 @@ A diferencia de los eventos agregados provienen de varias fuentes,ademas un even
 
 **Evento Correlado**
 
-![](/images/modulo6/correlado.PNG)
+![](/images/modulo6/correlador.PNG)
 
 ### 2.¿Se emplean siempre los mismos criterios de agregación en todos los eventos o tipologías de eventos que se reciben en un SIEM? ¿Por qué? Justifique su respuesta de acuerdo a eventos concretos o tipologías de eventos concretas.
 
