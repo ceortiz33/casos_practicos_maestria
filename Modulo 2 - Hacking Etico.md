@@ -31,5 +31,59 @@ Sería realizar un análisis de vulnerabilidades contra aquellos servidores dete
 Todos los pasos deben de estar correctamente explicados, añadiendo evidencias (informe de resultado de la herramienta semiautomática, capturas de pantalla, etc.).
 La máquina virtual cuenta con 10 flags repartidas por todo el sistema. Es importante tener en cuenta que no es necesario disponer de un usuario en el sistemas.
 
+## Parte 1:Enumeración yEscaneo de puertos IMF
+
+Para esta seccion se realizará el reconocimiento pasivo de IMF usando el buscador Google usando distintos dorks para obtener diversos resultados. Realizando una búsqueda simple únicamente con la palabra **IMF** se obtienen algunos resultados entre los cuales destaca el Fondo Monetario Interacional(International  Monetary  Fund  Home  Page) y la página de IMF Business School. Ademas aparece un numero con prefijo +34 correspondiente a España, obteniendo un aproximado de 93600000 resultados.
+
+**Busqueda Simple**
+
+![](/images/modulo2/busquedasimple.PNG)
+
+Al usar el dork **site:imf.com** se reducen los resultados a unos 896 y se muestran algunos subdominios de la pagina de imf.com como lo son noticias, grados, entre  otros. Además de la página oficial de los Masters Online, MBA y Becas.
+
+**site:imf.com**
+
+![](/images/modulo2/siteimf.PNG)
+
+Usando el operador – limita aun más las búsquedas de imf.com mostrando unos 39 resultados y de la misma manera mostrando los subdominios grados,noticias.
+
+**Limitacion de sitios referentes al Fondo Monetario Internacional**
+
+![](/images/modulo2/filtradoimf.PNG)
+
+Usando el dork **intitle:IMF** muestra todos los  resultados  que  tengan  IMF  en  el  título, se puede  apreciar  en  la siguiente  imagen el  dominio www.imf.org correspondiente al Fondo Monetario Internacional, www.imf-formacion.com y un resultado de IMF International Business School de Wikipedia.Tanto imf.com como www.imf-formacion.com  están relacionados al grupo IMF Business School por lo que se utilizarán para posteriores análisis.
+
+**Dork Intitle**
+
+![](/images/modulo2/intitleimf.PNG)
+
+Al usar el dork **filetype** se encuentran 7 resultados de tipo PDF con relación a imf.com, catalogo_2015_masters, un catálogo de los cursos, horario de ponencias,  compliance-program-master, entre otros.
+
+**Dork filetype**
+
+![](/images/modulo2/filetypeimf.PNG)
+
+Continuando con la etapa de reconocimiento pasivo, ahora se utilizará TheHarvester, herramienta que ya se encuentra instalada en Kali Linux y que permite obtener  correos relacionados a un dominio. IMF está relacionado a los dominios **imf.com** e  **imf-formacion.com**. Por lo tanto se hará uso del comando `theharvester -d imf.com -l 500 -b google`
+
+**Correos imf.com**
+
+![](/images/modulo2/correosimfcom.PNG)
+
+`theharvester -d imf-formacion.com -l 500 -b google`
+
+**Correos imf-formacion.com**
+
+![](/images/modulo2/correosimfformacion.PNG)
+
+
+
+
+
+
+
+
+
+
+
 
 
