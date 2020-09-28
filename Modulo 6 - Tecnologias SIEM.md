@@ -14,11 +14,11 @@ A diferencia de los eventos agregados provienen de varias fuentes,ademas un even
 
 ![](/images/modulo6/correlador.PNG)
 
-### 2.¿Se emplean siempre los mismos criterios de agregación en todos los eventos o tipologías de eventos que se reciben en un SIEM? ¿Por qué? Justifique su respuesta de acuerdo a eventos concretos o tipologías de eventos concretas.
+### 2. ¿Se emplean siempre los mismos criterios de agregación en todos los eventos o tipologías de eventos que se reciben en un SIEM? ¿Por qué? Justifique su respuesta de acuerdo a eventos concretos o tipologías de eventos concretas.
 
 No siempre se emplean los mismos criterios de agregacion en todos los eventos del SIEM, esto se justifica en las diferentes necesidades del propio SIEM y en como se actualizan en cada momento  para mejorar la compresion del equipo analista o en caso de observar algun fenómeno bajo estudio, incluso para un mismo conjunto de eventos.
 
-### 3.Durante el  curso, hemos estudiado los tipos de visualizaciones que se pueden utilizar para diferentes casuísticas(Compliance, Estado). Si quisiéramos hacer un panel en el que se desea representar gráficamente la evolución de eventos de dos fuentes de datos en un mismo periodo de tiempo, ¿Cuál sería la gráfica que utilizaría para dicho fin? Justifique su elección
+### 3. Durante el  curso, hemos estudiado los tipos de visualizaciones que se pueden utilizar para diferentes casuísticas(Compliance, Estado). Si quisiéramos hacer un panel en el que se desea representar gráficamente la evolución de eventos de dos fuentes de datos en un mismo periodo de tiempo, ¿Cuál sería la gráfica que utilizaría para dicho fin? Justifique su elección
 
 En el caso de representar evolución de eventos de distintas fuentes de datos y además en un mismo periodo de tiempo, se debería usar una visualización del tipo volumetrías y distribución de eventos a lo largo del tiempo. Con un gráfico de distribución se pueden observar eventos recibidos por las distintas tecnologías o distintos dispositivos recibidos en el SIEM. En el eje vertical esta visualización tiene la suma del contador de eventos (Event Count Sum) y en el eje horizontal  tiene las horas del día donde se está receptando dichos eventos.La forma de esta gráfica es una curva suavizada que se apilan una encima de otra dependiendo de la tecnología,con esta representación se puede observar en que intervalo de tiempo se concentran más los eventos y en base a esto se realiza un posterior análisis.
 
