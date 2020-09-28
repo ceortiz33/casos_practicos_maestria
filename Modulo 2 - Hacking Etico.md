@@ -105,13 +105,13 @@ Los servicios encontrados fueron los siguientes: http versión nginx, pop3  Dove
 
 ## Bibliografía
 
-**1. MétodosdepeticiónHTTP** obtenido de:https://developer.mozilla.org/es/docs/Web/HTTP/Methods
-**2. Apache James Server 2.3.2 – Remote Command Execution** obtenido de: https://www.exploit-db.com/exploits/35513
-**3. Linux Kernel < 4.4.0/ < 4.8.0 (Ubuntu14.04/16.04 / Linux Mint 17/18 / Zorin) -Local Privilege Escalation (KASLR / SMEP)** obtenido de:https://www.exploit-db.com/exploits/47169
-**4. Metasploit Web Delivery: Un módulo que simplifica el despliegue de payloads** obtenido de: http://www.elladodelmal.com/2017/02/metasploit-web-delivery-un-modulo-que.html
-**5. Hackthebox Write-up–Solidstate** obtenido de:https://dominicbreuker.com/post/htb_solidstate/
-**6. Comandos de Meterpreter Kali Linux** obtenido de: https://www.creadpag.com/2018/05/comandos-de-meterpreter-en-kali-linux.html
-**7. Comandos FTP en consola** obtenido de: https://victorroblesweb.es/2013/12/02/comandos-ftp-en-la-consola/
+1. **Métodos de petición HTTP** obtenido de:https://developer.mozilla.org/es/docs/Web/HTTP/Methods
+2. **Apache James Server 2.3.2 – Remote Command Execution** obtenido de: https://www.exploit-db.com/exploits/35513
+3. **Linux Kernel < 4.4.0/ < 4.8.0 (Ubuntu14.04/16.04 / Linux Mint 17/18 / Zorin) - Local Privilege Escalation (KASLR / SMEP)** obtenido de:https://www.exploit-db.com/exploits/47169
+4. **Metasploit Web Delivery: Un módulo que simplifica el despliegue de payloads** obtenido de: http://www.elladodelmal.com/2017/02/metasploit-web-delivery-un-modulo-que.html
+5. **Hackthebox Write-up–Solidstate** obtenido de:https://dominicbreuker.com/post/htb_solidstate/
+6. **Comandos de Meterpreter Kali Linux** obtenido de: https://www.creadpag.com/2018/05/comandos-de-meterpreter-en-kali-linux.html
+7. **Comandos FTP en consola** obtenido de: https://victorroblesweb.es/2013/12/02/comandos-ftp-en-la-consola/
 
 
 
