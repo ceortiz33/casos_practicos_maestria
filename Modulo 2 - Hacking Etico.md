@@ -75,8 +75,43 @@ Continuando con la etapa de reconocimiento pasivo, ahora se utilizará TheHarves
 
 ![](/images/modulo2/correosimfformacion.PNG)
 
+Whois es una herramienta disponible tanto en la web como en Kali Linux, proporciona información acerca del dominio proporcionado, el ID, fecha de creación, actualización, los nombres de los servidores, correos, etc.
 
+**Whois imf.com**
 
+![](/images/modulo2/whoisimf.PNG)
+
+A continuación se realiza la fase de reconocimiento activo, en el cual se utilizaran escaners como masscan y nmap para obtener los puertos y servicios del dominio imf.com. La IP se obtuvo a partir de harvester en donde se muestra que la dirección IP es 82.98.160.177. Se usa masscan primero debido a que es una herramienta que es mucho mas rápida que nmap. Una vez que termina de analizar se observa que los puertos 110,465,80,20996,587,12340,993,3306,995 están abiertos.
+
+**Escaner de puertos con Masscan**
+
+![](/images/modulo2/masscan.PNG)
+
+Como ya se conocen los puertos abiertos,nmap ya no tendra que analizar los 65535 puertos, sino solo los mencionados anteriormente.
+
+`nmap -sC -sV 82.98.160.177 -p 80,110,465,20996,587,12340,993,3306,995 -o imf.nmap`
+
+**Escaner de puertos con Nmap**
+
+![](/images/modulo2/nmapimf.PNG)
+
+![](/images/modulo2/nmapimf2.PNG)
+
+**Servicios encontrados**
+
+![](/images/modulo2/serviciosimf.PNG)
+
+Los servicios encontrados fueron los siguientes: http versión nginx, pop3  Dovecot, ssl/mpls , smtp Postfix smtp, ssl/pop3s, mysql 5.5.62-0+deBul-log. También se  puede destacar que el sitio lleva algún tipo de seguridad que no permite o restringe la información obtenida de los escáneres ya que algunos aparecen como unknown o forbidden.
+
+## Bibliografía
+
+**1. MétodosdepeticiónHTTP** obtenido de:https://developer.mozilla.org/es/docs/Web/HTTP/Methods
+**2. Apache James Server 2.3.2 – Remote Command Execution** obtenido de: https://www.exploit-db.com/exploits/35513
+**3. Linux Kernel < 4.4.0/ < 4.8.0 (Ubuntu14.04/16.04 / Linux Mint 17/18 / Zorin) -Local Privilege Escalation (KASLR / SMEP)** obtenido de:https://www.exploit-db.com/exploits/47169
+**4. Metasploit Web Delivery: Un módulo que simplifica el despliegue de payloads** obtenido de: http://www.elladodelmal.com/2017/02/metasploit-web-delivery-un-modulo-que.html
+**5. Hackthebox Write-up–Solidstate** obtenido de:https://dominicbreuker.com/post/htb_solidstate/
+**6. Comandos de Meterpreter Kali Linux** obtenido de: https://www.creadpag.com/2018/05/comandos-de-meterpreter-en-kali-linux.html
+**7. Comandos FTP en consola** obtenido de: https://victorroblesweb.es/2013/12/02/comandos-ftp-en-la-consola/
 
 
 
