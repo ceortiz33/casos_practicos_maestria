@@ -28,8 +28,8 @@ Las visualizaciones como gráficos de distribución,diagramas circulares, barras
 
 ### Referencias
 
-+ ArcSight Logger,https://www.microfocus.com/es-es/products/siem-log-management/overviewconsultado: 02 demarzo,2020
-+ ArcSight SmartConnector User_Guide pags16-19,https://community.microfocus.com/t5/ArcSight-Connectors/ArcSight-SmartConnector-User-Guide-7-14-0/ta-p/1586784, consultado: 02 de marzo,2020
++ ArcSight Logger,https://www.microfocus.com/es-es/products/siem-log-management/overview
++ ArcSight SmartConnector User_Guide pags16-19,https://community.microfocus.com/t5/ArcSight-Connectors/ArcSight-SmartConnector-User-Guide-7-14-0/ta-p/1586784 
 
 
 
