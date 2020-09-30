@@ -583,14 +583,132 @@ Nuevamente en la shell de jdb se escribe el siguiente comando:
 
 ![](/images/modulo7/img43.png)
 
+Uno de los metodos que parecen interesantes para  comprometer es showRootStatus() que como su nombre lo indica podria mostrar una deteccion de root.
+
+**Método showRootStatus() dentro de la clase PostLogin.**
+
+![](/images/modulo7/img44.png)
+
+Para hacer un breakpoint en ese metodo se ejecuta el comando
+
+`> stop in com.android.insecurebankv2.PostLogin.showRootStatus()`
+
+**Breakpoint en el metodo PostLogin.**
+
+![](/images/modulo7/img45.png)
+
+Para moverse por  cada linea se escribe *step* y para ver las variables *locales* se escribe locals
+
+Al llegar a la line=88 bc1=16 se localiza la variable isrooted=true
+
+**Variable isrooted localizada dentro del metodo showRootStatus()**
+
+![](/images/modulo7/img46.png)
+
+Se cambia el valor de esta variable de **true** a **false**
+
+**Variable modificada en el metodo showRootStatus()**
+
+![](/images/modulo7/img47.png)
+
+Para continuar con la ejecucion, se escribe run produciendo el siguiente resultado.
+
+**Bypass de Root Detection en Insecurebankv2**
+
+![](/images/modulo7/img48.png)
+
+Como se pudo observar mediante el debugger de java, jdb, se pudo realizar el bypass de la detección de root. Esto es posible debido a que en el manifiesto de la aplicación está disponible la opción de debug, si se quisiera deshabilitar el debug, esta opción debería tener el valor de false.
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M1: Improper Platform Usage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta categoria contempla el mal uso de las caracterisiticas de la plataforma o fallo en los mecanismos de seguridad. En esta vulnerabilidad se realiza el backup de la aplicación que es un mecanismo que no deberia estar activo en produccion por motivos de seguridad ya que podrian haber credenciales ocultas y demas informacion sensible. Para ello en este caso se emplea jdwp que es un debugger de java para detectar los cambios en la aplicación.
+
+**Impactos tecnicos**
+
+Los impactos técnicos para esta vulnerabilidad implican un impacto técnico basado en la guía de OWASP Top Ten. En este caso sería una mayor exposición de la aplicación al tener el modo debug activo y eso implica que el atacante tiene un mayor control de la aplicación para testear y buscar fallos como es el caso de esta aplicación donde con jdwp se encontró una clase con un método vulnerable y al cambiar una variable se logra superar el root detection.
+
+**Impactos de negocio**
+
+Un impacto de negocio de esta vulnerabilidad seria el dano reputacional ya que da a entender que sus aplicaciones no son lo suficiente seguras y no cuentan con mecanismo propios de una entidad bancaria, el modo debug activo implica un mayor exposicion y por lo tanto si esta aplicación viene de una tienda de aplicaciones como Play Store muchos usuarios serian los afectados por este fallo.
+
+**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE **
+
+Esta vulnerabilidad involucra la búsqueda de funcionalidades extrañas en la aplicación para poder explotarlas dentro de los propios sistemas. En este caso se focaliza en la configuración propia de la aplicación que al iniciarse genera un nuevo ID, luego el debugger utiliza el nuevo ID para conectarse y a partir de ahí buscar clases interesantes como la clase PostLogin y posteriormente su método showRootStatus().
 
 
+**Impactos técnicos.**
 
+Esta vulnerabilidad expone como funciona los sistemas de backend debido a esto se permite saltar las protecciones del root detection.
 
+**Impactos de negocio.**
 
+Se produce un daño reputacional a la entidad bancaria debido los atacantes pueden saltarse la validación del modo root, dando a entender que los controles de seguridad son débiles en esta aplicación y provocando desconfianza de sus clientes.
 
+**Explotación de la cache del teclado de Android**
 
+Esta vulnerabilidad se produce cuando la aplicación almacena los nombres de usuario en cache, para que estos sean recordados, esto para el usuario común puede estar bien, sin embargo, el problema ocurre cuando un atacante intercepta la base de datos sql o en este caso sqlite3, donde como mínimo deberían estar cifrados los datos del usuario para no ser manipulados o facilitar la explotación por fuerza bruta de las credenciales.
 
+**Usuarios sugeridos almacenados en la cache de la aplicación.**
+
+![](/images/modulo7/img49.png)
+
+Se escoge la opción *Add to dictionary*
+
+Se descarga la base de datos con el siguiente comando.
+
+`adb pull /data/data/com.android.providers.userdictionary/databases/user_dict.db`
+
+**Extraccion de la base de datos de la aplicación.**
+
+![](/images/modulo7/img50.png)
+
+En la base de datos se accede usando sqlite3 mediante el siguiente comando para leer todo el contenido de la tabla words
+
+**Acceso a la base de datos de la aplicación. **
+
+![](/images/modulo7/img51.png)
+
+Esto se considera una vulnerabilidad debido a que el texto en cache se esta almacenando en texto plano. Si bien la cache de la aplicación aplica al usuario, el mismo método podría aplicarse en la contraseña y ese seria un caso mas grave para una aplicación bancaria.
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M2: Insecure Data Storage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce debido a que las credenciales o información sensible de lo usuarios es filtrada. En este caso la base de datos user_dict.db almacena las credenciales de los usuarios en texto plano
+
+**Impactos Técnicos**
+
+Como se filtran credenciales de los usuarios logeados en la aplicación esto puede derivar en la extracción de la información mediante apps modificadas o producir una suplantación de identidad de no solo uno sino varios usuarios.
+
+**Impactos de negocio.**
+
+Una aplicación de este tipo manejada por una entidad bancaria no puede tener un tratamiento descuidado en cuanto a la administración de los datos de sus clientes, no es aconsejable almacenar este tipo de credenciales usando el almacenamiento externo, pero en caso de hacerlo por lo menos deberían estar encriptados los datos para no exponer la integridad de datos personales de clientes. Esto repercutiría en un daño reputacional para la entidad bancaria.
+
+**M10: Extraneous Functionality | Exploitability EASY| Prevalence COMMON| Detectability AVERAGE| Impact SEVERE**
+
+Esta vulnerabilidad involucra la búsqueda de funcionalidades extrañas en la aplicación para poder explotarlas dentro de los propios sistemas. En este caso se focaliza en la cache propia de la aplicación cuando se quiere guardar un nombre de usuario de uso frecuente, pero al no estar configurada apropiadamente se pueden filtrar estos datos desde la base de datos.
+
+**Impactos técnicos.**
+
+Esta vulnerabilidad expone como la base de datos donde se almacenan las credenciales de usuario y un proceso similar podría darse para la contraseña, por lo tanto, puede ser usado para ganar mayores privilegios de manera no autorizada.
+
+**Impactos de negocio.**
+
+Se produce un daño reputacional a la entidad bancaria debido los datos de los clientes no son almacenados de forma segura y provocando la desconfianza. Además, un atacante podría filtrar las bases de datos para ganar acceso no autorizado a las cuentas e información personal de los usuarios.
+
+**Android broadcast receiver**
+
+**Android broadcast receiver exportado como true**
+
+![](/images/modulo7/img52.png)
+
+Estos son los parámetros asociados a MyBroadcastReceiver, como se puede observar, estos corresponden a la recuperación de clave via SMS
+
+**Clase ChangePassword haciendo un llamado al broadcastReceiver theBroadcast**
+
+![](/images/modulo7/img53.png)
 
 
 
