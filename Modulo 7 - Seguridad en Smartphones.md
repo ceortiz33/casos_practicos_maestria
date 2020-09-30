@@ -530,6 +530,59 @@ Con el siguiente comando se puede realizar un bypass del login sin necesidad de 
 
 ![](/images/modulo7/img39.png)
 
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M4: Insecure Authentication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando se realiza un bypass de la autenticacion admitiendo solicitudes del backend, se produce porque la activity PostLogin esta exportada como true y no tiene validaciones de seguridad que impidan el acceso desde otros sitios o aplicaciones, por lo tanto usando adb se puede saltar la validacion de la autenticacion sin necesidad de ingresar credencial alguna.
+
+**Impactos tecnicos **
+
+No se puede llevar a cabo un registro de los usuarios conectados por el motivo que se salta la validacion de autenticacion sin ingresar alguna credencial.
+
+**Impactos de negocio**
+
+Entre los impactos de negocio estan el acceso no autorizado a informacion y dano reputacional. Un atacante puede acceder como cliente del banco y solicitar transferencias a su nombre. La entidad financiera perderia credibilidad por no ser capaz de llevar a cabo mecanismos de seguridad que protejan  a la aplicación.
+
+**Android Debugging using jdwp**
+
+JDWP es un debugger antiguo para analizar código Java, se puede utilizar con adb usando el comando adb jdwp, para comenzar se toma nota de todos los índices que aparecen en la pantalla sin abrir la aplicación en Genymotion.
+
+**IDs de las aplicaciones definidas aleatoriamente por jdwp**
+
+![](/images/modulo7/img40.png)
+
+Ahora se ejecuta el mismo comando pero ahora abriendo InsecureBankv2 en Genymotion  
+
+**Nuevo indice en jdwp luego de ejecutar nuevamente el comando anterior**
+
+![](/images/modulo7/img41.png)
+
+Comparando las dos imágenes anteriores aparece el ID 2530, mismo que corresponde al ID que se le ha asignado a Insecurebankv2.
+
+Con este nuevo ID se ejecuta de manera remota jdwp, para esto se necesita de una nueva sesión de escucha al puerto 12345 y luego ejecutar este puerto en el servidor local con jdb usando los siguientes comandos.
+
+`adb forward tcp:12345 jdwp:2530`
+`jdb -attach localhost:12345`
+
+Con el debugger en funcionamiento ahora se procede a listar las clases con el comando
+
+`> classes`
+
+**Ejecucion de jdwp en la consola**
+
+![](/images/modulo7/img42.png)
+
+Dentro del listado aparecerán varias opciones relacionadas a bases de datos, librerías de java, entre otras. Ahora se ingresan las credenciales de usuario dinesh y la contraseña Dinesh@123$ que están descritas en la documentación de la aplicación.
+
+Nuevamente en la shell de jdb se escribe el siguiente comando:
+
+`> Methods com.android.insecurebankv2.PostLogin`
+
+**Metodos de la clase PostLogin**
+
+![](/images/modulo7/img43.png)
+
 
 
 
