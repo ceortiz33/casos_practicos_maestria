@@ -224,6 +224,317 @@ Esta vulnerabilidad se produce cuando se realizan cambios al código mediante fo
 
 Un impacto técnico que podría darse es el acceso a nuevas características no autorizadas como la creación de nuevos usuarios, tratándose de una aplicación bancaria el usuario común no debería estar en capacidad de crear una nueva cuenta ya que el banco es la entidad que le proporciona una a cada usuario.
 
+**Impactos de Negocio**
+
+Un impacto de negocio que podría darse es la perdida reputacional debido a la piratería, si un atacante esta en capacidad de crear cuentas para muchos usuarios, este podría crear una red de comercialización solicitando un pago para crear las cuentas sin necesidad de pasar por la entidad bancaria.
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades mas comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes, en este caso se produce una modificación en la tabla de strings misma que se obtuvo cuando se uso apktool para decompilar la aplicación.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia para realizar modificación de código, ya que si no se hubiera realizado la ingeniería inversa y obtenido la tabla de strings no se sabría que valor es el que había que modificar.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener una aplicación robusta que impida la creación de nuevos usuarios.
+
+
+**Bypass de Root Detection mediante Smali **
+
+Una aplicacion apk no es más que un archive zip, por lo tanto, una aplicación puede ser extraída usando unzip.
+
+`unzip Insecurebankv2.apk`
+
+En ocasiones este método puede revelar credenciales ocultas que puedan aparecer en la aplicación.
+
+**Proceso de extracción de Insecurebankv2.apk usando unzip**
+
+![](/images/modulo7/img17.png)
+
+**Archivos generados luego de descomprimir con unzip**
+
+![](/images/modulo7/img18.png)
+
+Como siguiente paso, se utiliza dex2jar en el archivo classes.dex para generar un archivo .jar para que pueda ser leído por JD-GUI. Dentro de JD-GUI se busca la clase PostLogin y dentro de ella se encuentra el método showRootStatus()
+
+**Clase PostLogin mostrado en JD-GUI**
+
+![](/images/modulo7/img19.png)
+
+Se decompila la aplicación usando apktool, una de las particularidades de apktool es que genera código Smali que puede ser de gran utilidad al momento de realizar ingeniería inversa a aplicaciones móviles.
+
+`apktool d Insecurebankv2.apk `
+
+**Decompilado de la aplicación usando apktool**
+
+![](/images/modulo7/img20.png)
+
+Al explorar un poco dentro de los directorios se encuentra el fichero PostLogin.smali dentro de /smali/com/android/Postlogin.smali
+
+**Codigo Smali generado por apktool**
+
+![](/images/modulo7/img21.png)
+
+Para abrir estos archivos se necesita de un editor de texto, en este caso se utilizará nano para modificar y less para visualizar.
+
+**Contenido del metodo showRootStatus en codigo Smali**
+
+![](/images/modulo7/img22.png)
+
+En la siguiente parte de la captura se muestra un segmento del código que indica una condición a cumplir y como resultado el dispositivo muestre “Device is rooted”
+
+**Condición de evaluación de root detection encontrada en método showRootStatus()**
+
+![](/images/modulo7/img23.png)
+
+En este segmento de código hay una condición que indica que si no se cumple se produce un salto a cond_2, donde cond_2 muestra un string “Device not Rooted!!”
+
+Para realizar el bypass de la validación se debe hallar una forma que siempre salte al bloque de la cond_2, para esto se escribe la siguiente línea.
+
+**Cambio realizado en archivo PostLogin.smali**
+
+![](/images/modulo7/img24.png)
+
+Luego de hacer el cambio se tiene que recompilar la aplicación, de igual manera con apktool pero con la opción b, como siguiente paso se debe firmar la aplicación para que esta no de problemas al momento de instalarla en el dispositivo.
+
+**Proceso de firma de la aplicación I**
+
+![](/images/modulo7/img25.png)
+
+**Proceso de firma de la aplicación II**
+
+![](/images/modulo7/img26.png)
+
+Una vez que la aplicación modificada sea firmada se instala en Genymotion. Se ingresa con las credenciales dinesh/Dinesh@123$ y como resultado se observa un cambio en el mensaje de “rooted device” por el de “device not rooted”.
+
+**Ejecucion de la aplicación luego de cambiar PostLogin.smali**
+
+![](/images/modulo7/img27.png)
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M1: Improper Platform Usage | Exploitability EASY | Prevalence COMMON |Detectability AVERAGE | Impact SEVERE**
+
+Esta categoria contempla el mal uso de las caracterisiticas de la plataforma o fallo en los mecanicmos de seguridad. En esta vulnerabilidad se realiza el bypass de la deteccion de root que es un mecanismo de seguridad que impide funcionar a ciertas aplicaciones cuando los dispositivos estan rooteados. 
+
+**Impactos tecnicos**
+
+Los impactos técnicos para esta vulnerabilidad implican un impacto técnico basado en la guía de OWASP Top Ten. En este caso sería una mayor exposición de la aplicación al verse vulnerados sus mecanismos de seguridad.
+
+**Impactos de negocio**
+
+Un impacto de negocio de esta vulnerabilidad seria el mal uso de los usuarios, al saltarse las restricciones de seguridad y por lo tanto danando la reputacion institucional de la entidad bancaria.
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades más comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes, en este caso se produce una modificación en el código Smali misma que se obtuvo cuando se usó apktool para decompilar la aplicación.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia para realizar modificación de código, ya que si no se hubiera realizado la ingeniería inversa y obtenido los archivos .smali no se sabría que clases son las que representan un mayor valor para que un atacante pueda explotarlas y de esta manera conocer que parámetro debe modificar.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener una aplicación lo suficientemente protegida que limite el acceso a las funcionalidades de seguridad como lo es la detección de root.
+
+**Developer backdoor**
+
+Dentro de la clase DoLogin existe una condicion que permite obtener acceso a la aplicación sin necesidad de ingresar usuario y contrasena, como se puede observar en el siguiente segmento de codigo. Si el usuario es igual a “devadmin” entonces se puede realizar un bypass de las credenciales.
+
+**Usuario devadmin localizado dentro de la clase DoLogin**
+
+![](/images/modulo7/img28.png)
+
+**Bypass de autenticacion en Insecurebankv2**
+
+![](/images/modulo7/img29.png)
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M4: Insecure Authentication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando se realiza un bypass de la autenticacion admitiendo solicitudes del backend, en este caso se produce un bypass de la autenticacion porque se encuentra un usuario que tiene privilegios tales que solo ingresando el usuario se ingresa a la sesion del usuario.
+
+**Impactos tecnicos**
+
+Teniendo acceso con el usuario devadmin, la aplicación no es capaz de llevar un registro de la identidad del usuario que esta haciendo la peticion por lo tanto hace que sea mas dificil de detectar el origen.
+
+**Impactos de negocio**
+
+Entre los impactos de negocio estan el acceso no autorizado a informacion, robo de informacion y dano reputacional. Un atacante luego de haber hecho el bypass tiene via libre para realizar transferencias de diversas cuentas sin poder ser localizado, ademas de perjudicar tanto a los clientes como a la entidad financiera que perderia credibilidad por no ser capaz de llevar a cabo mecanismos de seguridad que protejan  a la aplicación.
+
+**M6: Insecure Authorization | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando existen esquemas pobres de autorizacion , por lo que si un usuario consigue hacerse con privilegios mas altos podria acceder a funcionalidades ocultas, en este caso se produce algo similar debido a que el usuario encontrado en la clase DoLogin tiene estas caracteristicas. 
+
+**Impactos tecnicos**
+
+Tiene un impacto similiar a la autenticacion pobre, malos sistemas de validacion de sistemas de autorizacion pueden producir funcionalidades con excesivos privilegios como es el caso del usuario devadmin.
+
+**Impactos de negocio**
+
+Para una aplicación bancaria como insecurebankv2 que sus clientes o un atacante tengan acceso a la cuenta sin necesidad de una validacion representa una amenaza para la entidad bancaria ya que podria fraude  y un perjuicio a la reputacion por no asegurar bien los sistemas de proteccion de la aplicación.
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades más comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes, en este caso se obtuvo información referente a la autenticación y autorización de la aplicación obteniendo un usuario que tiene privilegios para ingresar sin necesidad de una contraseña.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia para poder ingresar a la sesión ya que si no se hubiera realizado la ingeniería inversa y obtenido el usuario devadmin no se podría ingresar.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener una aplicación lo suficientemente protegida que valide que no haya strings o parámetros dentro del código que permitan el acceso a la aplicación de manera indebida.
+
+**Exploiting Android Backup Functionality**
+
+Dentro del archivo del manifiesto de Android se puede observar que la aplicación es debugeable, esto declarado mediante android:debuggable=”true”
+
+**Manifiesto de Android mostrando que la aplicación es debugeable**
+
+![](/images/modulo7/img30.png)
+
+Se accede a la aplicación con las credenciales dinesh/Dinesh@123$ y a continuación se ejecuta el siguiente comando para hacer un backup de la aplicación.
+
+`adb backup -apk -shared com.android.insecurebankv2`
+
+**Backup de la aplicación mediante adb.**
+
+![](/images/modulo7/img31.png)
+
+Como indica en la imagen anterior se necesita una confirmación por parte de la aplicación 
+
+**Confirmacion del Backup en la aplicación.**
+
+![](/images/modulo7/img32.png)
+
+Luego se da un click en Back up my data. Si todo ha sido correcto entonces aparecerá un nuevo archivo dentro del directorio en la máquina virtual. El archivo que se crea es backup.ab
+
+**Archivo de backup de Insecurebankv2**
+
+![](/images/modulo7/img33.png)
+
+Para poder abrir este archivo se necesita pasarlo a otro formato de compresión como .tar o .zip y luego extraer usando el formato de archivo adecuado.
+
+**Proceso de Extraccion del archivo de backup**
+
+![](/images/modulo7/img34.png)
+
+Dentro del directorio /home/santoku/Desktop/pruebas_dir/InsecureBankv2/apps/com.android.insecurebankv2/sp
+
+Se hallan varios archivos interesantes como:
+
++	com.android.insecurebankv2_preferences.xml 
++	mySharedPreferences.xml
+
+En el archivo com.android.insecurebankv2_preferences.xml se encuentra la dirección y el puerto desde al que se conecta la aplicación.
+
+**Informacion de la red del usuario de la aplicación**
+
+![](/images/modulo7/img35.png)
+
+mySharedPreferences.xml contiene las credenciales de usuario y contrasenia de la sesion de login al abrir la aplicación.
+
+**Credenciales de usuario y contrasena de la aplicación.**
+
+![](/images/modulo7/img36.png)
+
+En este caso las credenciales están cifradas, sin embargo, puede darse el caso que no sea así. esta aplicación es vulnerable debido a que el cifrado que usa a pesar de ser fuerte, tiene key hardcodeada es decir en texto plano dentro del código.
+
+La clase CryptoClass.class  muestra la key “This is the super secret key 123”, corresponde a un cifrado aes256 utiliza CBC y PKCCSpadding.
+
+**Clave en texto plano del cifrado AES256**
+
+![](/images/modulo7/img37.png)
+
+Usando un sitio web con la key y la clave cifrada se obtiene el siguiente resultado 
+
+**Contraseña desencriptado usando la clave en texto plano de la clase CryptoClass**
+
+![](/images/modulo7/img38.png)
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M1: Improper Platform Usage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta categoria contempla el mal uso de las caracterisiticas de la plataforma o fallo en los mecanismos de seguridad. En esta vulnerabilidad se realiza el backup de la aplicación que es un mecanismo que no deberia estar activo en produccion por motivos de seguridad ya que podrian haber credenciales ocultas y demas informacion sensible.
+
+**Impactos tecnicos**
+
+Los impactos técnicos para esta vulnerabilidad implican un impacto técnico basado en la guía de OWASP Top Ten. En este caso sería una mayor exposición de la aplicación al tener el modo debug activo y eso implica que el atacante tiene un mayor control de la aplicación para testear y buscar fallos.
+
+**Impactos de negocio**
+
+Un impacto de negocio de esta vulnerabilidad seria el dano reputacional ya que da a entender que sus aplicaciones no son lo suficiente seguras y no cuentan con mecanismo propios de una entidad bancaria, el modo debug activo implica un mayor exposicion y por lo tanto si esta aplicación viene de una tienda de aplicaciones como Play Store muchos usuarios serian los afectados por este fallo.
+
+**M5: Insufficient Cryptography | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad implica que la encriptacion ha sido utilizada de manera inapropiada haciendola muy debil y perdiendo su proposito que es dificultar el trabajo a los atacantes de obtener las credenciales en texto plano, en este caso ocurre debido  a que a pesar de que la aplicación cuenta con una encriptacion AES256 considerada como segura, pero expone la key  en texto plano dentro de la misma clase.
+
+**Impactos tecnicos**
+
+Esta vulnerabilidad resulta en la filtracion de informacion sensible debido a la poca proteccion de dicha informacion y de esta manera ganando acceso a los procesos de autenticacion de la aplicación.
+
+**Impactos de negocio**
+
+Los impactos que tiene esta vulnerabilidad son los siguientes: Robo de Informacion debido al cifrado tan debil que tienen los datos de los clientes, Violacion de privacidad es decir si un atacante tiene las credenciales  de un cliente puede conocer que transacciones ha realizado, cuanto ha transferido, depositado, etc. Ademas se produciria un dano reputacional a la entidad bancaria por no tener las protecciones adecuadas de los datos de sus clientes.
+
+**M7: Poor Code Quality | Exploitability DIFFICULT | Prevalence COMMON | Detectability DIFFICULT | Impact MODERATE**
+
+Se produce por codigo no intencional que si bien no representa una vulnerabilidad como tal si puede llegar repercutir en otras vulnerabilidades, como en este caso donde la key para desencriptar estaba en texto plano en la misma clase donde se realiza la encriptacion esto anula la proteccion que brindaba esta encriptacion.
+
+**Impactos Tecnicos**
+
+En este caso la encriptacion se ve anulada debido a que la key esta en texto plano y eso facilita la recuperacion de la contrasena.
+
+**Impactos de negocio**
+
+Como consecuencia de tener la key en texto plano el atacante puede robar informacion de los clientes que esten almacenados en la base de datos ya que su encriptacion es facil de romper, el dano reputacional de la entidad bancaria se veria comprometido al saber que no sigue buenas practicas que la industria le imponen
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades más comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes, en este caso se obtuvo información referente a la key que permite desencriptar la aplicación.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia para poder romper la encriptacion ya que si no se hubiera realizado ingeniería inversa no se sabría de la key que puede descifrar las contraseñas.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener una aplicación lo suficientemente protegida que valide que no haya credenciales en texto plano dentro de las clases de la aplicación y permita descifrar las contraseñas.
+
+**M4: Insecure Authentication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando se realiza un bypass de la autenticacion admitiendo solicitudes del backend, en este caso se produce indirectamente porque la encriptacion se rompe al tener la key en texto plano, y con las credenciales encontradas luego de realizar el backup dan como resultado el usuario y contrasena. Con estos datos ya se puede ingresar como si fuera un usuario legitimo y suplantar su identidad.
+
+**Impactos tecnicos**
+
+Teniendo las credenciales el atacante puede entrar en la aplicación y suplantar la identidad de un usuario legitimo, la identidad del usuario no podria ser registrada correctamente ya que tecnicamente es el mismo usuario que esta haciendo esas transacciones.
+
+**Impactos de negocio**
+
+Entre los impactos de negocio estan el acceso no autorizado a informacion, suplantacion de identidad, robo de informacion y dano reputacional. Un atacante luego de tener las credenciales de un usuario tiene control total para realizar transferencias de diversas cuentas sin poder ser localizado, ademas de perjudicar tanto a los clientes como a la entidad financiera que perderia credibilidad por no ser capaz de llevar a cabo mecanismos de seguridad que protejan  a la aplicación.
+
+## Análisis Dinámico
+
+**Bypass Autenthication via adb**
+
+Con el siguiente comando se puede realizar un bypass del login sin necesidad de ingresar el usuario ni la contraseña.
+
+`adb shell am -n com.android.insecurebankv2/com.android.insecurebankv2.PostLogin`
+
+**Bypass de la clase PostLogin**
+
+![](/images/modulo7/img39.png)
+
+
+
+
+
+
 
 
 
