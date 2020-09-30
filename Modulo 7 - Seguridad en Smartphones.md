@@ -58,12 +58,12 @@ Para ello se puede realizar un análisis en dos fases:
 
 ## Segunda Fase: análisis dinámico
 
-+	Análisis de las comunicaciones.
-      + Mediante el uso de Burp Suite (como proxy) / wireShark o con el propio MobSF (mediante su módulo de análisis dinámico que permite visualizar las comunicaciones).
-      + Detección de fugas de información si no hay cifrado (Check MiTM).
++ Análisis de las comunicaciones.
+            + Mediante el uso de Burp Suite (como proxy) / wireShark o con el propio MobSF (mediante su módulo de análisis dinámico que permite visualizar las comunicaciones).
+            + Detección de fugas de información si no hay cifrado (Check MiTM).
 + Análisis del comportamiento de la aplicación. Interacción con la app para generar logs y comunicaciones si las hubiera.
 + Almacenamiento inseguro (también detectable a partir de los permisos en análisis estático).
-      + Archivos almacenados en tarjetas externas pueden ser leídos por cualquier app.
+      +  Archivos almacenados en tarjetas externas pueden ser leídos por cualquier app.
       + sharedPrefs: puede ser extraído. Evitar fuga de información a partir de los recursos alojados en él (chequear rutas /data/data/<package>/: ).
       + Content-providers (gestionan el uso compartido de información entre componentes: ficheros, DB sqlite, servicios externos).
       
