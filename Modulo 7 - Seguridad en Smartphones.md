@@ -632,7 +632,7 @@ Los impactos técnicos para esta vulnerabilidad implican un impacto técnico bas
 
 Un impacto de negocio de esta vulnerabilidad seria el dano reputacional ya que da a entender que sus aplicaciones no son lo suficiente seguras y no cuentan con mecanismo propios de una entidad bancaria, el modo debug activo implica un mayor exposicion y por lo tanto si esta aplicación viene de una tienda de aplicaciones como Play Store muchos usuarios serian los afectados por este fallo.
 
-**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE **
+**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
 
 Esta vulnerabilidad involucra la búsqueda de funcionalidades extrañas en la aplicación para poder explotarlas dentro de los propios sistemas. En este caso se focaliza en la configuración propia de la aplicación que al iniciarse genera un nuevo ID, luego el debugger utiliza el nuevo ID para conectarse y a partir de ahí buscar clases interesantes como la clase PostLogin y posteriormente su método showRootStatus().
 
