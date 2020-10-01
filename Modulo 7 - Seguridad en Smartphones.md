@@ -535,7 +535,7 @@ Con el siguiente comando se puede realizar un bypass del login sin necesidad de 
 
 Esta vulnerabilidad se produce cuando se realiza un bypass de la autenticacion admitiendo solicitudes del backend, se produce porque la activity PostLogin esta exportada como true y no tiene validaciones de seguridad que impidan el acceso desde otros sitios o aplicaciones, por lo tanto usando adb se puede saltar la validacion de la autenticacion sin necesidad de ingresar credencial alguna.
 
-**Impactos tecnicos **
+**Impactos tecnicos**
 
 No se puede llevar a cabo un registro de los usuarios conectados por el motivo que se salta la validacion de autenticacion sin ingresar alguna credencial.
 
@@ -741,7 +741,7 @@ Un impacto de negocio de esta vulnerabilidad seria el dano reputacional ya que s
 
 Esta vulnerabilidad se produce cuando porque las credenciales se filtran mediante un SMS la nueva contrasena y la contrasena anterior y de esta manera se logra obtener las credenciales adecuadas para realizar un acceso exitoso como un usuario legitimo.
 
-**Impactos tecnicos **
+**Impactos tecnicos**
 
 Con las credenciales filtradas via SMS se puede acceder como un usuario legitimo y por lo tanto se puede suplantar la identidad, si bien solo se filtra la contrasena se podria realizar algun ataque de fuerza bruta o concatenar con alguna vulnerabilidad anterior donde se filtraban los nombres de usuario almacenados en las bases de datos, de esta forma dificulta detectar el origen.
 
@@ -907,7 +907,7 @@ El cambio de contrasenia se produce via sms desde el celular 1555218135, ademas 
 
 Esta vulnerabilidad se produce cuando porque las credenciales se filtran mediante los logs que aparecen en logcat junto al usuario y contrasena en texto plano, esto facilita a un atacante el acceso a las cuentas bancarias.
 
-**Impactos tecnicos **
+**Impactos tecnicos**
 
 Si bien en esta vulnerabilidad ya hay que estar logeado lo que preocupa es que las credenciales no son administradas correctamente, en el caso de que un atacante de alguna manera logre filtrar las comunicaciones o tenga a la mano un dispositivo, se puede ayudar de logcat para comprobar si la contrasena esta encriptada o si esta en texto plano, se podria realizar ataques de fuerza bruta o emplear alguna de las vulnerabilidades anteriormente mencionadas.
 
