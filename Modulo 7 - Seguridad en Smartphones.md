@@ -665,7 +665,7 @@ Se descarga la base de datos con el siguiente comando.
 
 En la base de datos se accede usando sqlite3 mediante el siguiente comando para leer todo el contenido de la tabla words
 
-**Acceso a la base de datos de la aplicación. **
+**Acceso a la base de datos de la aplicación.**
 
 ![](/images/modulo7/img51.png)
 
