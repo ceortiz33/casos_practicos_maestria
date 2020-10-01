@@ -240,8 +240,7 @@ Un impacto técnico que podría darse es ganar inteligencia para realizar modifi
 
 Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener una aplicación robusta que impida la creación de nuevos usuarios.
 
-
-**Bypass de Root Detection mediante Smali **
+**Bypass de Root Detection mediante Smali**
 
 Una aplicacion apk no es más que un archive zip, por lo tanto, una aplicación puede ser extraída usando unzip.
 
