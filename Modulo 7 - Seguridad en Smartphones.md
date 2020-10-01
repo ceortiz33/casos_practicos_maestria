@@ -710,14 +710,305 @@ Estos son los parámetros asociados a MyBroadcastReceiver, como se puede observa
 
 ![](/images/modulo7/img53.png)
 
+**Parametros necesarios para enviar la confirmacion de la contrasena**
 
+![](/images/modulo7/img54.png)
 
+Con los parámetros anteriores se puede construir un exploit usando adb shell:
 
+`am broadcast -a theBroadcast -n com.android.insecurebankv2/com.android.insecurebankv2.MyBroadCastReceiver  --es phonenumber 5554 - -es newpass Dinesh@123!`
 
+**Mensaje de confirmacion de cambio de contrasena.**
 
+![](/images/modulo7/img55.png)
 
+Se envia un mensaje de texto donde se actualiza la contrasenia de Dinesh@123$ a Dinesh@123!, el problema ocurre cuando al momento de cambiar la contrasena en el mensaje se revela la contrasena que se esta utilizando en este momento ya que al intentar logear con la ‘nueva contrasena’ nos muestra un error diciendo que es la clave incorrecta, suponiendo que un atacante filtre estos mensajes podria obtener la contrasena  para ingresar sin problemas y  tomar control de la cuenta bancaria del usuario dinesh.
 
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
 
+**M1: Improper Platform Usage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta categoria contempla el mal uso de las caracterisiticas de la plataforma o fallo en los mecanismos de seguridad. En esta vulnerabilidad se realiza el cambio de contrasena via SMS, pero al hacer dicho cambio se filtran credenciales en el mismo mensaje produciendo varios problemas como una autenticacion insegura y autorizacion insegura. 
+
+**Impactos tecnicos**
+
+Los impactos técnicos para esta vulnerabilidad implican un impacto técnico basado en la guía de OWASP Top Ten. En este caso sería una mayor exposición de las credenciales del usuario mediante SMS debido a que además de la nueva contraseña filtra la contraseña anterior, cuando la contraseña es vacía el cambio en la contraseña no ocurre es decir que se puede filtrar la contraseña sin haber hecho un cambio y de esta manera acceder como usuario legítimo.
+
+**Impactos de negocio**
+
+Un impacto de negocio de esta vulnerabilidad seria el dano reputacional ya que si bien existen mecanismos para cambiar la contrasena via SMS se da mas informacion de lo debido, ademas se envian la contrasena en texto plano en un supuesto que el dispositivo es robado o se pierde, dichas contrasenas estan a la vista de cualquier persona; lo normal seria utilizar algun token o a traves de una cuenta de correo electronico para luego realizar el cambio.
+
+**M4: Insecure Authentication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando porque las credenciales se filtran mediante un SMS la nueva contrasena y la contrasena anterior y de esta manera se logra obtener las credenciales adecuadas para realizar un acceso exitoso como un usuario legitimo.
+
+**Impactos tecnicos **
+
+Con las credenciales filtradas via SMS se puede acceder como un usuario legitimo y por lo tanto se puede suplantar la identidad, si bien solo se filtra la contrasena se podria realizar algun ataque de fuerza bruta o concatenar con alguna vulnerabilidad anterior donde se filtraban los nombres de usuario almacenados en las bases de datos, de esta forma dificulta detectar el origen.
+
+**Impactos de negocio**
+
+Entre los impactos de negocio estan el acceso no autorizado a informacion, robo de informacion y dano reputacional. Un atacante luego de haber hecho el bypass tiene via libre para realizar transferencias de diversas cuentas sin poder ser localizado, ademas de perjudicar tanto a los clientes como a la entidad financiera que perderia credibilidad por no ser capaz de llevar a cabo mecanismos de seguridad que protejan  a la aplicación.
+
+**M6: Insecure Authorization | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando existen esquemas pobres de autorizacion , por lo que si un usuario consigue hacerse con privilegios mas altos podria acceder a funcionalidades ocultas, en este caso se produce un problema con la autorizacion porque generalmente los usuarios necesitan proporcionar muchos datos para solicitar un cambio de contrasena, en el caso de las aplicaciones moviles se suele usar una token y luego de ingresarlo en la sesion de inicio es cuando se produce el cambio de contrasena, nunca se deberia enviar la contrasena en texto plano. 
+
+**Impactos tecnicos**
+
+Una mala gestion en la autorizacion da privilegios elevados a cualquier atacate que esta en busqueda de funcionalidades que no se han validado correctamente, esta aplicación da mucha informacion para un cambio de contrasena y va en texto plano lo que lo hace aun mas vulnerable.
+
+**Impactos de negocio**
+
+Para una aplicación bancaria como insecurebankv2 que sus clientes o un atacante tengan acceso a la cuenta sin necesidad de una validacion de identidad de sus datos o con un token, o contrasena temporal implica que los sistemas de proteccion son debiles y que un atacante o cualquier persona que sustraiga un telefono puede tener acceso a datos personales de clientes y esto representa un problema en primer lugar para los usuarios y por ende a la credibilidad de la entidad bancaria ya que podria darse un fraude.
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades más comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes en la clase MyBroadcastReceiverClass en donde se indican que componentes pueden construir el exploit para realizar este ataque como lo son “phonenumber” y “newpassword”.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia sobre el comportamiento del broadcast receiver ya que tiene exported con valor true, el mecanismo esta expuesto y no es validado correctamente produciendo que se puede acceder de forma externa con adb o aplicación de terceros.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional, y fraude debido a la obtención de las contraseñas de los usuarios sin una validación apropiada y sin una autorización, haciendo posible que se hagan transferencias de múltiples cuentas a la de algún atacante.
+
+**Explotando Android Content Provider**
+
+En la siguiente captura se muestra el permiso de la activity TrackUserContentProvider
+
+**Content Provider TrackUserContentProvider**
+
+![](/images/modulo7/img56.png)
+
+En esta captura se muestra el parámetro asociado al ContentProvider de la captura anterior
+
+**URL hardcodeada  en la clase TrackUserContentProvider**
+
+![](/images/modulo7/img57.png)
+
+En la shell de Android  y se ingresa el siguiente comando:
+
+`adb shell content query - -uri content://com.android.insecurebankv2.TrackUserContentProvider/trackerusers`
+
+**Registro de los usuarios que han accedido a la aplicación.**
+
+![](/images/modulo7/img58.png)
+
+Como se puede observar se muestra un registro de los accesos a la aplicación en texto plano sin encriptar.
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M2: Insecure Data Storage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce debido a que las credenciales o información sensible de los usuarios es filtrada. En este el content provider muestra un registro de los usuarios que han accedido a la aplicación.
+
+**Impactos Técnicos**
+
+Como se filtran credenciales de los usuarios logeados en la aplicación esto puede derivar en la extracción de la información y puede ser útil para encadenarla con otra vulnerabilidad.
+
+**Impactos de negocio**
+
+Una aplicación de este tipo manejada por una entidad bancaria no se debería llevar un registro de los usuarios que han accedido en un content provider de la misma aplicación porque esos datos quedan guardados, además van en texto plano lo que lo hace aún más inseguro, no se puede tener un tratamiento descuidado en cuanto a la administración de los datos de sus clientes
+
+**M9: Reverse Engineering | Exploitability EASY | Prevalence COMMON | Detectability EASY | Impact MODERATE**
+
+Esta es una de las vulnerabilidades más comunes que existen para las aplicaciones, debido a la naturaleza de Android es sencillo obtener el código fuente de una aplicación y analizar sus componentes en la clase TrackUserContentProvider, los content providers son conocidos por ser componentes asociados a la inyección sql, que es donde se almacenan algunas de los datos que se transmiten en la aplicación.
+
+**Impactos Técnicos**
+
+Un impacto técnico que podría darse es ganar inteligencia sobre el comportamiento del content provider, estos componentes por defecto están exportados como true a menos que se especifique lo contrario. Se filtran datos de la base de datos a la que apunta la URL en la clase TrackUserContentProvider.
+
+**Impactos de Negocio**
+
+Como consecuencia de la ingeniería inversa se pueden producir los siguientes perjuicios a la entidad bancaria como daño reputacional por no tener un procedimiento adecuado en cuanto al tratamiento de los datos, pero además por el almacenamiento inseguro de las credenciales de usuario. 
+
+**Explotando Android Pasteboard**
+
+Se accede a la aplicación con credenciales validas(dinesh/Dinesh@123$) y luego se ingresa en la opción de Tranferencias(Transfer). Seleccionamos la cuenta y damos clic en el icono de copiar texto.
+
+**Portapapeles de la aplicación InsecureBankv2**
+
+![](/images/modulo7/img59.png)
+
+En la terminal se busca procesos que se esten ejecutando en insecurebankv2 para esto se abre se ejecuta adb  Shell y se filtra por nombre.
+
+`adb shell ps | grep insecure`
+
+**Proceso correspondiente a Insecurebankv2**
+
+![](/images/modulo7/img60.png)
+
+Para ver el numero de cuenta que se paso al clipboard al copiar el texto, se utilzara el siguiente comando.
+
+`adb shell su u0_a57 service call clipboard 2 s16 com.android.insecurebankv2`
+
+**Texto almacenado en texto plano en el servicio de clipboard**
+
+![](/images/modulo7/img61.png)
+
+Como se puede observar esta funcionalidad es vulnerable porque muestra el numero de cuenta del cliente en texto plano.
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M2: Insecure Data Storage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce debido a que la cuenta del usuario es enviada en texto plano mediante el servicio de clipboard, siendo esta cuenta un dato importante si se asocia con alguna de las otras vulnerabilidades donde se obtiene el usuario y la contraseña.
+
+**Impactos Técnicos**
+
+El portapapeles o clipboard está expuesto y almacena cualquier dato sin encriptar ni validar, en este caso se guardó la cuenta bancaria del usuario, pero podrían haber sido otro tipo de credenciales válidas para una transacción
+
+**Impactos de negocio**
+
+Una aplicación de este tipo manejada por una entidad bancaria debería tener cuidado con los servicios proporcionados a la aplicación, si bien el portapapeles es totalmente valido de usar, estas funcionalidades pueden estar expuestas a vulnerabilidades por lo que no es aconsejable su uso, exponer datos personales importantes causa dano reputacional y desconfianza en los usuarios.
+
+**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad involucra la búsqueda de funcionalidades extrañas en la aplicación para poder explotarlas dentro de los propios sistemas. En este caso se focaliza en el portapapeles para copiar datos en la aplicación que de no estar configurada apropiadamente se pueden filtrar esos datos.
+
+**Impactos técnicos.**
+
+Esta vulnerabilidad expone al servicio de portapapeles donde los datos se almacenan en texto plano, que son datos importantes que podrían ser usados por un atacante al momento de intentar acceder a la aplicación.
+
+**Impactos de negocio.**
+
+Se produce un daño reputacional a la entidad bancaria debido a la no confidencialidad de los datos de los clientes, no son almacenados de forma segura y provocando la desconfianza.
+
+**Insecure Logging**
+
+Se ejecuta el siguiente comando en la shell de Android
+
+`adb logcat`
+
+Logcat es una funcionalidad de Android que lleva un registro de todos los procesos que se ejecutan dentro de la aplicación, si se ingresa a la aplicación con las credenciales válidas se muestra los siguiente.
+
+**Credenciales en texto plano mostradas en logcat**
+
+![](/images/modulo7/img62.png)
+
+Si se cambia la contrasena por una nueva dando clic al boton en Change Password.
+
+**Cambio de contrasena en Insecurebankv2**
+
+![](/images/modulo7/img63.png)
+
+En el registro de logs aparecen nuevos cambios realizados en la aplicación, en este caso una actualizacion de contrasena
+
+**Nueva contrasena filtrada en logcat.**
+
+![](/images/modulo7/img64.png)
+
+El cambio de contrasenia se produce via sms desde el celular 1555218135, ademas de ir en texto plano.
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M4: Insecure Authentication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad se produce cuando porque las credenciales se filtran mediante los logs que aparecen en logcat junto al usuario y contrasena en texto plano, esto facilita a un atacante el acceso a las cuentas bancarias.
+
+**Impactos tecnicos **
+
+Si bien en esta vulnerabilidad ya hay que estar logeado lo que preocupa es que las credenciales no son administradas correctamente, en el caso de que un atacante de alguna manera logre filtrar las comunicaciones o tenga a la mano un dispositivo, se puede ayudar de logcat para comprobar si la contrasena esta encriptada o si esta en texto plano, se podria realizar ataques de fuerza bruta o emplear alguna de las vulnerabilidades anteriormente mencionadas.
+
+**Impactos de negocio**
+
+Entre los impactos de negocio estan el acceso no autorizado a informacion, robo de informacion y dano reputacional. La seguridad con la que se maneja las credenciales de sus clientes es debil, no solo mostrando la cuenta de usuario pero tambien la contrasena, el tratamiento con el que se esta tratando estos datos es insuficiente y podria ser filtrado por algun atacante.
+
+**Proxying Android Traffic on Device**
+
+Se inicia Burp Suite y se configuran las opciones para el nuevo proxy con el puerto 9999 y todas las interfaces.
+
+**Configuracion del proxy en el puerto 9999**
+
+![](/images/modulo7/img65.png)
+
+Se habilita la opción “Support invisible  proxying” del apartado Request handling
+
+**Invisible proxying habilitado**
+
+![](/images/modulo7/img66.png)
+
+Ahora se debe configurar las opciones del proxy al navegador Firefox.
+
+**Configuracion del proxy en Firefox**
+
+![](/images/modulo7/img67.png)
+
+Una vez configurado se accede la url http://burp
+
+**Acceso a BurpSuite mediante el navegador para posterior descarga del certificado.**
+
+![](/images/modulo7/img68.png)
+
+Se descarga el certificado al hacer click “CA Certificate” y se renombra como un archivo .crt
+
+**Descarga del certificado de Burp Suite**
+
+![](/images/modulo7/img69.png)
+
+En el dispositivo se habilita las opciones de desarrollador, esto se logra normalmente dando clic 7 veces en la información del dispositivo. Con el modo desarrollador activado se activa USB debugging.
+
+**USB debugging activado**
+
+![](/images/modulo7/img70.png)
+
+Con la ayuda de adb push se transferiere el certificado de burpsuite al dispositivo.
+
+**Transferencia de certificado a la aplicación**
+
+![](/images/modulo7/img71.png)
+
+La opción “Install from SD Card” se localiza en Security que es una de las opciones de configuración.
+
+**Instalacion del certificado de BurpSuite.**
+
+![](/images/modulo7/img72.png)
+
+Se ubica el certificado de Burp Suite y se selecciona.
+
+**Certificado de Burpsuite localizado**
+
+![](/images/modulo7/img73.png)
+
+Se escoge un nombre y se acepta.
+
+**Confirmacion de certificado.**
+
+![](/images/modulo7/img74.png)
+
+Si aparece una ventana solicitando un patron o  PIN se asigna cualquier valor y se continua el proceso.
+
+**Advertencia de seguridad donde se avisa que se requiere de un PIN o patron.**
+
+![](/images/modulo7/img75.png)
+
+**Credenciales filtradas en Burpsuite.**
+
+![](/images/modulo7/img76.png)
+
+**Cambio de contrasena mediante el Repeater de Burpsuite.**
+
+![](/images/modulo7/img77.png)
+
+**M3: Insecure Communication | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+En esta vulnerabilidad se considera como son intercambiados los datos entre el servidor y el cliente, la comunicación debe usar SSL/TLS durante la autenticación para no incurrir en datos transmitidos en texto plano como en este caso donde las credenciales usan http que muestra las credenciales en texto plano.
+
+**Impactos técnicos**
+
+Esta vulnerabilidad expone la data del usuario y puede llevar al robo de la cuenta si un atacante llegase a interceptar una cuenta de administrador entonces todos los demás clientes serian expuestos, además las configuraciones débiles de SSL facilitan los ataques MITM y phishing.
+
+**Impactos de negocio**
+
+El robo de credenciales por mala configuración de las comunicaciones puede provocar el fraude y robo de las mismas, la entidad bancaria estaría mas propensa a reclamos y llamadas por el mal uso de la aplicación por ser susceptible a este tipo de ataques de terceros.
+
+## Conclusion
+
+Luego de analizar la aplicación Insecurebank se encontraron múltiples vulnerabilidades comunes desde permisos peligrosos y excesivos para una aplicación bancaria como SEND_SMS, READ_CALL_LOG, READ_PHONE_STATE que solicitan mucha más información de la requerida, la versión del sdk permitida va entre la 15 hasta las 22, allowBackup y debuggable están activadas dando mayores facilidades a un atacante a obtener datos que normalmente no estarían a la vista de los usuarios.
+
+Insecurebankv2 al ser una aplicación de entrenamiento es creada a propósito como una aplicación bancaria vulnerable, existe inyección SQL cuando se aprovecha el intent TrackUserContentProvider, almacenamiento inseguro debido a sus credenciales en texto plano o con cifrados débiles, sticky broadcast tampering al aprovecharse del receiver theBroadcast para enviar un mensaje de texto produciendo el cambio de contraseña y dando información adicional sobre la contraseña anterior que se cambió, además al analizar el trafico con un proxy como Burp Suite, las credenciales usaban un cifrado en las comunicaciones débil y por lo tanto aparecían en texto plano. 
 
 
 
