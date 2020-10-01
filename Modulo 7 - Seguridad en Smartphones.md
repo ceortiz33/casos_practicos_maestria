@@ -188,9 +188,9 @@ De acuerdo al resultado de Drozer hay 5 activities, 1 content provider y 1 broad
 
 Una vez decompilada la aplicación se busca entre los varios directorios al directorio /InsecureBankv2/res/values, dentro de este se localiza el archivo strings.xml y se modifica el parametro en lugar de no por yes.
 
-**Cadenas de caracteres dentro del archivo strings.xml **
+**Cadenas de caracteres dentro del archivo strings.xml**
 
-![](/img/modulo7/img14.png)
+![](/images/modulo7/img14.png)
 
 Luego de realizar el cambio se reconstruye la aplicación con el comando.
 
