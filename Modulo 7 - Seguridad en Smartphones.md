@@ -208,7 +208,7 @@ Como se compilo nuevamente esta aplicación, para que sea aceptada por el emulad
 
 Finalmente, luego de instalar la aplicación en Genymotion la aplicación cambia de la siguiente manera.
 
-**Resultado de la modificacion en archivo strings.xml **
+**Resultado de la modificacion en archivo strings.xml**
 
 ![](/images/modulo7/img16.png)
 
