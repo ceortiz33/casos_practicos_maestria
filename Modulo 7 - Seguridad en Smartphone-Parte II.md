@@ -86,13 +86,13 @@ Analisis Objection
 
 **/data/user/0/co.brainly/files**
 
-  + AppEventsLogger -> Posibles clases dedicadas a los logs de la aplicacion
++ AppEventsLogger -> Posibles clases dedicadas a los logs de la aplicacion
   
   ![](/images/modulo7.2/appeventlogger.png)
   
-  + gaClientid **c04c67c9-23a0-4726-8838-48bcc85bf78d**
++ gaClientid **c04c67c9-23a0-4726-8838-48bcc85bf78d**
   
-  + google_app_measurement.db [REVISAR CON SQLITE-BROWSER]
++ google_app_measurement.db [REVISAR CON SQLITE-BROWSER]
 
 **/storage/emulated/0/Android/data/co.brainly/cache** -> no se encontro nada
 
