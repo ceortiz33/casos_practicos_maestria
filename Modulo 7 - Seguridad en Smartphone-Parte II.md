@@ -20,4 +20,38 @@ En el caso del análisis dinámico se usarán herramientas como Drozer y Frida c
 
 Como emulador de Android se usa el emulador de Android Studio con un dispositivo Nexus 5x Google API aprovechando que esta versión viene rooteada a diferencia de su contraparte Nexus 5x Google Play que si bien viene con la App Store de Google no tiene acceso root.
 
+## Android Manifest
+
+**Android Permissions**
+
+![](/images/modulo7.2/img1.png)
+
+**INTERNET:** Es uno de los permisos mas comunes y como su nombre indica provee acceso a internet a la aplicación, su uso no representa un riesgo. Es necesario ya que la aplicación se conecta a Internet.
+
+**WRITE_EXTERNAL_STORAGE:** Permite a una aplicación escribir en el almacenamiento externo, esta catalogada como peligroso, a partir de la API 19 este permiso ya no es requerido para leer o escribir archivos en los directorios especificos de la aplicación.
+
+**ACCESS_NETWORK_STATE:** Permite el acceso a la informacion acerca de las redes, esta catalogada como normal, es uno de los permisos mas comunes.
+
+**GET_ACCOUNTS:** Permite el acceso a las cuentas en el servicio de cuentas, este permiso es considerado peligroso,la aplicación al momento de ejecutarse por primera vez solicita la autenticacoin del usuario usando una cuenta de Google asi que en este caso si se justifica.
+
+**WAKE_LOCK:** Permite el uso de PowerManager WakeLocks para previene al procesador de dormir o del oscurecimiento de la pantalla. Este permiso no representa riesgo.
+
+**VIBRATE:** Permite acceso a la vibracion, no es considerado un permiso peligroso.
+
+**CAMERA:** Permite a la aplicación el uso de la camara, este permiso es considerado como peligroso y si no es necesario se deberia evitar. Brainly tiene una funcionalidad que permite tomar fotos a preguntas para que luego estas sean respondidas .
+
+**C2D_MESSAGE:** (Cloud to device messaging), envia una peticion para hacer push a los mensajes hacia los servidores C2D de Google.
+
+**RECEIVE:** Es un permiso requerido para configurar el cliente de Google Cloud Messaging en Android.
+
+**READ_EXTERNAL_STORAGE:** Permite leer el almacenamiento externo, este permiso se otorga implicitamente a raiz de declarar el permiso WRITE_EXTERNAL_STORAGE. Es considerado como peligroso.
+
+**BIND_GET_INSTALLER_REFERRER_SERVICE:** Es un permiso por defecto que se genera a partir de la API de Google. 
+
+**FOREGROUND_SERVICE:** Permite a una aplicación regular usar el servicio startForeGround. Este permiso no representa un riesgo. 
+
+
+
+
+
 
