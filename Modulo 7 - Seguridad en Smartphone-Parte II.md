@@ -80,7 +80,13 @@ Analisis Objection
 
 ![](/images/modulo7.2/img6.png)
 
-**/data/user/0/co.brainly/cache/** WebView/SafeBrowsing  -> SafeBrowsing?
+**/data/user/0/co.brainly/cache/** 
+
++ /WebView/SafeBrowsing  -> [BUSCAR INFORMACION SOBRE QUE ES SAFEBROWSING/ no se encontro mayor informacion]
+
++ /cache/image_cache -> Se hace mencion a la libreria **libcore.io.DiskLruCache**
+
+![](/images/modulo7.2/journal_cache.png)
 
 **data/user/0/co.brainly/code-cache** -> no se encontro nada
 
