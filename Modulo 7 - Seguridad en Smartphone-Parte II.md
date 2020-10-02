@@ -169,8 +169,14 @@ Otro file provider en Brainly, ademas se muestra una activity de captcha.
 
 ![](/images/modulo7.2/img19.png)
 
+## Analisis Estatico
 
+com.google.android.material.bottomsheet.BottomSheetBehavior ??
 
+```xml
+<string name="branch_friends_invite_link">https://brainly.app.link/qpzV02MawO</string>
+<string name="branch_key">key_live_aieQuVpL7UJKTxoGT7baLblpBBbKyhSO</string>
+```
 
 
 
