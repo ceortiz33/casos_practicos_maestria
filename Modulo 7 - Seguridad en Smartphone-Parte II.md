@@ -116,7 +116,7 @@ Analisis Objection
 
 ![](/images/modulo7.2/img9.png)
 
-**List Providers**
+
 
 
 
