@@ -141,7 +141,39 @@ Este es un DeepLink con varios componentes, para formar la URL se combinan **sch
 
 ![](/images/modulo7.2/img14.png)
 
-Esta es una de las activities exportadas como true y muestra un intent-filter con **android.intent.action.SEND** que permite enviar data de una activity a otra
+Esta es una de las activities exportadas como true y muestra un intent-filter con **android.intent.action.SEND** que permite enviar data de una activity a otra.
+
+**ShareSendActivity**
+
+![](/images/modulo7.2/img16.png)
+
+De igual manera ShareSendActivity tambien envia la data de una activity a otra. Otros elementos que se encontraron en la aplicación fue un FileProvider para almacenar archivos.
+
+**FileProvider**
+
+![](/images/modulo7.2/img15.png)
+
+Brainly utiliza otras integraciones de aplicaciones de terceros como Google Firebase y SWRVE donde se muestran algunas API KEYS.[REVISAR DOCUMENTACION DE FIREBASE SOBRE EXPOSICION DE ANDROID VALUE]
+
+**Firebase key**
+
+![](images/modulo7.2/img17.png)
+
+**Activities relacionadas con la sesion y feedback**
+
+![](/images/modulo7.2/img18.png)
+
+Otro file provider en Brainly, ademas se muestra una activity de captcha.
+
+**Fileprovider y Captcha**
+
+![](/images/modulo7.2/img19.png)
+
+
+
+
+
+
 
 
 
