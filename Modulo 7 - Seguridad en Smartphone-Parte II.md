@@ -20,6 +20,10 @@ En el caso del análisis dinámico se usarán herramientas como Drozer y Frida c
 
 Como emulador de Android se usa el emulador de Android Studio con un dispositivo Nexus 5x Google API aprovechando que esta versión viene rooteada a diferencia de su contraparte Nexus 5x Google Play que si bien viene con la App Store de Google no tiene acceso root.
 
+**Brainly**
+
+![](/images/modulo7.2/brainly.png)
+
 ## Android Manifest
 
 **Android Permissions**
