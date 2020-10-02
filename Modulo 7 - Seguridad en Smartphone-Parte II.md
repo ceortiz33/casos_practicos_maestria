@@ -50,6 +50,30 @@ Como emulador de Android se usa el emulador de Android Studio con un dispositivo
 
 **FOREGROUND_SERVICE:** Permite a una aplicación regular usar el servicio startForeGround. Este permiso no representa un riesgo. 
 
+**Evaluación de exposición de la aplicación con Drozer**
+
+Con la herramienta Drozer se puede observar que tan expuesta esta una aplicación, en este caso hay 4 activities, 2 broadcast receivers y 1 servicio que están exportados como true.
+
+**Superficie de Exposicion**
+
+![](/images/modulo7.2/img2.png)
+
+**Activities exportadas como true para la aplicación Brainly**
+
+![](/images/modulo7.2/img3.png)
+
+**Broadcast receivers exportados como true para la aplicación Brainly**
+
+![](/images/modulo7.2/img4.png)
+
+**Services exportados como true para la aplicación Brainly**
+
+![](/images/modulo7.2/img5.png)
+
+
+
+
+
 
 
 
