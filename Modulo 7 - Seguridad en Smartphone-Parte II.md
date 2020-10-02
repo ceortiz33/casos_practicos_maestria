@@ -74,7 +74,7 @@ Con la herramienta Drozer se puede observar que tan expuesta esta una aplicació
 
 ![](/images/modulo7.2/img5.png)
 
-
+..
 
 
 
