@@ -137,6 +137,12 @@ Este Deep link unicamente tiene un schema permitido **brainly://**
 
 Este es un DeepLink con varios componentes, para formar la URL se combinan **scheme**, **host**, **Path** y **PathPrefix**  un ejemplo seria `https://brainly.co.id/tugas`
 
+**ShareAskActivity**
+
+![](/images/modulo7.2/img14.png)
+
+Esta es una de las activities exportadas como true y muestra un intent-filter con **android.intent.action.SEND** que permite enviar data de una activity a otra
+
 
 
 
