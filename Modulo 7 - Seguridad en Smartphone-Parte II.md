@@ -180,12 +180,14 @@ Con la herramienta Drozer se puede observar que tan expuesta esta una aplicació
    <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
 </provider>
 ```
+
+**/res/xml/file_paths**
+
 ![](/images/modulo7.2/img23.png)
 
 Para acceder al contenido de este file provider y crear la URI se necesita combinar **android:authorities** seguido de **name** y el nombre de la imagen formando asi la siguiente URI.
 
-content://co.brainly.fileprovider/images/default_image.jpg
-
+`content://co.brainly.fileprovider/images/default_image.jpg`
 
 ```xml
 <provider android:name="com.brainly.tutoring.sdk.internal.common.TutoringSdkFileProvider" android:exported="false"
@@ -194,7 +196,15 @@ content://co.brainly.fileprovider/images/default_image.jpg
 </provider>
 ```
 
+**/res/xml/tutoring_sdk_provider_paths**
+
 ![](/images/modulo7.2/img24.png)
+
+```
+content://co.brainly.tutoringsdk.fileProvider/external_cache_files/default_images.jpg
+content://co.brainly.tutoringsdk.fileProvider/external_files_files/default_images.jpg
+content://co.brainly.tutoringsdk.fileProvider/external_files/default_images.jpg
+```
 
 Compartir un file-provider con path="." puede ser peligroso incluso si el provider no esta exportado si existiese otra vulnerabilidad.[REVISAR PARA EXPLOTACION]
 
