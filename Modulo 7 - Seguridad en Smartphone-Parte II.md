@@ -82,7 +82,7 @@ Analisis Objection
 
 **/data/user/0/co.brainly/cache/** WebView/SafeBrowsing  -> SafeBrowsing?
 
-/code-cache no se encontro nada
+**data/user/0/co.brainly/code-cache** -> no se encontro nada
 
 gaClientid c04c67c9-23a0-4726-8838-48bcc85bf78d
 
