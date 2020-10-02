@@ -294,8 +294,26 @@ En el codigo fuente no se encontraron estas flags por lo que no se expone a otra
 
 El almacenamiento externo puede ser accesado mediante **/storage/emulated/0**, estos archivos son de uso publico por lo que no se recomienda almacenar datos sensibles aqui, adicionalmente los datos almacenados pueden ser filtrados mediante el uso de los content providers si llegasen a estar expuestos. Brainly no tiene content providers expuestos por lo que no es posible filtrar esta informacion ni abusar de posibles SQL Injection.
 
+**Other Interesting functions**
 
+**Code Execution**
 
+Si existiesen alguna de estas funciones se pueden aprovechar para ejecutar remotamente comandos. Dentro del codigo de Brainly no se encontraron.
+
++ Runtime.exec()
++ ProcessBuilder()
++ native code:system()
+
+**Send SMS**
+
+De igual manera si existiese funciones para enviar mensajes, estas funciones podrian estar dentro del codigo fuente. Brainly no tiene habilitado el permiso para enviar SMS ni tiene habilitada estas funciones.
+
++ sendTextMessage
++ sendMultipartTestMessage
+
+**Native functions**
+
+Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la ofuscacion como mecanismo de proteccion, ademas de utilizar una mezcla entre Kotlin y Java, en la busqueda de las funciones no se encontraron las funciones nativas `public native, System.loadLibrary, System.load`.
 
 
 
