@@ -253,6 +253,9 @@ Los archivos creados en el almacenamiento interno solo tiene acceso la misma app
 
 En el codigo fuente no se encontraron estas flags por lo que no se expone a otras aplicaciones, dentro de **shared_prefs** se hallaron cookies almacenadas y el userId[REVISAR SI HAY FORMA DE EXPLOTARLO]
 
+**External Storage**
+
+El almacenamiento externo puede ser accesado mediante **/storage/emulated/0**, estos archivos son de uso publico por lo que no se recomienda almacenar datos sensibles aqui, adicionalmente los datos almacenados pueden ser filtrados mediante el uso de los content providers si llegasen a estar expuestos. Brainly no tiene content providers expuestos por lo que no es posible filtrar esta informacion ni abusar de posibles SQL Injection.
 
 
 
