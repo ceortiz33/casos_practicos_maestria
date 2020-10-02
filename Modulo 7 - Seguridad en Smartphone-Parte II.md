@@ -108,6 +108,17 @@ Analisis Objection
 
 ![](/images/modulo7.2/img7.png)
 
+**List Receivers**
+
+![](/images/modulo7.2/img8.png)
+
+**List Services**
+
+![](/images/modulo7.2/img9.png)
+
+**List Providers**
+
+
 
 
 
