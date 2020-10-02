@@ -84,6 +84,12 @@ Analisis Objection
 
 **data/user/0/co.brainly/code-cache** -> no se encontro nada
 
+**/data/user/0/co.brainly/files**
+
+  + AppEventsLogger -> Posibles clases dedicadas a los logs de la aplicacion
+  
+  ![](/images/modulo7.2/appeventlogger.png)
+  
 gaClientid c04c67c9-23a0-4726-8838-48bcc85bf78d
 
 google_app_measurement.db en `generic_x86_64:/data/user/0/co.brainly/files`
