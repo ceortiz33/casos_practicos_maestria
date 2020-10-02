@@ -171,17 +171,87 @@ Otro file provider en Brainly, ademas se muestra una activity de captcha.
 
 ## Analisis Estatico
 
+### File Recon
+
 com.google.android.material.bottomsheet.BottomSheetBehavior ??
+
+**/res/values/strings.xml**
 
 ```xml
 <string name="branch_friends_invite_link">https://brainly.app.link/qpzV02MawO</string>
 <string name="branch_key">key_live_aieQuVpL7UJKTxoGT7baLblpBBbKyhSO</string>
+<string name="com.crashlytics.android.build_id">56b2b0997a1a40ad89be0f645f92a7d6</string>
+<string name="copy_toast_msg">Link copied to clipboard</string>
+<string name="default_web_client_id">552450804349-945msqm416u8ijp5pjkuo74smrergs1q.apps.googleusercontent.com</string>
+<string name="firebase_database_url">https://brainly-android.firebaseio.com</string>
+<string name="gcm_defaultSenderId">552450804349</string>
+<string name="google_api_key">AIzaSyB_6V8TSM6BH7MxmxVEdiK7HjnYd_00tvs</string>
+<string name="google_app_id">1:552450804349:android:e135b0ade797116b</string>
+<string name="google_crash_reporting_api_key">AIzaSyB_6V8TSM6BH7MxmxVEdiK7HjnYd_00tvs</string>
+<string name="google_play_link">https://play.google.com/store/apps/details?id=co.brainly</string>
+<string name="points_award_header">YOU ROCK!</string>
+```
+**/res/values/public.xml**
+
+Valores referenciados de strings en la aplicacion
+
+**/res/xml/file_paths**
+
+[CHECKEAR COMO ACCEDER A ESTE DIRECTORIO]
+
+![](/images/modulo7.2/img20.png)
+
+**/res/xml/network_security_config.xml**
+
+![](/images/modulo7.2/img21.png)
+
+Trafico en texto plano habilitado.
+
+### Insecure Data and File Storage
+
+**Firebase credentials**
+
+Cuando se dejan las configuraciones por defecto de las bases de datos de Firebase estas pueden provocar una filtración de datos, por lo tanto se evalua si los privilegios han sido asignados correctamente.
+
+En el archivo strings.xml se mostro la URL que corresponde a la base de datos firebase **https://brainly-android.firebaseio.com** . Para evaluar si la base de datos es de acceso publico se le agrega **/.json** a la URL.
+
+**Base de datos no es de acceso publico**
+
+![](/images/modulo7.2/img22.png)
+
+La Url no es de acceso publico por lo tanto las configuraciones de seguridad de Firebase no tiene habilitado la opción **‘read permission’**.
+
+**Internal Storage**
+
+Los archivos creados en el almacenamiento interno solo tiene acceso la misma app, sin embargo cuando se aplican las flags **MODE_WORLD_READABLE** Y **MODE_WORLD_WRITABLE** expone dichos archivo a diferentes aplicaciones. El almacenamiento interno se localiza en su mayoria en **/data/data/[nombre_app]/shared_prefs**.
+
++ swrve_prefs.xml
+
+```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="swrve_cr_flush_delay" value="1000" />
+    <string name="userId">4e28921c-9722-4fa4-816d-9d468a66b55f</string>
+    <int name="swrve_cr_flush_frequency" value="60000" />
+</map>
 ```
 
++ co.brainly_preferences.xml
 
+```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <set name="PREF_COOKIES">
+        <string>datadome=Paqa3XA7S.PddkBJVxn63M7LTnV94O3MEuwGP4ka-lyr_LoCuQlRINBNR.u-VAnXUROVG7qBLeEXt5eK~P.8dRt0miznXQEokuvr..rsKE; Max-Age=31536000; Domain=.brainly.com; Path=/; SameSite=Lax</string>
+    </set>
+    <long name="com.facebook.appevents.SessionInfo.sessionStartTime" value="1601610705300" />
+    <long name="com.facebook.appevents.SessionInfo.sessionEndTime" value="1601610872892" />
+    <int name="com.facebook.appevents.SessionInfo.interruptionCount" value="3" />
+    <string name="com.facebook.appevents.SessionInfo.sessionId">2ffa1bcd-8530-4d2c-8149-5cf1ed229c28</string>
+</map>
+```
 
-
-
+En el codigo fuente no se encontraron estas flags por lo que no se expone a otras aplicaciones, dentro de **shared_prefs** se hallaron cookies almacenadas y el userId[REVISAR SI HAY FORMA DE EXPLOTARLO]
 
 
 
