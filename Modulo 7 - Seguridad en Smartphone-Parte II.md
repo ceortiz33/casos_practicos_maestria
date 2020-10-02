@@ -313,7 +313,7 @@ De igual manera si existiese funciones para enviar mensajes, estas funciones pod
 
 **Native functions**
 
-Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la ofuscacion como mecanismo de proteccion, ademas de utilizar una mezcla entre Kotlin y Java, en la busqueda de las funciones no se encontraron las funciones nativas `public native, System.loadLibrary, System.load`.
+Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la **ofuscacion** como mecanismo de proteccion, ademas de utilizar una mezcla de librerias entre **Kotlin** y **Java**, en la busqueda de las funciones no se encontraron las funciones nativas `public native, System.loadLibrary, System.load`.
 
 
 
