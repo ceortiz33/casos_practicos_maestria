@@ -116,6 +116,26 @@ Analisis Objection
 
 ![](/images/modulo7.2/img9.png)
 
+## Analisis de componentes del manifiesto de Android
+
+![](/images/modulo7.2/img10.png)
+
+El backup de la aplicacion esta habilitado por lo tanto el usuario tiene acceso a esta configuracion que normalmente no deberia estar disponible en produccion.
+La configuracion de red permite limitar el uso a ciertos dominios o certificados, motivo por el cual tambien se realizara una busqueda de la informacion proporcionada en este archivo.
+
+**Custom Deep Link Schema**
+
+![](/images/modulo7.2/img11.png)
+
+Este Deep link unicamente tiene un schema permitido **brainly://**
+
+**HTTP Deeplink Scheme**
+
+![](/images/modulo7.2/img12.png)
+
+![](/images/modulo7.2/img13.png)
+
+Este es un DeepLink con varios componentes, para formar la URL se combinan **scheme**, **host**, **Path** y **PathPrefix**  un ejemplo seria `https://brainly.co.id/tugas`
 
 
 
