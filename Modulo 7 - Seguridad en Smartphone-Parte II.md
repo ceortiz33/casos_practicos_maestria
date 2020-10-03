@@ -315,5 +315,24 @@ De igual manera si existiese funciones para enviar mensajes, estas funciones pod
 
 Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la **ofuscacion** como mecanismo de proteccion, ademas de utilizar una mezcla de librerias entre **Kotlin** y **Java**, en la busqueda de las funciones no se encontraron las funciones nativas `public native, System.loadLibrary, System.load`.
 
+**Exploiting Backup**
+
+`adb backup -apk -shared co.brainly`
+
+![](/images/modulo7.2/img25.png)
+
+**Backup generado**
+
+![](/images/modulo7.2/img26.png)
+
+Una herramienta que facilita el backup de archivo en Android para entorno Windows es **Android Backup Extractor**, en esta herramienta se localiza el archivo **abe.jar** y se ejecuta el siguiente comando.
+
+`java -jar abe.jar unpack backup.ab backup.tar ""`
+
+En caso que pida una contrasena se escribe la contrasena que se pidio antes de realizar el backup en este caso fue 1111
+
+![](/images/modulo7.2/img27.png)
+
+
 
 
