@@ -333,6 +333,26 @@ En caso que pida una contrasena se escribe la contrasena que se pidio antes de r
 
 ![](/images/modulo7.2/img27.png)
 
+[IDEAS]
+EXPLORAR LOS DIRECTORIOS Y VER SI SE ENCUENTRA ALGUNA PASSWORD
+INTENTAR CARGAR IMAGENES CON SCRIPTS MALICIOSO EN EL AVATAR
+IDENTIFICAR POSIBLES VECTORES DE ENTRADA
+
+
+
+
+## Analisis Dinamico
+
+**Burp Suite**
+
+REVISAR HISTORIAL DE HTTP
+TRATAR DE EXPLOTAR ALGUNA PETICION
+REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
+
+**Analisis de Webviews**
+
+**Explotacion de componentes exportados**
+
 
 
 
