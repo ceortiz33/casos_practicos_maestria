@@ -62,7 +62,9 @@ Analisis Objection
 
 **/data/user/0/co.brainly/cache/** 
 
-+ /WebView/SafeBrowsing  -> [BUSCAR INFORMACION SOBRE QUE ES SAFEBROWSING/ no se encontro mayor informacion]
++ /WebView/SafeBrowsing  
+
+A partir de la API 27 (Android 8.1) se introduce la API SafeBrowsing que permite a la aplicacion detectar URLs clasificadas como amenza por Google. Esto permite que los usuarios esten mas conscientes de los peligros ya que esta API tiene como funcionalidad mostrar una alerta de seguridad cuando se carga una URL y detiene la carga de la pagina.
 
 + /cache/image_cache -> Se hace mencion a la libreria **libcore.io.DiskLruCache**
 
@@ -355,7 +357,9 @@ REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
 
 **Usar Mobsf para comprobar de que va cada libreria**
 
+**Testing WebViews**
 
+javaScriptEnabled=true?
 
 
 
