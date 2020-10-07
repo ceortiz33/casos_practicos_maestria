@@ -351,11 +351,26 @@ REVISAR HISTORIAL DE HTTP
 TRATAR DE EXPLOTAR ALGUNA PETICION
 REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
 
-**Analisis de Webviews**
+**Analisis de DeepLinks**
 
+Durante este analisis se realiza una busqueda de funciones vulnerables en la activity donde se declaran los deeplinks en este caso **StartActivity**
 
++ `setJavaScriptEnabled(true)` puede producir XSS al llamar la aplicacion mediante un deeplink
++ `getQueryParameter('parameter')` puede producir algunos vectores de ataque como XSS, LFI.
++ `Runtime.getRuntime().exec()` puede producir RCE
++ `android:pathPattern ="/.*/"` puede producir ataques XSS
+
+DE MOMENTO NO SE ENCONTRO VULNERABLE LA APLICACION POR ESTA VIA.
+
+`adb shell am start -W -a android.intent.action.VIEW -d "http://brainly.pl/zadanie" co.brainly`
 
 **Explotacion de componentes exportados**
+
+Exported Activities
+
+`adb shell am start -n com.example.demo/com.example.test.MainActivity`
+
+
 
 **Usar Mobsf para comprobar de que va cada libreria**
 
