@@ -366,11 +366,15 @@ DE MOMENTO NO SE ENCONTRO VULNERABLE LA APLICACION POR ESTA VIA.
 
 **Explotacion de componentes exportados**
 
-Exported Activities
+**Exported Activities**
 
-`adb shell am start -n com.example.demo/com.example.test.MainActivity`
+Las siguientes activities estan exportadas como **true** para evaluar si en estas activities se expone algun dato vulnerable se usa el siguiente comando
 
+`adb shell am start -n <package>/<activity>`
 
+![](/images/modulo7.2/img29.png)
+
+Las activities a pesar de estar exportadas estas apuntan a la activity principal y no exponen ningun dato.
 
 **Usar Mobsf para comprobar de que va cada libreria**
 
