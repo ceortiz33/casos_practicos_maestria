@@ -335,6 +335,8 @@ En caso que pida una contrasena se escribe la contrasena que se pidio antes de r
 
 ![](/images/modulo7.2/img27.png)
 
+
+
 [IDEAS]
 EXPLORAR LOS DIRECTORIOS Y VER SI SE ENCUENTRA ALGUNA PASSWORD
 INTENTAR CARGAR IMAGENES CON SCRIPTS MALICIOSO EN EL AVATAR
