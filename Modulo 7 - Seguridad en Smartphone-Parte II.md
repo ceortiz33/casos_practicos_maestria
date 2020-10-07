@@ -353,6 +353,8 @@ REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
 
 **Analisis de Webviews**
 
+
+
 **Explotacion de componentes exportados**
 
 **Usar Mobsf para comprobar de que va cada libreria**
