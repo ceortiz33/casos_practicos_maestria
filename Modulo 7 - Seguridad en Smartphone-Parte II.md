@@ -338,18 +338,12 @@ En caso que pida una contrasena se escribe la contrasena que se pidio antes de r
 Como resultado se genera una carpeta con los archivos de backup, uno de los ficheros que compete examinar es db que contiene las bases de datos almacenadas en la aplicacion.
 
 + google_analytics_v4.db
-
-**tablas**
-
   + android_metadata -> en_US
   + hits2 -> Sin datos
   + properties -> valores de alguna de las propiedades
   + sqlite_sequence -> Sin datos
 
 + google_app_measurement.db
-
-**Tablas**
-
   + android_metadata -> 
   + app2 -> Numero de veces abierta la aplicacion
   + apps -> 
@@ -371,16 +365,10 @@ Como resultado se genera una carpeta con los archivos de backup, uno de los fich
   ![](/images/modulo7.2/img31.png)
 
 + google_app_measurement_local.db
-
-**Tablas**
-
   + android_metadata -> en_US.
   + messages -> Sin datos
 
 + swrve.db
-
-**Tablas**
-
   + android_metadata -> en_US
   + cache -> Varios parametros relacionados con el servicio swrve
   
