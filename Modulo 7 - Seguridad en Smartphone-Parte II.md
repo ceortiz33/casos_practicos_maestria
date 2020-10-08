@@ -335,6 +335,63 @@ En caso que pida una contrasena se escribe la contrasena que se pidio antes de r
 
 ![](/images/modulo7.2/img27.png)
 
+Como resultado se genera una carpeta con los archivos de backup, uno de los ficheros que compete examinar es db que contiene las bases de datos almacenadas en la aplicacion.
+
++ google_analytics_v4.db
+
+**tablas**
+
+  + android_metadata -> en_US
+  + hits2 -> Sin datos
+  + properties -> valores de alguna de las propiedades
+  + sqlite_sequence -> Sin datos
+
++ google_app_measurement.db
+
+**Tablas**
+
+  + android_metadata -> 
+  + app2 -> Numero de veces abierta la aplicacion
+  + apps -> 
+  + audience_filter_values -> ID de la audiencia
+  + conditional_properties -> Sin datos
+  + default_event_params -> Sin datos
+  + event_filters -> Sin datos  
+  + events -> Eventos capturados
+  
+  ![](/images/modulo7.2/img33.png)
+  
+  + main_event_params -> Sin datos.
+  + property_filters -> parametro **gets_paywall** con audience id 6. 
+  + queue -> Sin datos.
+  + raw_events -> eventos capturados en bruto.
+  + raw_events_metadata -> metadata fingerprint.
+  + user_attributes -> Varios atributos relacionados con los datos del usuario sin llegar a filtrar usuario y contrasena.
+  
+  ![](/images/modulo7.2/img31.png)
+
++ google_app_measurement_local.db
+
+**Tablas**
+
+  + android_metadata -> en_US.
+  + messages -> Sin datos
+
++ swrve.db
+
+**Tablas**
+
+  + android_metadata -> en_US
+  + cache -> Varios parametros relacionados con el servicio swrve
+  
+  ![](/images/modulo7.2/img32.png)
+  
+  + events -> Sin datos 
+  + notifications_authenticated -> Sin datos
+  + offline campaigns -> Sin datos
+  + sqlite_sequence -> 17 eventos
+  + users -> Sin datos
+
 
 
 [IDEAS]
