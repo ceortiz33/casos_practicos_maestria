@@ -37,7 +37,7 @@ Para esta seccion se realizará el reconocimiento pasivo de IMF usando el buscad
 
 **Busqueda Simple**
 
-![](/images/modulo2/busquedasimple.PNG)
+![](/images/modulo2/busquedasimple.png)
 
 Al usar el dork **site:imf.com** se reducen los resultados a unos 896 y se muestran algunos subdominios de la pagina de imf.com como lo son noticias, grados, entre  otros. Además de la página oficial de los Masters Online, MBA y Becas.
 
