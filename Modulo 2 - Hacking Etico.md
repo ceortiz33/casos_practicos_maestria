@@ -336,7 +336,7 @@ La novena flag puede obtenerse con el mismo metodo en el directorio /home/deloit
 
 **Novena Flag**
 
-![[(/images/modulo2/flag9.png)
+![](/images/modulo2/flag9.png)
 
 En esta flag se da una pista donde probablemente la ultima flag se encuentre en el directorio /root. 
 
@@ -356,7 +356,7 @@ Como resultado se genera un payload que al copiarlo en el RCE creara la shell re
 
 ![](/images/modulo2/session1.png)
 
-Enumerando con uname -a se muestra que la version actual del kernel corresponde a 4.4.
+Enumerando con `uname -a` se muestra que la version actual del kernel corresponde a 4.4.
 
 ```
 uname -a
@@ -373,7 +373,7 @@ Luego de hacer una busqueda de exploits vulnerables para ubuntu 16.04 kernel 4.4
 
 Entre los resultados obtenidos se muestra un exploit disponible para metasploit correspondiente a **BPF Local Privilege Escalation**, asi que aprovechando que ya se tiene una sesion de meterpreter activa se usara ese exploit.
 
-** Nueva sesion activa**
+**Nueva sesion activa**
 
 ![](/images/modulo2/postexploit.png)
 
