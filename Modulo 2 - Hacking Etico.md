@@ -381,6 +381,10 @@ Entre los resultados obtenidos se muestra un exploit disponible para metasploit 
 
 ![](/images/modulo2/postexploit.png)
 
+**Usuario Root**
+
+![](/images/modulo2/root.png)
+
 **Nota:** Este exploit utilizaba tambien por defecto el puerto 4444 y por esta razon dio problemas al momento de ejecutarlo, para que funcione adecuadamente se debe cambiar por un puerto cualquiera en este caso fue 4446.
 
 **Decima Flag**
@@ -388,18 +392,6 @@ Entre los resultados obtenidos se muestra un exploit disponible para metasploit 
 ![](/images/modulo2/flag10.png)
 
 La decima flag es **FLAG{YEAH_SETUID_FILES_RuL3S}**
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Bibliografía
 
