@@ -328,6 +328,8 @@ Adicionalmente dos flags pueden obtenerse mediante directory traversal aprovecha
 
 ![](/images/modulo2/flag8.png)
 
+La octava Flag es **FLAG{Y0u_are a real Hacker}**
+
 La novena flag puede obtenerse con el mismo metodo en el directorio /home/deloitte 
 
 **Flag en directorio /home/deloitte**
@@ -337,6 +339,8 @@ La novena flag puede obtenerse con el mismo metodo en el directorio /home/deloit
 **Novena Flag**
 
 ![](/images/modulo2/flag9.png)
+
+La novena flag es **FLAG{W311_D0N3_R00T_1S_W41T1nG_U}**
 
 En esta flag se da una pista donde probablemente la ultima flag se encuentre en el directorio /root. 
 
@@ -383,7 +387,7 @@ Entre los resultados obtenidos se muestra un exploit disponible para metasploit 
 
 ![](/images/modulo2/flag10.png)
 
-
+La decima flag es **FLAG{YEAH_SETUID_FILES_RuL3S}**
 
 
 
