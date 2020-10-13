@@ -173,6 +173,57 @@ Con la herramienta Drozer se puede observar que tan expuesta esta una aplicació
 
 ![](/images/modulo7.2/img5.png)
 
+**Analisis de cifrados debiles**
+
+Funciones con cifrado debil
+
+Como parte de los servicios de AWS esta utiliza cifrados compatibles definidos en la API como  SHA-256 Y MD5, Un caso en particular donde se emplea el cifrado SHA-256 es en **com.amazonaws.auth.AbstractAWSSigner**, para tratamiento interno de MD5 se usa `MessageDigest.getInstance(MD5)` en **com.amazonaws.services.s3.internal.MD5DigestCalculatingInputStream** 
+
+En el caso de la API Swrve utiliza tanto el cifrado MD5 y SHA1 dentro de sus procesos internos con las funciones MessageDigest.getInstance(MD5) y MessageDigest.getInstance(sha1) respectivamente.
+
+En la clase d.a.m.p.a se encuentra el uso del cifrado SHA-1 para generar el token, este cifrado es considerado inseguro.
+
+```java
+public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
+        String str;
+        this.a = sharedPreferences;
+        this.b = aVar;
+        this.f1066d = sharedPreferences.getString("com.brainly.lt", (String) null);
+        String string = sharedPreferences.getString("com.brainly.gt", (String) null);
+        this.f1067e = string;
+        if (string == null) {
+            String string2 = vVar.a.getString("ANDROID_DEVICE_ID", (String) null);
+            if (string2 == null) {
+                string2 = Settings.Secure.getString(vVar.b.getContentResolver(), "android_id");
+                if (TextUtils.isEmpty(string2)) {
+                    string2 = Build.SERIAL;
+                    if (TextUtils.isEmpty(string2) || string2.equals("unknown")) {
+                        string2 = UUID.randomUUID().toString();
+                    }
+                }
+                vVar.a.edit().putString("ANDROID_DEVICE_ID", string2).commit();
+            }
+            try {
+                MessageDigest instance = MessageDigest.getInstance("SHA-1");   // cifrado inseguro para generar el token
+                instance.update(string2.getBytes(n0.x.a.a));
+                str = x.u(instance.digest());
+            } catch (NoSuchAlgorithmException e2) {
+                s0.a.a.f3099d.e(e2, "Problem while generating guest token", new Object[0]);
+                StringBuilder sb = new StringBuilder(string2.length() + 40);
+                while (sb.length() < 40) {
+                    sb.append(string2);
+                }
+                str = sb.substring(0, 40);
+            }
+            this.f1067e = str;
+            sharedPreferences.edit().putString("com.brainly.gt", this.f1067e).apply();
+        }
+```
+
+[CHEQUEAR CON MOBILE SECURITY TESTING GUIDE ]
+
+
+
 **File Providers**
 
 ```xml
