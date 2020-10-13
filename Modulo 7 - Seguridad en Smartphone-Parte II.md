@@ -222,7 +222,26 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
 
 [CHEQUEAR CON MOBILE SECURITY TESTING GUIDE ]
 
+**Deteccion de dispositivo rooteado**
 
+Deteccion si la aplicacion Superuser.apk esta instalada en el dispositivo.
+
+```java
+public static boolean s(Context context) {
+        boolean q = q(context);
+        String str = Build.TAGS;
+        if ((!q && str != null && str.contains("test-keys")) || new File("/system/app/Superuser.apk").exists()) {
+            return true;
+        }
+        File file = new File("/system/xbin/su");
+        if (q || !file.exists()) {
+            return false;
+        }
+        return true;
+    }
+```
+
+[CHEQUEAR CON MOBILE SECURITY TESTING GUIDE]
 
 **File Providers**
 
@@ -233,6 +252,10 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
    <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
 </provider>
 ```
+
+**Obtencion de datos del dispositivo**
+
+
 
 **/res/xml/file_paths**
 
