@@ -175,11 +175,7 @@ Con la herramienta Drozer se puede observar que tan expuesta esta una aplicació
 
 ### Analisis de cifrados debiles
 
-`KeyGenParameterSpec` indica que la clave puede ser utilizada para encriptacion y desencriptacion, este funcion es implementada mediante la API de Amazon Web Services(**AWS**)
-
-Funciones con cifrado debil
-
-Como parte de los servicios de AWS esta utiliza cifrados compatibles definidos en la API como  SHA-256 Y MD5, Un caso en particular donde se emplea el cifrado SHA-256 es en **com.amazonaws.auth.AbstractAWSSigner**, para tratamiento interno de MD5 se usa `MessageDigest.getInstance(MD5)` en **com.amazonaws.services.s3.internal.MD5DigestCalculatingInputStream** 
+Como parte de los servicios de AWS esta utiliza cifrados compatibles definidos en la API como SHA-256 Y MD5, Un caso en particular donde se emplea el cifrado SHA-256 es en **com.amazonaws.auth.AbstractAWSSigner**,para tratamiento interno de MD5 se usa `MessageDigest.getInstance(MD5)` en **com.amazonaws.services.s3.internal.MD5DigestCalculatingInputStream** 
 
 En el caso de la API Swrve utiliza tanto el cifrado MD5 y SHA1 dentro de sus procesos internos con las funciones MessageDigest.getInstance(MD5) y MessageDigest.getInstance(sha1) respectivamente.
 
@@ -221,8 +217,6 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
             sharedPreferences.edit().putString("com.brainly.gt", this.f1067e).apply();
         }
 ```
-
-[CHEQUEAR CON MOBILE SECURITY TESTING GUIDE ]
 
 **Deteccion de dispositivo rooteado**
 
