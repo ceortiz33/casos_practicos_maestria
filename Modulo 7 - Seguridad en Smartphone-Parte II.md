@@ -173,7 +173,9 @@ Con la herramienta Drozer se puede observar que tan expuesta esta una aplicació
 
 ![](/images/modulo7.2/img5.png)
 
-**Analisis de cifrados debiles**
+### Analisis de cifrados debiles
+
+`KeyGenParameterSpec` indica que la clave puede ser utilizada para encriptacion y desencriptacion, este funcion es implementada mediante la API de Amazon Web Services(**AWS**)
 
 Funciones con cifrado debil
 
