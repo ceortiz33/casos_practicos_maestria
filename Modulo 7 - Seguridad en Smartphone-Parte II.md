@@ -268,9 +268,9 @@ Con la ayuda de un bloc de notas o cualquier editor de texto cambiamos los strin
 
 La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo tanto no funcionara. Se realiza el proceso ya mencionado anteriormente en la otra aplicacion.
 
+`keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
 
-
-
+`jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore brainly.apk alias_name`
 
 Mayor informacion se puede obtener usando el script en python **androwarn.py** que permite recopilar informacion de la aplicacion para un analisis rapido, adicionalmente a los datos ya obtenidos muestra lo siguiente.
 
