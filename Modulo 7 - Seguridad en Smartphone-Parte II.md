@@ -254,6 +254,15 @@ String jSONArray2 = jSONArray.toString();
 
 ```
 
+Mayor informacion se puede obtener usando el script en python **androwarn.py** que permite recopilar informacion de la aplicacion para un analisis rapido, adicionalmente a los datos ya obtenidos muestra lo siguiente.
+
+`python androwarn.py -i C:\Users\corti\Documents\apks\brainly.apk -v 3 -r html`
+
+La aplicacion toma datos relacionados al proveedor de servicio, codigo de pais, el tipo de dispositivo, numero registrado, estado de la SIM card.
+
+![](/images/modulo7.2/img34.png)
+
+
 **File Providers**
 
 ```xml
