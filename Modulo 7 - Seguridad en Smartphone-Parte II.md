@@ -525,3 +525,8 @@ javaScriptEnabled=true?
 
 ..
 
+### Referencias
+
+1. **Bypass Emulator Detection** https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-I/ ,https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-II/, https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-III/
+
+
