@@ -237,8 +237,6 @@ public static boolean s(Context context) {
     }
 ```
 
-[CHEQUEAR CON MOBILE SECURITY TESTING GUIDE]
-
 **File Providers**
 
 ```xml
