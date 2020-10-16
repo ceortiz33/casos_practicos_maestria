@@ -202,7 +202,7 @@ Luego de realizar el cambio se reconstruye la aplicación con el comando.
 
 Como se compilo nuevamente esta aplicación, para que sea aceptada por el emulador se necesita de una firma(signature) o key para que funcione correctamente y para esto se ejecutan los siguientes comandos.
 
-`keytool -genkey -v -keystore my-release-key.kestore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
+`keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
 
 `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore newapk alias_name`
 
