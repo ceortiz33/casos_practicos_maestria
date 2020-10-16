@@ -254,6 +254,24 @@ String jSONArray2 = jSONArray.toString();
 
 ```
 
+**Bypass de Emulator detection**
+
+Para lograr evitar esta validacion se debe usar **apktool** en el archivo *smali* de la clase d.e.x.c0.d
+
+`apktool d brainly.apk`
+
+![](/images/modulo7.2/img35.png)
+
+Con la ayuda de un bloc de notas o cualquier editor de texto cambiamos los strings "generic" por "generic-info" y asi para todos los casos.
+
+![](/images/modulo7.2/img36.png)
+
+La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo tanto no funcionara. Se realiza el proceso ya mencionado anteriormente en la otra aplicacion.
+
+
+
+
+
 Mayor informacion se puede obtener usando el script en python **androwarn.py** que permite recopilar informacion de la aplicacion para un analisis rapido, adicionalmente a los datos ya obtenidos muestra lo siguiente.
 
 `python androwarn.py -i C:\Users\corti\Documents\apks\brainly.apk -v 3 -r html`
