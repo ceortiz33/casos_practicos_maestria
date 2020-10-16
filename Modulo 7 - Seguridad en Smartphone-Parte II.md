@@ -237,6 +237,23 @@ public static boolean s(Context context) {
     }
 ```
 
+**Deteccion de Emulador**
+
+Deteccion de emulador en clase d.e.x.c0.d 
+
+```java
+String str2 = "0";
+jSONArray.put(str2);
+if (Build.FINGERPRINT.startsWith("generic") || Build.FINGERPRINT.startsWith("unknown") || Build.MODEL.contains("google_sdk") || Build.MODEL.contains("Emulator") || Build.MODEL.contains("Android SDK built for x86") || Build.MANUFACTURER.contains("Genymotion") || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic")) || "google_sdk".equals(Build.PRODUCT)) {
+    str2 = "1";
+}
+jSONArray.put(str2);
+Locale j = z.j();
+jSONArray.put(j.getLanguage() + "_" + j.getCountry());
+String jSONArray2 = jSONArray.toString();
+
+```
+
 **File Providers**
 
 ```xml
