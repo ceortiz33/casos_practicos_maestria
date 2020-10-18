@@ -507,14 +507,19 @@ La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo
 
 ### Analisis de Trafico con Burp Suite
 
-Credenciales en texto plano al intentar ingresar sesion en la api 
+Al evaluar la sesion de login de la aplicacion se observa que no se utiliza HTTPS y las credenciales se envian a la api via POST en texto plano.
 
 ![](/images/modulo7.2/img38.png)
 
+Un compartamiento en especial que se observa cuando se captura el trafico de la aplicacion es el uso de un captcha, a pesar que la aplicacion no emplea el mecanismo SSL Pinning como proteccion y las peticiones si son capturadas por el proxy, el captcha bloquea cuando se realizan varios intentos recurrentes en las peticiones, dando por terminada la aplicacion y mostrando una pantalla en blanco o en su defecto.
+
 ![](/images/modulo7.2/img39.png)
 
-![](/images/modulo7.2/img40.png)
+![](/images/modulo7.2/img41.png)
 
+texto de las preguntas??/
+
+![](/images/modulo7.2/img40.png)
 
 ### Analisis de DeepLinks
 
@@ -525,7 +530,7 @@ Durante este analisis se realiza una busqueda de funciones vulnerables en la act
 + `Runtime.getRuntime().exec()` puede producir RCE
 + `android:pathPattern ="/.*/"` puede producir ataques XSS
 
-DE MOMENTO NO SE ENCONTRO VULNERABLE LA APLICACION POR ESTA VIA.
+No se encontro un vector de entrada donde al ingresar con el siguiente comando se filtraran credenciales o contenido que no debe estar al alcance de los usuarios.
 
 `adb shell am start -W -a android.intent.action.VIEW -d "http://brainly.pl/zadanie" co.brainly`
 
@@ -533,7 +538,7 @@ DE MOMENTO NO SE ENCONTRO VULNERABLE LA APLICACION POR ESTA VIA.
 
 Las siguientes activities estan exportadas como **true** para evaluar si en estas activities se expone algun dato vulnerable se usa el siguiente comando
 
-`adb shell am start -n <package>/<activity>`
+`adb shell am start --component <package>/<activity>`
 
 ![](/images/modulo7.2/img29.png)
 
@@ -546,6 +551,11 @@ Las activities a pesar de estar exportadas estas apuntan a la activity principal
 javaScriptEnabled=true?
 
 ..
+
+### Configuracion de APIs de terceros
+
+
+
 
 ### Referencias
 
