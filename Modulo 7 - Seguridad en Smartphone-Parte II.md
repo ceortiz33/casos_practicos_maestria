@@ -218,7 +218,7 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
         }
 ```
 
-**Deteccion de dispositivo rooteado**
+### Deteccion de dispositivo rooteado
 
 Deteccion si la aplicacion Superuser.apk esta instalada en el dispositivo en la clase d.g.c.h.d.j.g
 
@@ -237,7 +237,7 @@ public static boolean s(Context context) {
     }
 ```
 
-**Deteccion de Emulador**
+### Deteccion de Emulador
 
 Deteccion de emulador en clase d.e.x.c0.d 
 
@@ -254,7 +254,7 @@ String jSONArray2 = jSONArray.toString();
 
 ```
 
-
+### Otras fuentes de informacion
 
 Mayor informacion se puede obtener usando el script en python **androwarn.py** que permite recopilar informacion de la aplicacion para un analisis rapido, adicionalmente a los datos ya obtenidos muestra lo siguiente.
 
@@ -392,7 +392,7 @@ En el codigo fuente no se encontraron estas flags por lo que no se expone a otra
 
 El almacenamiento externo puede ser accesado mediante **/storage/emulated/0**, estos archivos son de uso publico por lo que no se recomienda almacenar datos sensibles aqui, adicionalmente los datos almacenados pueden ser filtrados mediante el uso de los content providers si llegasen a estar expuestos. Brainly no tiene content providers expuestos por lo que no es posible filtrar esta informacion ni abusar de posibles SQL Injection.
 
-**Other Interesting functions**
+### Otras Funciones Interesantes
 
 **Code Execution**
 
@@ -413,7 +413,7 @@ De igual manera si existiese funciones para enviar mensajes, estas funciones pod
 
 Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la **ofuscacion** como mecanismo de proteccion, ademas de utilizar una mezcla de librerias entre **Kotlin** y **Java**, en la busqueda de las funciones no se encontraron las funciones nativas `public native, System.loadLibrary, System.load`.
 
-**Exploiting Backup**
+### Exploiting Backup
 
 `adb backup -apk -shared co.brainly`
 
@@ -477,15 +477,6 @@ Como resultado se genera una carpeta con los archivos de backup, uno de los fich
   + users -> Sin datos
 
 
-
-[IDEAS]
-EXPLORAR LOS DIRECTORIOS Y VER SI SE ENCUENTRA ALGUNA PASSWORD
-INTENTAR CARGAR IMAGENES CON SCRIPTS MALICIOSO EN EL AVATAR
-IDENTIFICAR POSIBLES VECTORES DE ENTRADA
-
-
-
-
 ## Analisis Dinamico
 
 ### Bypassing Protections
@@ -516,9 +507,14 @@ La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo
 
 ### Analisis de Trafico con Burp Suite
 
-REVISAR HISTORIAL DE HTTP
-TRATAR DE EXPLOTAR ALGUNA PETICION
-REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
+Credenciales en texto plano al intentar ingresar sesion en la api 
+
+![](/images/modulo7.2/img38.png)
+
+![](/images/modulo7.2/img39.png)
+
+![](/images/modulo7.2/img40.png)
+
 
 ### Analisis de DeepLinks
 
