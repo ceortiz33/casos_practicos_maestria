@@ -220,7 +220,7 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
 
 **Deteccion de dispositivo rooteado**
 
-Deteccion si la aplicacion Superuser.apk esta instalada en el dispositivo.
+Deteccion si la aplicacion Superuser.apk esta instalada en el dispositivo en la clase d.g.c.h.d.j.g
 
 ```java
 public static boolean s(Context context) {
@@ -254,23 +254,7 @@ String jSONArray2 = jSONArray.toString();
 
 ```
 
-**Bypass de Emulator detection**
 
-Para lograr evitar esta validacion se debe usar **apktool** en el archivo *smali* de la clase d.e.x.c0.d
-
-`apktool d brainly.apk`
-
-![](/images/modulo7.2/img35.png)
-
-Con la ayuda de un bloc de notas o cualquier editor de texto cambiamos los strings "generic" por "generic-info" y asi para todos los casos.
-
-![](/images/modulo7.2/img36.png)
-
-La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo tanto no funcionara. Se realiza el proceso ya mencionado anteriormente en la otra aplicacion.
-
-`keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
-
-`jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore brainly.apk alias_name`
 
 Mayor informacion se puede obtener usando el script en python **androwarn.py** que permite recopilar informacion de la aplicacion para un analisis rapido, adicionalmente a los datos ya obtenidos muestra lo siguiente.
 
@@ -504,13 +488,39 @@ IDENTIFICAR POSIBLES VECTORES DE ENTRADA
 
 ## Analisis Dinamico
 
-**Burp Suite**
+### Bypassing Protections
+
+**Bypass de Emulator detection**
+
+Para lograr evitar esta validacion se debe usar **apktool** en el archivo *smali* de la clase d.e.x.c0.d
+
+`apktool d brainly.apk`
+
+![](/images/modulo7.2/img35.png)
+
+Con la ayuda de un bloc de notas o cualquier editor de texto cambiamos los strings "generic" por "generic-info" y asi para todos los casos.
+
+![](/images/modulo7.2/img36.png)
+
+**Bypass de Root detection**
+
+Aprovechando que ya se cuenta con los archivo smali se realiza un cambio en la clase d.g.c.h.d.j.g y se modifica los strings relacionados con root como es el caso de "/system/app/Superuser.apk" por cualquier string, usando la metodologia anterior se cambia su valor por "/system/app/Superuser-info.apk"
+
+![](/images/modulo7.2/img37.png)
+
+La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo tanto no funcionara. Se realiza el proceso ya mencionado anteriormente en la otra aplicacion.
+
+`keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000`
+
+`jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore brainly.apk alias_name`
+
+### Analisis de Trafico con Burp Suite
 
 REVISAR HISTORIAL DE HTTP
 TRATAR DE EXPLOTAR ALGUNA PETICION
 REALIZAR ALGUNA PREGUNTA (MIRAR EL TRAFICO QUE PASA)
 
-**Analisis de DeepLinks**
+### Analisis de DeepLinks
 
 Durante este analisis se realiza una busqueda de funciones vulnerables en la activity donde se declaran los deeplinks en este caso **StartActivity**
 
@@ -523,9 +533,7 @@ DE MOMENTO NO SE ENCONTRO VULNERABLE LA APLICACION POR ESTA VIA.
 
 `adb shell am start -W -a android.intent.action.VIEW -d "http://brainly.pl/zadanie" co.brainly`
 
-**Explotacion de componentes exportados**
-
-**Exported Activities**
+### Explotacion de componentes expuestos
 
 Las siguientes activities estan exportadas como **true** para evaluar si en estas activities se expone algun dato vulnerable se usa el siguiente comando
 
