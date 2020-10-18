@@ -54,50 +54,6 @@ Como emulador de Android se usa el emulador de Android Studio con un dispositivo
 
 **FOREGROUND_SERVICE:** Permite a una aplicación regular usar el servicio startForeGround. Este permiso no representa un riesgo. 
 
-Analisis Objection
-
-**Rutas y Posibles contrasenas**
-
-![](/images/modulo7.2/img6.png)
-
-**/data/user/0/co.brainly/cache/** 
-
-+ /WebView/SafeBrowsing  
-
-A partir de la API 27 (Android 8.1) se introduce la API SafeBrowsing que permite a la aplicacion detectar URLs clasificadas como amenza por Google. Esto permite que los usuarios esten mas conscientes de los peligros ya que esta API tiene como funcionalidad mostrar una alerta de seguridad cuando se carga una URL y detiene la carga de la pagina.
-
-+ /cache/image_cache -> Se hace mencion a la libreria **libcore.io.DiskLruCache**
-
-![](/images/modulo7.2/journal_cache.png)
-
-**data/user/0/co.brainly/code-cache** -> no se encontro nada
-
-**/data/user/0/co.brainly/files**
-
-+ AppEventsLogger -> Posibles clases dedicadas a los logs de la aplicacion
-  
-  ![](/images/modulo7.2/appeventlogger.png)
-  
-+ gaClientid **c04c67c9-23a0-4726-8838-48bcc85bf78d**
-  
-+ google_app_measurement.db [REVISAR CON SQLITE-BROWSER]
-
-**/storage/emulated/0/Android/data/co.brainly/cache** -> no se encontro nada
-
-**/storage/emulated/0/Android/obb/co.brainly** -> no se encontro nada
-
-**List Activities**
-
-![](/images/modulo7.2/img7.png)
-
-**List Receivers**
-
-![](/images/modulo7.2/img8.png)
-
-**List Services**
-
-![](/images/modulo7.2/img9.png)
-
 ## Analisis de componentes del manifiesto de Android
 
 ![](/images/modulo7.2/img10.png)
@@ -386,11 +342,41 @@ Los archivos creados en el almacenamiento interno solo tiene acceso la misma app
 </map>
 ```
 
-En el codigo fuente no se encontraron estas flags por lo que no se expone a otras aplicaciones, dentro de **shared_prefs** se hallaron cookies almacenadas y el userId[REVISAR SI HAY FORMA DE EXPLOTARLO]
-
 **External Storage**
 
 El almacenamiento externo puede ser accesado mediante **/storage/emulated/0**, estos archivos son de uso publico por lo que no se recomienda almacenar datos sensibles aqui, adicionalmente los datos almacenados pueden ser filtrados mediante el uso de los content providers si llegasen a estar expuestos. Brainly no tiene content providers expuestos por lo que no es posible filtrar esta informacion ni abusar de posibles SQL Injection.
+
+**Analisis de almacenamiento con Objection**
+
+**Rutas y Posibles contrasenas**
+
+![](/images/modulo7.2/img6.png)
+
+**/data/user/0/co.brainly/cache/** 
+
++ /WebView/SafeBrowsing  
+
+A partir de la API 27 (Android 8.1) se introduce la API SafeBrowsing que permite a la aplicacion detectar URLs clasificadas como amenza por Google. Esto permite que los usuarios esten mas conscientes de los peligros ya que esta API tiene como funcionalidad mostrar una alerta de seguridad cuando se carga una URL y detiene la carga de la pagina.
+
++ /cache/image_cache -> Se hace mencion a la libreria **libcore.io.DiskLruCache**
+
+![](/images/modulo7.2/journal_cache.png)
+
+**data/user/0/co.brainly/code-cache** -> no se encontro nada
+
+**/data/user/0/co.brainly/files**
+
++ AppEventsLogger -> Posibles clases dedicadas a los logs de la aplicacion
+  
+  ![](/images/modulo7.2/appeventlogger.png)
+  
++ gaClientid **c04c67c9-23a0-4726-8838-48bcc85bf78d**
+  
++ google_app_measurement.db 
+
+**/storage/emulated/0/Android/data/co.brainly/cache** -> no se encontro nada
+
+**/storage/emulated/0/Android/obb/co.brainly** -> no se encontro nada
 
 ### Otras Funciones Interesantes
 
