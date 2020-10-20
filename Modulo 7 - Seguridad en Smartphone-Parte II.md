@@ -282,6 +282,13 @@ com.google.android.material.bottomsheet.BottomSheetBehavior ??
 <string name="google_play_link">https://play.google.com/store/apps/details?id=co.brainly</string>
 <string name="points_award_header">YOU ROCK!</string>
 ```
+
+API de Google
+
+De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y generar acciones inesperados en ella.
+
+
+
 **/res/values/public.xml**
 
 Valores referenciados de strings en la aplicacion
@@ -506,6 +513,12 @@ Un compartamiento en especial que se observa cuando se captura el trafico de la 
 texto de las preguntas??/
 
 ![](/images/modulo7.2/img40.png)
+
+### Analisis adb logcat
+
+En el caso de logcat no se pudo obtener las credenciales  mediante los logs ya que todo se maneja a traves de la conexion a Gmail y generalmente esta API de terceros es un poco mas segura. En la imagen se muestra como se establece la conexion a Gmail con la cuenta de prueba **pruebamobile47@gmail.com** y luego se establece la sesion. 
+
+![](/images/modulo7.2/img42.png)
 
 ### Analisis de DeepLinks
 
