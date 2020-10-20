@@ -469,6 +469,21 @@ Como resultado se genera una carpeta con los archivos de backup, uno de los fich
   + sqlite_sequence -> 17 eventos
   + users -> Sin datos
 
+### Analisis de Vulnerabilidad encontrada: Backup Expuesto
+
+M10: Extraneous Functionality
+Exploitability EASY Prevalence COMMON
+Detectability AVERAGE Impact SEVERE
+
+Esta vulnerabilidad involucra la busqueda de funcionalidades extranas en la aplicacion para poder explotarlas dentro de los propios sistemas. Tener la opcion de AllowBackup:true en sistemas de produccion no es recomendable ya que si se llegasen a almacenar credenciales o informacion importante dentro de la aplicacion da la posibilidad a un atacante o a cualquier persona tener acceso a los datos de la aplicacion.
+
+**Impactos tecnicos.**
+
+Esta vulnerabilidad expone los datos almacenados en la aplicacion que puedan ser descargados usando una copia de seguridad o backup. Si bien no se hallaron datos que comprometan al usuario en las bases de datos obtenidas en el backup esta configuracion no es la adecuada en produccion porque permite el acceso a la informacion a cualquier persona.
+
+**Impactos de negocio**
+
+Brainly es una aplicacion de preguntas de varias asignaturas y con un publico objetivo variado esto debido a que abarca a usuarios de escuela, colegio y universidades. El lema de la empresa es "llevada por estudiantes apoyados por los padres", filtrar crendenciales de menores de edad ya de por si es grave. La empresa sufriria un dano reputacional e incluso demandas por parte de los padres si se llegase a conocer algun caso de filtracion de datos por terceras personas.
 
 ## Analisis Dinamico
 
