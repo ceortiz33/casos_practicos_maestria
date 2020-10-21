@@ -589,7 +589,7 @@ Las siguientes activities estan exportadas como **true** para evaluar si en esta
 
 Las activities a pesar de estar exportadas estas apuntan a la activity principal y no exponen ningun dato.
 
-**Services exportados**
+**Broadcast Receivers exportados**
 
 El primer servicio expuesto es com.google.firebase.iid.FirebaseInstaceIdReceiver, aqui se detalla lo siguiente si el primer intent existe entonces llama a un elemento parcelable con id "wrapped_intent", y luego al intent2 comprueba si el string es igual a google.com/iid.
 
@@ -600,6 +600,13 @@ Con el siguiente payload en Drozer se logra obtener una respuesta del servicio  
 `run app.broadcast.send --action  com.google.android.c2dm.intent.RECEIVE --component com.google.firebase.iid com.google.firebase.iid.FirebaseInstanceIdReceiver --extra parcelable wrapped_intent intent  --extra string from google.com/iid`
 
 ![](/images/modulo7.2/img46.png)
+
+El segundo servicio expuesto es una implementacion de la API swrve que esta a la espera de las notificaciones, cuando ocurra un evento envia una notificacion a la aplicacion.
+
+![](/images/modulo7.2/img47.png)
+
+**Services exportados**
+
 
 
 ### Referencias
