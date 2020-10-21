@@ -295,13 +295,26 @@ com.google.android.material.bottomsheet.BottomSheetBehavior ??
 <string name="points_award_header">YOU ROCK!</string>
 ```
 
-**API de Google**
-
-De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y generar acciones inesperados en ella.
-
 **API SWRVE**
 
+Esta API permite hacer varias llamadas de tipo REST para enviar la data de eventos desde la app.
+
 **API Branch**
+
+Branch es una API que se encarga de registrar varias metricas de la aplicacion con propositos de mejora en su servicio de marketing, ademas se encarga que los enlaces a los que apunta la aplicacion verdaderamente se dirijan a donde deben apuntar. En el caso de esta API su key estaba disponible en el archivo strings.xml pero no su **SECRET** por lo tanto no se pudo ingresar con el payload.
+
+`https://api2.branch.io/v1/app/KEY_HERE?branch_secret=SECRET_HERE`
+
+**API de Google**
+
+De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y se pueden generar acciones inesperados en ella. 
+
+Realizando una busqueda sobre como explotar estas API se encontro algunos payloads en https://github.com/streaak/keyhacks#Google-Maps-API-key y probandolos se mostraron resultados indicando que la API estaba restringida para su acceso. Con el servicio que se obtuvo un resultado diferente y se obtuvo mas metadata fue con **Roads**
+
+![](/images/modulo7.2/img44.png) ![](/images/modulo7.2/img43.png)
+
+
+
 
 **/res/values/public.xml**
 
