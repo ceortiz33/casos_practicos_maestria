@@ -579,6 +579,8 @@ No se encontro un vector de entrada donde al ingresar con el siguiente comando s
 
 ### Explotacion de componentes expuestos
 
+**Activities exportadas**
+
 Las siguientes activities estan exportadas como **true** para evaluar si en estas activities se expone algun dato vulnerable se usa el siguiente comando
 
 `adb shell am start --component <package>/<activity>`
@@ -587,17 +589,17 @@ Las siguientes activities estan exportadas como **true** para evaluar si en esta
 
 Las activities a pesar de estar exportadas estas apuntan a la activity principal y no exponen ningun dato.
 
-**Usar Mobsf para comprobar de que va cada libreria**
+**Services exportados**
 
-**Testing WebViews**
+El primer servicio expuesto es com.google.firebase.iid.FirebaseInstaceIdReceiver, aqui se detalla lo siguiente si el primer intent existe entonces llama a un elemento parcelable con id "wrapped_intent", y luego al intent2 comprueba si el string es igual a google.com/iid.
 
-javaScriptEnabled=true?
+![](/images/modulo7.2/img45.png)
 
-..
+Con el siguiente payload en Drozer se logra obtener una respuesta del servicio  aunque no expone datos sensibles.
 
-### Configuracion de APIs de terceros
+`run app.broadcast.send --action  com.google.android.c2dm.intent.RECEIVE --component com.google.firebase.iid com.google.firebase.iid.FirebaseInstanceIdReceiver --extra parcelable wrapped_intent intent  --extra string from google.com/iid`
 
-
+![](/images/modulo7.2/img46.png)
 
 
 ### Referencias
