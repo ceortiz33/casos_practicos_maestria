@@ -483,11 +483,9 @@ Como resultado se genera una carpeta con los archivos de backup, uno de los fich
   + sqlite_sequence -> 17 eventos
   + users -> Sin datos
 
-### Analisis de Vulnerabilidad encontrada: Backup Expuesto
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
 
-M10: Extraneous Functionality
-Exploitability EASY Prevalence COMMON
-Detectability AVERAGE Impact SEVERE
+**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
 
 Esta vulnerabilidad involucra la busqueda de funcionalidades extranas en la aplicacion para poder explotarlas dentro de los propios sistemas. Tener la opcion de AllowBackup:true en sistemas de produccion no es recomendable ya que si se llegasen a almacenar credenciales o informacion importante dentro de la aplicacion da la posibilidad a un atacante o a cualquier persona tener acceso a los datos de la aplicacion.
 
