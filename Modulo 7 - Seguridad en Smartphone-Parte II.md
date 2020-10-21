@@ -311,10 +311,13 @@ De acuerdo a la documentacion cuando se utilicen claves de API en las aplicacion
 
 Realizando una busqueda sobre como explotar estas API se encontro algunos payloads en https://github.com/streaak/keyhacks#Google-Maps-API-key y probandolos se mostraron resultados indicando que la API estaba restringida para su acceso. Con el servicio que se obtuvo un resultado diferente y se obtuvo mas metadata fue con **Roads**
 
-![](/images/modulo7.2/img44.png) ![](/images/modulo7.2/img43.png)
+**Servicio Geocoding y demas servicios**
 
+![](/images/modulo7.2/img44.png) 
 
+**Servicio Roads**
 
+![](/images/modulo7.2/img43.png)
 
 **/res/values/public.xml**
 
