@@ -311,6 +311,7 @@ De acuerdo a la documentacion cuando se utilicen claves de API en las aplicacion
 
 Realizando una busqueda sobre como explotar estas API se encontro algunos payloads en https://github.com/streaak/keyhacks#Google-Maps-API-key y probandolos se mostraron resultados indicando que la API estaba restringida para su acceso. Con el servicio que se obtuvo un resultado diferente y se obtuvo mas metadata fue con **Roads**
 
+
 **Servicio Geocoding y demas servicios**
 
 ![](/images/modulo7.2/img44.png) 
@@ -602,5 +603,6 @@ javaScriptEnabled=true?
 ### Referencias
 
 1. **Bypass Emulator Detection** https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-I/ ,https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-II/, https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-III/
+2. **Testing API Keys** https://github.com/streaak/keyhacks
 
 
