@@ -174,6 +174,20 @@ public a(SharedPreferences sharedPreferences, d.a.m.l.a aVar, v vVar) {
         }
 ```
 
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M5: Insufficient Cryptography | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+De acuerdo a la informacion de OWASP TOP 10 esta vulnerabilidad se produce cuando se implementan mecanismos de encriptacion que son debiles y pueden ser desencriptado por el adversario. En la guia Mobile Security Testing Guide se menciona que no es recomendable utilizar cifrados como MD5 Y SHA-1 ya que a dia de hoy son considerados vulnerables si se utilizan para cifrar datos sensibles, en el caso de esta funcion se implementa el algoritmo SHA-1 al archivo SharedPreferences que es donde normalmente se almacenan las bases de datos y otros datos personales.
+
+**Impacto Tecnico**
+
+El uso de cifrados considerados como debiles permite a un atacante obtener la informacion que deberia ser protegida mediante la implementacion de dicho algoritmo.
+
+**Impacto de Negocio**
+
+Los impactos que tiene esta vulnerabilidad son los siguientes: Robo de Informacion debido al cifrado debil en el archivo SharedPreferences que contiene informacion de los estudiantes.
+
 ### Deteccion de dispositivo rooteado
 
 Deteccion si la aplicacion Superuser.apk esta instalada en el dispositivo en la clase d.g.c.h.d.j.g
