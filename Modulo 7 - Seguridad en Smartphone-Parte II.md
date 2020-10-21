@@ -91,8 +91,6 @@ De igual manera ShareSendActivity tambien envia la data de una activity a otra. 
 
 ![](/images/modulo7.2/img15.png)
 
-Brainly utiliza otras integraciones de aplicaciones de terceros como Google Firebase y SWRVE donde se muestran algunas API KEYS.[REVISAR DOCUMENTACION DE FIREBASE SOBRE EXPOSICION DE ANDROID VALUE]
-
 **Firebase key**
 
 ![](images/modulo7.2/img17.png)
@@ -297,11 +295,13 @@ com.google.android.material.bottomsheet.BottomSheetBehavior ??
 <string name="points_award_header">YOU ROCK!</string>
 ```
 
-API de Google
+**API de Google**
 
 De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y generar acciones inesperados en ella.
 
+**API SWRVE**
 
+**API Branch**
 
 **/res/values/public.xml**
 
