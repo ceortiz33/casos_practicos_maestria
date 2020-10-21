@@ -317,7 +317,7 @@ Valores referenciados de strings en la aplicacion
 
 ![](/images/modulo7.2/img21.png)
 
-Trafico en texto plano habilitado.
+En esta configuracion se permite el trafico en texto plano para varios subdominios en la aplicacion.
 
 ### Insecure Data and File Storage
 
@@ -527,7 +527,7 @@ La nueva apk se guardara en la carpeta **dist**, esta apk no esta firmada por lo
 
 ### Analisis de Trafico con Burp Suite
 
-Al evaluar la sesion de login de la aplicacion se observa que no se utiliza HTTPS y las credenciales se envian a la api via POST en texto plano.
+Al evaluar la sesion de login de la aplicacion se observa que el trafico en texto plano se permite para esta api y por lo tanto son visibles cuando son interceptadas.
 
 ![](/images/modulo7.2/img38.png)
 
