@@ -603,9 +603,12 @@ Con el siguiente payload en Drozer se logra obtener una respuesta del servicio  
 
 El segundo servicio expuesto es una implementacion de la API swrve que esta a la espera de las notificaciones, cuando ocurra un evento envia una notificacion a la aplicacion.
 
+`run app.broadcast.send --component com.swrve.sdk com.swrve.sdk.SwrveNotificationEngageReceiver`
+
 ![](/images/modulo7.2/img47.png)
 
 **Services exportados**
+
 
 
 
