@@ -1,6 +1,6 @@
 # Parte III
 
-# Twigano(Aplicacion de mirror de apks)
+# Reca(Aplicacion de mirror de apks)
 
 **Descripción de la aplicación**
 
