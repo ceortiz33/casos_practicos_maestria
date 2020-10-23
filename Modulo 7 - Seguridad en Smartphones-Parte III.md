@@ -4,5 +4,5 @@
 
 **Descripción de la aplicación**
 
-Twigano es una aplicacion tipo red social descargada de un repositorio de apks externo conocido como www.apkmonk.com 
+Reca es una aplicacion de venta de articulos de ferreteria descargada de un repositorio de apks externo conocido como www.apkmonk.com 
 
