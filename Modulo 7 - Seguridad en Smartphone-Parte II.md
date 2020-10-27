@@ -320,6 +320,22 @@ Realizando una busqueda sobre como explotar estas API se encontro algunos payloa
 
 ![](/images/modulo7.2/img43.png)
 
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M1: Improper Platform Usage Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Este ataque corresponde a los mismos vectores de ataque que el OWASP TOP 10 tradicional, en donde una API expuesta puede servir como vector de ataque.
+
+**Impactos tecnicos**
+
+De acuerdo a la guia de seguridad de APIs de Google se menciona que exponer las APIS en el codigo se considera un riesgo ya que les da la posibilidad a los atacantes de ingresar a la informacion que se gestiona usando dicha API si la aplicacio no esta protegida, en este caso la API estaba restringida y no se pudo observar mayor detalle, en el servicio Roads se expone metadata acerca del uso de la plataforma y muestra el id del proyecto, el problema es que el archivo de configuracion no se encontraba en la aplicacion y no se pudo explotar esta API sin tener conocimiento de la cuenta de gmail con la que habia registrado la API google_api_key
+
+**Impactos de negocio**
+
+En el caso que se haya conseguido acceso a la API esto provocaria que los datos almacenados en la API sean expuestos a terceras personas.
+
+
 **/res/values/public.xml**
 
 Valores referenciados de strings en la aplicacion
