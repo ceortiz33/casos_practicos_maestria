@@ -111,6 +111,12 @@ En el manifiesto de Android se muestran los siguientes permisos.
 
 ![](/images/modulo7.3/img4.png)
 
+## Analisis de componentes del manifiesto de Android
+
+
+**Componentes de la aplicacion**
+![](/images/modulo7.3/img5.png)
+
 
 
 
