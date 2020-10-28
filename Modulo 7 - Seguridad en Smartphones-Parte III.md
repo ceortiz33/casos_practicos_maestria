@@ -73,7 +73,7 @@ En el manifiesto de Android se muestran los siguientes permisos.
 
 **ACCESS_NETWORK_STATE:** Permite el acceso a la informacion acerca de las redes, esta catalogada como normal, es uno de los permisos mas comunes.
 
-**RECORD_AUDIO:** Permite a la aplicacion acceder al audio de la aplicacion. Este permiso es considerado como peligroso y es innecesario ya que en la aplicacion en ninguna parte se utiliza la voz como medio para efectuar un pago o alguna funcionalidad similar.
+**RECORD_AUDIO:** Permite a la aplicacion acceder al audio de la aplicacion. Este permiso es considerado como peligroso y es innecesario, en la aplicacion se utiliza la voz para indicar un producto que desee, a criterio personal no considero que sea la manera mas adecuada cuando ya se tiene la opcion de tomar foto del producto.
 
 **WRITE_EXTERNAL_STORAGE:** Permite a una aplicación escribir en el almacenamiento externo, esta catalogada como peligroso, a partir de la API 19 este permiso ya no es requerido para leer o escribir archivos en los directorios especificos de la aplicación.
 
@@ -113,16 +113,58 @@ En el manifiesto de Android se muestran los siguientes permisos.
 
 ## Analisis de componentes del manifiesto de Android
 
+```xml
+android:name="com.sic.android.wuerth.wuerthapp.WuerthApplication" android:allowBackup="true" android:supportsRtl="true" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@mipmap/ic_launcher_round"
+```
+
+El backup de la aplicacion esta habilitado por lo tanto el usuario tiene acceso a esta configuracion que normalmente no deberia estar disponible en produccion. La configuracion de red permite limitar el uso a ciertos dominios o certificados, motivo por el cual tambien se realizara una busqueda de la informacion proporcionada en este archivo.
+
+
+**Actividad Principal de la aplicacion**
+
+```xml
+<activity android:name="com.sic.android.wuerth.wuerthapp.views.StartActivity_" android:resizeableActivity="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+```
+
+Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerthapp.views.StartActivity** 
+
+**HTTP Deeplink Scheme**
+
+```xml
+            
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
+            <intent-filter android:autoVerify="true">
+                <data android:scheme="https" android:host="shop.recanorm.de" android:pathPattern=".*/.*\\.sku.*" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <data android:scheme="https" android:host="shop.recanorm.de" android:pathPattern=".*/.*\\.cyid.*" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+ ```
+
+**Custom Deep Link Schema**
+
+ ```xml        
+            <intent-filter>
+                <data android:scheme="reca" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+```
 
 **Componentes de la aplicacion**
 ![](/images/modulo7.3/img5.png)
-
-
-
-
-
-
-
 
 
 
