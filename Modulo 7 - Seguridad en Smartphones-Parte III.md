@@ -163,6 +163,98 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
         </activity>
 ```
 
+**File Providers**
+
+```xml
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <provider android:name="android.support.v4.content.FileProvider" android:exported="false" android:authorities="project.apriljune.recanorm.fileprovider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
+        </provider>
+```
+
+**Activities**
+
+```xml
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.mainnavigation.MainActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.branch.BranchNearbyActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.termsofservice.TermsOfServiceActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.checkout.CheckoutActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.checkout.OrderSuccessActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.shippingaddress.ShippingAddressManagerActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.shippingaddress.ShippingAddressDetailActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.settings.SettingsActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.web.WebActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.settings.ProductLanguageActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.samedaycombination.SameDayCombinationActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.summary.SummaryActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.mainnavigation.FullscreenActivity_" />
+        <activity android:theme="@style/Base.Theme.AppCompat" android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.views.onboardingMigration.OnboardingMigrationParentActivity_" />
+        <activity android:name="com.sic.android.wuerth.wuerthapp.helper.WuerthActivity_" />
+
+```
+
+
+
+
+```xml
+        <meta-data android:name="android.support.VERSION" android:value="26.1.0" />
+        <receiver android:name="com.sic.android.wuerth.wuerthapp.platformspecific.NotificationServiceImpl$NotificationReceiver" />
+        <service android:name="com.sic.android.wuerth.wuerthapp.platformspecific.connectivity.ConnectivityChangeReceiverService" />
+        <receiver android:name="com.sic.android.wuerth.wuerthapp.helper.general.GeofenceBroadcastReceiver" android:enabled="true" android:exported="true" />
+        <service android:name="com.sic.android.wuerth.wuerthapp.platformspecific.GeofenceTransitionsIntentService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true" />
+        <service android:name="com.sic.android.wuerth.wuerthapp.helper.general.BranchUpdateService" />
+        
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAio5bRtpLLsXgtoo50zB-Snf_hse36n7I" />
+        <meta-data android:name="io.fabric.ApiKey" android:value="54596d37816006f22b138eb6141735fd5f5ce6a5" />
+        <activity android:theme="@style/Theme.Transparent" android:name="com.karumi.dexter.DexterActivity" android:launchMode="singleTask" />
+        <provider android:name="com.google.firebase.perf.provider.FirebasePerfProvider" android:exported="false" android:authorities="project.apriljune.recanorm.firebaseperfprovider" android:initOrder="101" />
+        <service android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.perf.component.FirebasePerfRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver" android:enabled="true" android:exported="false" />
+        <service android:name="com.google.android.gms.analytics.AnalyticsService" android:enabled="true" android:exported="false" />
+        <service android:name="com.google.android.gms.analytics.AnalyticsJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />
+        <service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="project.apriljune.recanorm" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.firebase.iid.FirebaseInstanceIdService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <provider android:name="com.crashlytics.android.CrashlyticsInitProvider" android:exported="false" android:authorities="project.apriljune.recanorm.crashlyticsinitprovider" android:initOrder="100" />
+        <receiver android:name="org.piwik.sdk.extra.InstallReferrerReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <provider android:name="com.facebook.internal.FacebookInitProvider" android:exported="false" android:authorities="project.apriljune.recanorm.FacebookInitProvider" />
+        <meta-data android:name="android.arch.lifecycle.VERSION" android:value="27.0.0-SNAPSHOT" />
+    </application>
+
+```
+
+
+
+
+
+
 **Componentes de la aplicacion**
 ![](/images/modulo7.3/img5.png)
 
