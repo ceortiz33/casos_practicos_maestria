@@ -150,6 +150,8 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
  ```
+ 
+ Este es un DeepLink con varios componentes, para formar la URL se combinan scheme, host, Path y PathPrefix un ejemplo seria `https://shop.recanorm.de/.*.*\\.sku.*` 
 
 **Custom Deep Link Schema**
 
@@ -162,6 +164,8 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
             </intent-filter>
         </activity>
 ```
+Este Deep link unicamente tiene un schema permitido **reca://**
+
 
 **File Providers**
 
@@ -191,11 +195,11 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
         <activity android:theme="@style/Base.Theme.AppCompat" android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity android:name="com.sic.android.wuerth.wuerthapp.views.onboardingMigration.OnboardingMigrationParentActivity_" />
         <activity android:name="com.sic.android.wuerth.wuerthapp.helper.WuerthActivity_" />
+        <activity android:theme="@style/Theme.Transparent" android:name="com.karumi.dexter.DexterActivity" android:launchMode="singleTask" />
 
 ```
 
-
-
+**Services y Receivers**
 
 ```xml
         <meta-data android:name="android.support.VERSION" android:value="26.1.0" />
@@ -204,23 +208,30 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
         <receiver android:name="com.sic.android.wuerth.wuerthapp.helper.general.GeofenceBroadcastReceiver" android:enabled="true" android:exported="true" />
         <service android:name="com.sic.android.wuerth.wuerthapp.platformspecific.GeofenceTransitionsIntentService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true" />
         <service android:name="com.sic.android.wuerth.wuerthapp.helper.general.BranchUpdateService" />
-        
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+```
+
+**Uso de APIS**
+
+```xml
+<meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAio5bRtpLLsXgtoo50zB-Snf_hse36n7I" />
         <meta-data android:name="io.fabric.ApiKey" android:value="54596d37816006f22b138eb6141735fd5f5ce6a5" />
-        <activity android:theme="@style/Theme.Transparent" android:name="com.karumi.dexter.DexterActivity" android:launchMode="singleTask" />
-        <provider android:name="com.google.firebase.perf.provider.FirebasePerfProvider" android:exported="false" android:authorities="project.apriljune.recanorm.firebaseperfprovider" android:initOrder="101" />
 ```
 
 **Servicio de Firebase**
 
 
 ```xml
-        <service android:name="com.google.firebase.components.ComponentDiscoveryService">
-            <meta-data android:name="com.google.firebase.components:com.google.firebase.perf.component.FirebasePerfRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
-            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar" />
-        </service>
+<provider android:name="com.google.firebase.perf.provider.FirebasePerfProvider" android:exported="false" android:authorities="project.apriljune.recanorm.firebaseperfprovider" android:initOrder="101" />
+      <service android:name="com.google.firebase.components.ComponentDiscoveryService">
+         <meta-data android:name="com.google.firebase.components:com.google.firebase.perf.component.FirebasePerfRegistrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+         <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+      </service>
 ```
+
+**Otras integraciones con Google, Facebook y Firebase**
+
+```xml
 
         <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver" android:enabled="true" android:exported="false" />
         <service android:name="com.google.android.gms.analytics.AnalyticsService" android:enabled="true" android:exported="false" />
@@ -258,7 +269,9 @@ Como se puede observar la actividad principal es **com.sic.android.wuerth.wuerth
 
 ```
 
+## Analisis Estatico
 
+Con la herramienta Drozer se puede comprobar lo presentado anteriormente en MobSF donde se mecionaba que existian  que tan expuesta esta una aplicación, en este caso hay 4 activities, 2 broadcast receivers y 1 servicio que están exportados como true.
 
 
 
