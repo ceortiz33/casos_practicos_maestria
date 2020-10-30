@@ -312,10 +312,43 @@ private static String a(String str) {
     }
 ```
 
+## Deteccion de dispositivo rooteado
 
+Deteccion de root en la clase **io.fabric.sdk.android.services.common.CommonUtils**
 
+```java
+public static boolean g(Context context) {
+        boolean f = f(context);
+        String str = Build.TAGS;
+        if ((!f && str != null && str.contains("test-keys")) || new File("/system/app/Superuser.apk").exists()) {
+            return true;
+        }
+        File file = new File("/system/xbin/su");
+        if (f || !file.exists()) {
+            return false;
+        }
+        return true;
+    }
 
+```
 
+## File Recon
+
+**resources.arsc/res/values/strings.xml/**
+
+```xml
+<string name="default_web_client_id">61973707321-7o03fnukb2n72objb51l0egrqktem067.apps.googleusercontent.com</string>
+<string name="facebook_app_id">1234567890123456</string>
+<string name="firebase_database_url">https://recaapp-76cb9.firebaseio.com</string>
+<string name="google_api_key">AIzaSyCCZ3btSUyPYkI9fd9HXU-t6tf9N5mTY2Y</string>
+<string name="google_app_id">1:61973707321:android:bd409ad288883eaa</string>
+<string name="google_crash_reporting_api_key">AIzaSyCCZ3btSUyPYkI9fd9HXU-t6tf9N5mTY2Y</string>
+<string name="google_storage_bucket">recaapp-76cb9.appspot.com</string>
+<string name="library_AndroidIconics_authorWebsite">http://mikepenz.com/</string>
+<string name="library_AndroidIconics_libraryWebsite">https://github.com/mikepenz/Android-Iconics</string>
+```
+
+Como resultado de explorar el contenido del archivo strings.xml se encontro lo siguiente la url para acceder a Firebase, API Keys expuestas y un repositorio de Github de terceras personas que por el nombre de la pagina se puede deducir que se llama Mike Penz.
 
 
 
