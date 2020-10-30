@@ -271,13 +271,30 @@ Este Deep link unicamente tiene un schema permitido **reca://**
 
 ## Analisis Estatico
 
-Con la herramienta Drozer se puede comprobar lo presentado anteriormente en MobSF donde se mecionaba que existian  que tan expuesta esta una aplicación, en este caso hay 4 activities, 2 broadcast receivers y 1 servicio que están exportados como true.
-
-
-
+Con la herramienta Drozer se puede comprobar lo presentado anteriormente en MobSF donde se mecionaba que existian  que tan expuesta esta una aplicación, en este caso hay 0 activities, 4 broadcast receivers y 2 servicios que están exportados como true.
 
 **Componentes de la aplicacion**
 ![](/images/modulo7.3/img5.png)
+
+Para contrastar esta informacion se analiza la superficie de ataque con Drozer y se obtienen resultado similares con la excepcion que ahora aparece 1 activity exportada
+
+**Superficie de exposicion**
+
+![](/images/modulo7.3/img6.png)
+
+**Activities exportadas para la aplicacion Reca**
+
+![](/images/modulo7.3/img7.png)
+
+**Broadcast receives para la aplicacion Reca**
+
+![](/images/modulo7.3/img8.png)
+
+**Services para la aplicacion Reca**
+
+![](/images/modulo7.3/img9.png)
+
+
 
 
 
