@@ -294,8 +294,23 @@ Para contrastar esta informacion se analiza la superficie de ataque con Drozer y
 
 ![](/images/modulo7.3/img9.png)
 
+## Analisis de cifrados debiles
+
+MobSF indica que la clase com/wuerthit/core/presenters/RecommendationsPresenterImpl.java utiliza un cifrado MD5 considerado debil por tener colisiones hash, revisando la clase mas detalladamente con jadx-gui se demuestra que efectivamente se usa el cifrado MD5 pero al usar **Find Usage** se observa que el algoritmo MD5 se aplica a `String a2 = a(this.i.a("preferences_customer_id", ""));` . El id de preferencia de consumo, no es considerado un dato sensible, los ids son considerados datos seudonimizados o informacion de identificacion no directa. Si bien es cierto se aplica un cifrado considerado debil, esto se aplica a un dato que no es considerado sensible por lo tanto no se considerara como vulnerabilidad.
 
 
+```java
+private static String a(String str) {
+        try {
+            MessageDigest instance = MessageDigest.getInstance("MD5");
+            instance.update(str.getBytes(), 0, str.length());
+            return new BigInteger(1, instance.digest()).toString(16);
+        } catch (NoSuchAlgorithmException e2) {
+            e2.printStackTrace();
+            return null;
+        }
+    }
+```
 
 
 
