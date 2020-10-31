@@ -350,6 +350,12 @@ public static boolean g(Context context) {
 
 Como resultado de explorar el contenido del archivo strings.xml se encontro lo siguiente la url para acceder a Firebase, API Keys expuestas y un repositorio de Github de terceras personas que por el nombre de la pagina se puede deducir que se llama Mike Penz.
 
+**API de Google**
+
+De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y se pueden generar acciones inesperados en ella. Luego de evaluar la API key con los payloads del repositorio de Github ninguno dio una respuesta favorable debido a que la app esta restringida.
+
+![](/images/modulo7.3/img11.png)
+
 ## Insecure Data and File Storage
 
 **Firebase credentials**
