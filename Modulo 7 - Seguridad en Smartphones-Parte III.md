@@ -111,6 +111,10 @@ En el manifiesto de Android se muestran los siguientes permisos.
 
 ![](/images/modulo7.3/img4.png)
 
+La version del certificado corresponde a la version 1 por lo tanto esto hace vulnerable ante ataques con la vulnerabilidad Janus presente en versiones anteriores a la 7.0. Janus fue  un exploit que permitia a un atacante modificar los permisos de la aplicacion y de esta manera obtener informacion sensible de los propietarios.
+
+![](/images/modulo7.3/img19.png)
+
 ## Analisis de componentes del manifiesto de Android
 
 ```xml
@@ -482,7 +486,7 @@ En el caso de **/storage/emulated/0/Android/obb/project.apriljune.recanorm**  ta
 
 ![](/images/modulo7.3/img13.png)
 
-Abe.jar
+Se utiliza nuevamente abe.jar para extraer el archivo backup.ab y luego ya se podra extraer.
 
 ![](/images/modulo7.3/img14.png)
 
@@ -492,10 +496,10 @@ Como resultado se genera una carpeta con los archivos de backup, uno de los fich
 
 Revisando las bases de datos con SQLBrowser se encontro lo siguiente.
 
-+  wuerth6.0db
++ wuerth6.0db
 
-  +  android_metadata -> en_US
-  +  branch -> informacion relacionada a las sucursales como el nombre, la ubicacion, el numero de telefono,la imagen de la sucursal entre otros datos
+  + android_metadata -> en_US
+  + branch -> informacion relacionada a las sucursales como el nombre, la ubicacion, el numero de telefono,la imagen de la sucursal entre otros datos
   
   ![](/images/modulo7.3/img16.png)
   
@@ -515,6 +519,19 @@ La aplicacion a nivel de login solo permite registrar con su plataforma y en est
   ![](/images/modulo7.3/img18.png)
   
   
+## Analisis Dinamico
+
+![](/images/modulo7.3/img20.png)
+
+**Analisis del trafico con Burpsuite**
+
+RECA no tiene mecanismos de proteccion como SSL Pinning para evitar que se puedan ejecutar ataques MITM en la aplicacion, cuando se establecio la configuracion del proxy en el dispositivo el trafico que capturo lo hizo de forma inmediata. En la imagen se puede observar que lo que mas utiliza esta aplicacion son APIs de metricas de terceras personas como es el caso de graphql de Facebook y googlecrashlytics de Google.
+
+Cuando se inicio sesion aparece en el lado izquierdo un campo indicando si hay un usuario logeado y aparece 0 indicando que se logoe como usuario anonimo, del lado derecho esta los parametros de las imagenes como su titulo, la url y la descripcion.
+
+**Analisis con Logcat**
+
+![](/images/modulo7.3/img21.png)
 
 
 
