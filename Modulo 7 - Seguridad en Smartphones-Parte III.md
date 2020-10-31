@@ -529,9 +529,10 @@ RECA no tiene mecanismos de proteccion como SSL Pinning para evitar que se pueda
 
 Cuando se inicio sesion aparece en el lado izquierdo un campo indicando si hay un usuario logeado y aparece 0 indicando que se logoe como usuario anonimo, del lado derecho esta los parametros de las imagenes como su titulo, la url y la descripcion.
 
+![](/images/modulo7.3/img21.png)
+
 **Analisis con Logcat**
 
-![](/images/modulo7.3/img21.png)
 En este log tambien se muestra una peticion para ingresar con el usuario 0 (anonymous)
 
 ![](/images/modulo7.3/img22.png)
