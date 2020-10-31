@@ -356,6 +356,31 @@ De acuerdo a la documentacion cuando se utilicen claves de API en las aplicacion
 
 ![](/images/modulo7.3/img11.png)
 
+/res/xml/network_security_config.xml
+
+```xml
+  <?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
+```
+
+[LEER DOCUMENTACION SOBRE EL PARAMETRO DEBUG-OVERRIDES]
+
+/res/xml/filepaths.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-cache-path name="external_files" path="."/>
+</paths>
+```
+
 ## Insecure Data and File Storage
 
 **Firebase credentials**
