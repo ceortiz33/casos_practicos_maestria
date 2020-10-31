@@ -532,6 +532,8 @@ Cuando se inicio sesion aparece en el lado izquierdo un campo indicando si hay u
 **Analisis con Logcat**
 
 ![](/images/modulo7.3/img21.png)
+En este log tambien se muestra una peticion para ingresar con el usuario 0 (anonymous)
 
+![](/images/modulo7.3/img22.png)
 
 
