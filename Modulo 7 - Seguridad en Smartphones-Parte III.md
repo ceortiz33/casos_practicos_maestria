@@ -350,6 +350,37 @@ public static boolean g(Context context) {
 
 Como resultado de explorar el contenido del archivo strings.xml se encontro lo siguiente la url para acceder a Firebase, API Keys expuestas y un repositorio de Github de terceras personas que por el nombre de la pagina se puede deducir que se llama Mike Penz.
 
+## Insecure Data and File Storage
 
+**Firebase credentials**
+
+En el archivo strings.xml se mostro la URL que corresponde a la base de datos firebase https://recaapp-76cb9.firebaseio.com . Para evaluar si la base de datos es de acceso publico se le agrega /.json a la URL.
+
+**Base de datos no es de acceso publico**
+
+![](/images/modulo7.3/img10.png)
+
+La Url no es de acceso publico por lo tanto las configuraciones de seguridad de Firebase no tiene habilitado la opción ‘read permission’.
+
+## Otras Funciones Interesantes
+
+**Code Execution**
+
+Si existiesen alguna de estas funciones se pueden aprovechar para ejecutar remotamente comandos. Dentro del codigo de Brainly no se encontraron.
+
++  Runtime.exec()
++  ProcessBuilder()
++  native code:system()
+
+**Send SMS**
+
+De igual manera si existiese funciones para enviar mensajes, estas funciones podrian estar dentro del codigo fuente. Brainly no tiene habilitado el permiso para enviar SMS ni tiene habilitada estas funciones.
+
+    sendTextMessage
+    sendMultipartTestMessage
+
+**Native functions**
+
+Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la ofuscacion como mecanismo de proteccion, ademas de utilizar una mezcla de librerias entre Kotlin y Java, en la busqueda de las funciones no se encontraron las funciones nativas public native, System.loadLibrary, System.load
 
 
