@@ -537,4 +537,6 @@ En este log tambien se muestra una peticion para ingresar con el usuario 0 (anon
 
 ![](/images/modulo7.3/img22.png)
 
+![](/images/modulo7.3/img23.png)
+
 
