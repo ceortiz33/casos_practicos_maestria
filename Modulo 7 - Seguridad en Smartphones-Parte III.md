@@ -414,4 +414,107 @@ De igual manera si existiese funciones para enviar mensajes, estas funciones pod
 
 Algunas aplicaciones para dificultar aun mas la labor de ingenieria reversa al analista emplean funciones nativas. Brainly se basa en la ofuscacion como mecanismo de proteccion, ademas de utilizar una mezcla de librerias entre Kotlin y Java, en la busqueda de las funciones no se encontraron las funciones nativas public native, System.loadLibrary, System.load .
 
+/data/data/project.apriljune.recanorm/shared_prefs/com.facebook.sdk.appEventPreferences.xml
+
+```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="anonymousAppDeviceGUID">XZ57e30e68-9cdf-48bf-92cc-5acf6d3cd151</string>
+</map>
+```
+
+**Internal Storage**
+
+/data/data/project.apriljune.recanorm/shared_prefs/com.google.android.gms.measurement.prefs.xml
+
+```xml
+<map>
+    <long name="time_active" value="7756" />
+    <long name="last_upload" value="1604156154971" />
+    <long name="first_open_time" value="1603454505023" />
+    <string name="gmp_app_id">1:61973707321:android:bd409ad288883eaa</string>
+    <string name="app_instance_id">3b362764de4958b4683060427dd60ae5</string>
+    <long name="health_monitor:start" value="1604120219931" />
+    <boolean name="deferred_analytics_collection" value="false" />
+    <long name="last_delete_stale" value="87701759" />
+    <string name="previous_os_version">9</string>
+    <boolean name="has_been_opened" value="true" />
+    <string name="health_monitor:value">2WC12451:Value is too long; discarded. Value kind, name, value length: -, -, 1000...9999</string>
+    <long name="midnight_offset" value="11797642" />
+    <long name="last_pause_time" value="1604122329086" />
+    <boolean name="start_new_session" value="false" />
+    <long name="health_monitor:count" value="8" />
+    <long name="last_upload_attempt" value="0" />
+</map>
+```
+
+/data/data/project.apriljune.recanorm/shared_prefs/wuerth.xml
+
+```xml
+<string name="preferences_last_translation_update_version">30240</string>
+    <string name="preferences_remote_config_date">2020-10-31 05:32:01</string>
+    <string name="preferences_device_id">cb794773-0fdd-4c65-959c-18a272ff0a45</string>
+    <string name="preferences_current_cart">[]</string>
+    <string name="preferences_default_locale">de_DE</string>
+    <string name="preferences_category_sort">reco</string>
+    <string name="preferences_unloading_point"></string>
+    <string name="preferences_last_branch_update">1604122319330</string>
+    <string name="preferences_privacy_mode">anonymous</string>
+    <string name="preferences_receiving_point"></string>
+    <string name="preferences_company_code">1601</string>
+    <string name="preferences_fair_active">0</string>
+    <string name="preferences_last_config_update_version">30240</string>
+```
+
+**Almacenamiento Externo con Objection**
+
+El almacenamiento externo puede ser accesado mediante /storage/emulated/0, estos archivos son de uso publico por lo que no se recomienda almacenar datos sensibles aqui, adicionalmente los datos almacenados pueden ser filtrados mediante el uso de los content providers si llegasen a estar expuestos. Reca no utiliza content providers por lo que a primera vista no deberia exponer sus bases de datos el caso particulas de esta aplicacion es que tiene activado tanto el almacenamiento interno como el externo abriendo un abanico de posibilidades para filtracion de informacion si esta no es tratada como es debido. Para esto se usara Objection que tiene una opcion que nos muestra aquellos directorios parte del analisis del almacenamiento externo.
+
+![](/images/modulo7.3/img12.png)
+
+Revisando el directorio **/storage/emulated/0/Android/data/project.apriljune.recanorm/cache** correspondiente al almacenamiento externo de la aplicacion RECA  no se encontro ningun archivo que comprometa la integridad de los datos de los usuarios.
+
+En el caso de **/storage/emulated/0/Android/obb/project.apriljune.recanorm**  tampoco se ha generado un archivo en el almacenamiento externo.
+
+## Exploiting Backup
+
+`adb backup -apk -shared project.apriljune.recanorm`
+
+![](/images/modulo7.3/img13.png)
+
+Abe.jar
+
+![](/images/modulo7.3/img14.png)
+
+![](/images/modulo7.3/img15.png)
+
+Como resultado se genera una carpeta con los archivos de backup, uno de los ficheros que compete examinar es db que contiene las bases de datos almacenadas en la aplicacion.
+
+Revisando las bases de datos con SQLBrowser se encontro lo siguiente.
+
++  wuerth6.0db
+
+  +  android_metadata -> en_US
+  +  branch -> informacion relacionada a las sucursales como el nombre, la ubicacion, el numero de telefono,la imagen de la sucursal entre otros datos
+  
+  ![](/images/modulo7.3/img16.png)
+  
+  +  cart -> aqui apareceria la informacion relacionada al carrito si se hubiera hecho una compra
+  +  lastViewedModel -> Se muestra los ultimos articulos que se ha visitado cuando se uso la aplicacion 
+  
+  ![](/images/modulo7.3/img17.png)
+  
+  + login -> aqui apareceria la informacion del usuario.
+
+La aplicacion a nivel de login solo permite registrar con su plataforma y en esta se piden datos acerca de la empresa solicitante, el nombre del propietario y la cantidad de sucursales asi como tambien el numero personal, este ultimo dato es importante ya que en la aplicacion se menciona que se hara una comprobacion via telefonica de los datos proporcionados en este caso no se pudo usar la cuenta de gmail para testing pruebamobile47@gmail.com porque la comprobacion no se hace a nivel de correo electronico sino a traves de celular y solo a nivel geografico de Alemania.
+
+  +  scanned_product -> productos que se hayan escaneado usando la funcion de la camara
+  +  shipping_address -> informacion de la direccion de compra vacio en este momento
+  +  sqlite_sequence -> registro de la actividad en la base de datos
+  
+  ![](/images/modulo7.3/img18.png)
+  
+  
+
+
 
