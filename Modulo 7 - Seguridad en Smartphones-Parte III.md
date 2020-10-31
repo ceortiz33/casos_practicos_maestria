@@ -22,7 +22,7 @@ Como emulador de Android se usa el emulador de Android Studio con un dispositivo
 
 ![](/images/modulo7.3/img1.png)
 
-Para verificar los permisos y demas configuraciones basicas se usara MobSF en este caso para abirlo se utiliza http://192.168.100.4:8000, se carga la apk y comienza a analizar
+Para verificar los permisos y demas configuraciones basicas se usara MobSF en este caso para abirlo se utiliza http://192.168.100.4:8000, se carga la apk y comienza a analizar.
 
 ![](/images/modulo7.3/img2.png)
 
