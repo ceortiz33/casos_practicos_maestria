@@ -625,6 +625,38 @@ El segundo servicio expuesto es una implementacion de la API swrve que esta a la
 
 **Services exportados**
 
+```java
+public void onMessageReceived(RemoteMessage remoteMessage) {
+        boolean z2 = false;
+        s0.a.a.f3099d.d("Push message received!", new Object[0]);
+        for (String next : remoteMessage.l0().keySet()) {
+            String str = remoteMessage.l0().get(next);
+            s0.a.a.f3099d.d("%s %s (%s)", next, str.toString(), str.getClass().getName());
+        }
+        if (BrainlyApp.c(this) == null) {
+            throw null;
+        } else if (!j0.b(((z) BrainlyApp.j).f().getMarketPrefix())) {
+            ((z.c) ((BrainlyApp) getApplicationContext()).e()).o(this);
+            if (!this.l.f() || !SwrvePushServiceDefault.handle((Context) this, remoteMessage.l0())) {
+                j jVar = this.j;
+                if (jVar != null) {
+                    if (!j0.b(remoteMessage.l0().get("type"))) {
+                        String str2 = remoteMessage.l0().get("resource_uri");
+                        try {
+                            String marketPrefix = jVar.f.getMarketPrefix();
+                            if (j0.b(str2) || marketPrefix.equals(d.a.b.i.a.b(str2).a)) {
+                                z2 = true;
+                            }
+                        } catch (Exception e2) {
+                            s0.a.a.f3099d.e(e2);
+                        }
+                        z2 = !z2;
+                    }
+
+```
+
+En este servicio se recibe un mensaje de tipo RemoteMessage antes de interactuar con el metodo propio de la aplicacion getMarketPrefix()
+
 ## Evaluacion general de la aplicacion
 
 Brainly es una aplicacion con propositos educativos, utilizado para preguntas y respuestas cortas que permite a estudiantes de diversas edades consultar y que respondan su duda, no se utilizan excesivos privilegios con la excepcion de la camara que esta justificada ya que es parte de la aplicacion, no se utiliza la mensajeria SMS.
