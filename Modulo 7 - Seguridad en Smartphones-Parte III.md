@@ -640,7 +640,9 @@ En la segunda imagen se observa la ejecucion normal de la url los caracteres `\\
 
 ## Explotacion de Componentes Expuestos
 
+**Activity exportada**
 
+Al ejecutar el comando `run app.activity.start --component project.apriljune.recanorm com.sic.android.wuerth.wuerthapp.views.StartActivity_` se lanza la activity principal donde se muestran las ultimas novedades en cuanto articulos de ferreteria.
 
 
 
