@@ -595,12 +595,9 @@ Se produciria dano reputacional por no tener precaucion con el manejo de la info
 
 ![](/images/modulo7.3/img26.png)
 
-
-**Analisis de **
+**Analisis del trafico con Burpsuite**
 
 ![](/images/modulo7.3/img20.png)
-
-**Analisis del trafico con Burpsuite**
 
 RECA no tiene mecanismos de proteccion como SSL Pinning para evitar que se puedan ejecutar ataques MITM en la aplicacion, cuando se establecio la configuracion del proxy en el dispositivo el trafico que capturo lo hizo de forma inmediata. En la imagen se puede observar que lo que mas utiliza esta aplicacion son APIs de metricas de terceras personas como es el caso de graphql de Facebook y googlecrashlytics de Google.
 
