@@ -809,7 +809,7 @@ Esta aplicacion no cuenta con permisos peligrosos relacionados a servicios con S
 
 Como punto a destacar es la validacion en la creacion de las cuentas en la aplicacion, no utilizan servicios de terceros como Google o Facebook para realizar la autenticacion, emplean un sistema de registro personalizado y validan esta informacion con el numero de telefono proporcionado, asi que de una u otra forma validan que el cliente sea real.
 
-En cuanto a la aplicacion en la web no se encontro un vector de ataque que pueda exponer DeepLinks o permita realizar XSS u otros ataques web y cuando se intentaba utilizar una prueba de concepto con codigo vulnerable, la aplicacion la bloqueaba.
+En cuanto a la aplicacion en la web no se encontro un vector de ataque que pueda exponer DeepLinks o permita realizar XSS u otros ataques web y cuando se intentaba utilizar una prueba de concepto con codigo vulnerable, la aplicacion la bloqueaba
 
 
 
