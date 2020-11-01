@@ -224,7 +224,6 @@ Este Deep link unicamente tiene un schema permitido **reca://**
 
 **Servicio de Firebase**
 
-
 ```xml
 <provider android:name="com.google.firebase.perf.provider.FirebasePerfProvider" android:exported="false" android:authorities="project.apriljune.recanorm.firebaseperfprovider" android:initOrder="101" />
       <service android:name="com.google.firebase.components.ComponentDiscoveryService">
@@ -300,8 +299,7 @@ Para contrastar esta informacion se analiza la superficie de ataque con Drozer y
 
 ## Analisis de cifrados debiles
 
-MobSF indica que la clase com/wuerthit/core/presenters/RecommendationsPresenterImpl.java utiliza un cifrado MD5 considerado debil por tener colisiones hash, revisando la clase mas detalladamente con jadx-gui se demuestra que efectivamente se usa el cifrado MD5 pero al usar **Find Usage** se observa que el algoritmo MD5 se aplica a `String a2 = a(this.i.a("preferences_customer_id", ""));` . El id de preferencia de consumo, no es considerado un dato sensible, los ids son considerados datos seudonimizados o informacion de identificacion no directa. Si bien es cierto se aplica un cifrado considerado debil, esto se aplica a un dato que no es considerado sensible por lo tanto no se considerara como vulnerabilidad.
-
+MobSF indica que la clase com/wuerthit/core/presenters/RecommendationsPresenterImpl.java utiliza un cifrado MD5 considerado debil por tener colisiones hash, revisando la clase mas detalladamente con jadx-gui se demuestra que efectivamente se usa el cifrado MD5 pero al usar **Find Usage** se observa que el algoritmo MD5 se aplica a `String a2 = a(this.i.a("preferences_customer_id", ""));` . El id de preferencia de consumo, no es considerado un dato sensible, los ids son considerados datos seudonimizados o informacion de identificacion no directa.
 
 ```java
 private static String a(String str) {
@@ -389,8 +387,7 @@ De acuerdo a la guia de seguridad de APIs de Google se menciona que exponer las 
 En el caso que se haya conseguido acceso a la API esto provocaria que los datos almacenados en la API sean expuestos a terceras personas.
 
 
-
-/res/xml/network_security_config.xml
+**/res/xml/network_security_config.xml**
 
 ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -404,9 +401,8 @@ En el caso que se haya conseguido acceso a la API esto provocaria que los datos 
 </network-security-config>
 ```
 
-[LEER DOCUMENTACION SOBRE EL PARAMETRO DEBUG-OVERRIDES]
 
-/res/xml/filepaths.xml
+**/res/xml/filepaths.xml**
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -431,7 +427,7 @@ La Url no es de acceso publico por lo tanto las configuraciones de seguridad de 
 
 **Code Execution**
 
-Si existiesen alguna de estas funciones se pueden aprovechar para ejecutar remotamente comandos. Dentro del codigo de Brainly no se encontraron.
+Si existiesen alguna de estas funciones se pueden aprovechar para ejecutar remotamente comandos. Dentro del codigo de RECA no se encontraron.
 
 +  Runtime.exec()
 +  ProcessBuilder()
@@ -439,7 +435,7 @@ Si existiesen alguna de estas funciones se pueden aprovechar para ejecutar remot
 
 **Send SMS**
 
-De igual manera si existiese funciones para enviar mensajes, estas funciones podrian estar dentro del codigo fuente. Brainly no tiene habilitado el permiso para enviar SMS ni tiene habilitada estas funciones.
+De igual manera si existiese funciones para enviar mensajes, estas funciones podrian estar dentro del codigo fuente. RECA no tiene habilitado el permiso para enviar SMS ni tiene habilitada estas funciones.
 
     sendTextMessage
     sendMultipartTestMessage
@@ -712,7 +708,7 @@ private final void zza(Context context, Intent intent, String str) {
 
 `run app.broadcast.send --component  project.apriljune.recanorm com.google.firebase.iid.FirebaseInstanceidReceiver --extra string from google.com/iid`
 
-Este broadcast receiver espera una llamda de google para enviar la rawData a la instancia de Firebase Id, no se obtuvo respuesta.
+Este broadcast receiver espera una llamada de google para enviar la rawData a la instancia de Firebase Id, no se obtuvo respuesta.
 
 + 
 
@@ -770,6 +766,8 @@ public void a(Intent intent) {
 
 Geofence establece un perimetro alrededor de un punto establecido, en esta clase se realiza la transicion de una zona a la otra.
 
++ 
+
 ```java
 public final void zzd(Intent intent) {
         if ("com.google.firebase.iid.TOKEN_REFRESH".equals(intent.getAction())) {
@@ -807,9 +805,11 @@ A nivel de codigo RECA aplica muy pocos mecanismos de seguridad como ofuscacion 
 
 Esta aplicacion no cuenta con permisos peligrosos relacionados a servicios con SMS y servicios de mensaje premium, ademas de no emplear mecanismos de seguridad en la comunicacion para evitar ataques MITM como captchas, SSL Pinning u otras validaciones que dificulten el trabajo al analista, ademas de utilizar una gran cantidad de logs para cada uno de los elementos de su tienda con el fin de gestionar el historial de compra de los usuarios.
 
+Todos los servicios exportados en esta aplicacion estan expuestos a proposito con la fines de funcionalidad de las APIs integradas de Google y Facebook por lo tanto aunque esten expuestos no se encontro datos expuestos, RECA no usa componentes exportados propios de su aplicacion solo integraciones de terceros.
+
 Como punto a destacar es la validacion en la creacion de las cuentas en la aplicacion, no utilizan servicios de terceros como Google o Facebook para realizar la autenticacion, emplean un sistema de registro personalizado y validan esta informacion con el numero de telefono proporcionado, asi que de una u otra forma validan que el cliente sea real.
 
-En cuanto a la aplicacion en la web no se encontro un vector de ataque que pueda exponer DeepLinks o permita realizar XSS u otros ataques web y cuando se intentaba utilizar una prueba de concepto con codigo vulnerable, la aplicacion la bloqueaba
+En cuanto a la aplicacion en la web no se encontro un vector de ataque que pueda exponer DeepLinks o permita realizar XSS u otros ataques web cuando se intentaba utilizar una prueba de concepto con codigo vulnerable, la aplicacion la bloqueaba.
 
 
 
