@@ -27,7 +27,7 @@ En cualquier caso, una vez seleccionadas las herramientas, se puede organizar el
 Al finalizar las fases anteriores deberás discernir si existen algunas de las vulnerabilidades mas conocidas en estos dispositivos, como pueden ser: [CONCLUSION]
 
 + Hijacking y spoofing de intents.
-+ Sticky broadcast tampering.
++ Sticky broadcast tampering
 + Almacenamiento inseguro.
 + Tráfico inseguro.
 + SQL injection.
