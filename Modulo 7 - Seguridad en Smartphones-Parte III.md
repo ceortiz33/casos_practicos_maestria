@@ -316,6 +316,20 @@ private static String a(String str) {
     }
 ```
 
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M5: Insufficient Cryptography | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+De acuerdo a la informacion de OWASP TOP 10 esta vulnerabilidad se produce cuando se implementan mecanismos de encriptacion que son debiles y pueden ser desencriptado por el adversario. En la guia Mobile Security Testing Guide se menciona que no es recomendable utilizar cifrados como MD5 Y SHA-1 ya que a dia de hoy son considerados vulnerables si se utilizan para cifrar datos sensibles, en el caso de esta funcion se implementa el algoritmo MD5 y se utiliza para cifrar el id de consumidor, si bien es cierto este parametro no corresponde a un dato personal en el caso de que este cifrado se aplicara a un parametro de caracter personal pudiera comprometerse la integridad de esos datos.
+
+**Impacto Tecnico**
+
+El uso de cifrados considerados como debiles permite a un atacante obtener la informacion que deberia ser protegida mediante la implementacion de dicho algoritmo.
+
+**Impacto de Negocio**
+
+Los impactos que tiene esta vulnerabilidad son los siguientes: manipulacion de los datos cifrados con el algoritmo MD5 ya que este tiene colisiones y es mas facil de romper que otros cifrados como el SHA-256.
+
 ## Deteccion de dispositivo rooteado
 
 Deteccion de root en la clase **io.fabric.sdk.android.services.common.CommonUtils**
@@ -359,6 +373,22 @@ Como resultado de explorar el contenido del archivo strings.xml se encontro lo s
 De acuerdo a la documentacion cuando se utilicen claves de API en las aplicaciones, se debe garantizar que esten seguras durante el almacenamiento y la transmisión. Si se expone estas credenciales de forma pública se pone en riesgo la cuenta y se pueden generar acciones inesperados en ella. Luego de evaluar la API key con los payloads del repositorio de Github ninguno dio una respuesta favorable debido a que la app esta restringida.
 
 ![](/images/modulo7.3/img11.png)
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+M1: Improper Platform Usage Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE
+
+Este ataque corresponde a los mismos vectores de ataque que el OWASP TOP 10 tradicional, en donde una API expuesta puede servir como vector de ataque.
+
+**Impactos tecnicos**
+
+De acuerdo a la guia de seguridad de APIs de Google se menciona que exponer las APIS en el codigo se considera un riesgo ya que les da la posibilidad a los atacantes de ingresar a la informacion que se gestiona usando dicha API si la aplicacio no esta protegida, en este caso no se pudo obtener mayor informacion en ninguno de los tests realizados.
+
+**Impactos de negocio**
+
+En el caso que se haya conseguido acceso a la API esto provocaria que los datos almacenados en la API sean expuestos a terceras personas.
+
+
 
 /res/xml/network_security_config.xml
 
@@ -517,7 +547,51 @@ La aplicacion a nivel de login solo permite registrar con su plataforma y en est
   +  sqlite_sequence -> registro de la actividad en la base de datos
   
   ![](/images/modulo7.3/img18.png)
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M10: Extraneous Functionality | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE**
+
+Esta vulnerabilidad involucra la busqueda de funcionalidades extranas en la aplicacion para poder explotarlas dentro de los propios sistemas. Tener la opcion de AllowBackup:true en sistemas de produccion no es recomendable ya que si se llegasen a almacenar credenciales o informacion importante dentro de la aplicacion da la posibilidad a un atacante o a cualquier persona tener acceso a los datos de la aplicacion.
+
+**Impactos tecnicos.**
+
+Esta vulnerabilidad expone los datos almacenados en la aplicacion que puedan ser descargados usando una copia de seguridad o backup. Si bien no se hallaron datos que comprometan al usuario en las bases de datos, debido a que no se tuvo acceso directo a la sesion de usuario en la base de datos si aparecia un parametro para login, ya que la unica forma de registrarse a la aplicacion es mediante el propio formulario de registro de RECA estos datos presumiblemente se almacenarian aqui.
+
+**Impactos de negocio**
+
+RECA es una aplicacion de compra y venta de articulas de ferreteria, su mercado objetivo son empresas y usuarios comunes de Alemania. Tener activa esta configuracion implica que si se llegan a filtrar crendenciales de los clientes. La empresa sufriria un dano reputacional e incluso demandas por parte de los clientes por no tener mayor precaucion en el uso de sus datos y habitos de consumo.
   
+**Uso de clipboard**
+
+En la clase **com/sic/android/wuerth/wuerthapp/platformspecific/OSMethodHelperImpl.java** se realiza la implementacion de la funcionalidad de Clipboard. El uso de clipboard no es aconsejable ya que los datos son almacenados en memoria sobretodo cuando los permisos de almacenamiento interno y almacenamiento externo estan activados. Ademas que los datos de los clientes pueden ser expuestos aqui asi como sus habitos de consumo.
+
+```java
+public void c(String str) {
+        ClipboardManager clipboardManager = (ClipboardManager) this.a.getSystemService("clipboard");
+        ClipData newPlainText = ClipData.newPlainText(str, str);
+        if (b || clipboardManager != null) {
+            clipboardManager.setPrimaryClip(newPlainText);
+            return;
+        }
+        throw new AssertionError();
+    }
+
+```
+
+**Análisis de vulnerabilidad según OWASP Mobile Top 10**
+
+**M2: Insecure Data Storage | Exploitability EASY | Prevalence COMMON | Detectability AVERAGE | Impact SEVERE** 
+  
+El almacenamiento inseguro aparece cuando los desarrolladores asumen que malware o archivos inseguros no van a acceder a la aplicacion y dejan grietas en la seguirdad en los cuales los datos almacenados pueden ser leidos por terceras personas, haciendo que la privacidad de los datos se vea compremetida.
+
+**Impactos tecnicos**
+
+El almacenamiento inseguro de datos cuando se trata de datos sensibles puede producir el robo de identidad y violacion de la privacidad al exponer datos de tarjetas de credito, cuentas y habitos de consumo que podrian ser usados por la competencia.
+
+**Impactos de negocio**
+
+Se produciria dano reputacional por no tener precaucion con el manejo de la informacion de los clientes.
   
 ## Analisis Dinamico
 
