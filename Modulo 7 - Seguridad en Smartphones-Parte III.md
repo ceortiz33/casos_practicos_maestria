@@ -564,6 +564,8 @@ Como resultado de la primera instruccion se dio un resultado desfavorable ya que
 
 En la segunda imagen se observa la ejecucion normal de la url los caracteres `\\` limitan la posibilidade de hacer el path traversal ya que se verifica de una u otra forma que lleve el patron correcto.
 
+## Explotacion de Componentes Expuestos
+
 
 
 
