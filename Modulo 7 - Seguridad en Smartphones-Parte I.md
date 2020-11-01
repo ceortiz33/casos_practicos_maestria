@@ -1003,19 +1003,8 @@ Esta vulnerabilidad expone la data del usuario y puede llevar al robo de la cuen
 
 El robo de credenciales por mala configuración de las comunicaciones puede provocar el fraude y robo de las mismas, la entidad bancaria estaría mas propensa a reclamos y llamadas por el mal uso de la aplicación por ser susceptible a este tipo de ataques de terceros.
 
-## Conclusion
+## Evaluacion general de la aplicacion
 
 Luego de analizar la aplicación Insecurebank se encontraron múltiples vulnerabilidades comunes desde permisos peligrosos y excesivos para una aplicación bancaria como SEND_SMS, READ_CALL_LOG, READ_PHONE_STATE que solicitan mucha más información de la requerida, la versión del sdk permitida va entre la 15 hasta las 22, allowBackup y debuggable están activadas dando mayores facilidades a un atacante a obtener datos que normalmente no estarían a la vista de los usuarios.
 
-Insecurebankv2 al ser una aplicación de entrenamiento es creada a propósito como una aplicación bancaria vulnerable, existe inyección SQL cuando se aprovecha el intent TrackUserContentProvider, almacenamiento inseguro debido a sus credenciales en texto plano o con cifrados débiles, sticky broadcast tampering al aprovecharse del receiver theBroadcast para enviar un mensaje de texto produciendo el cambio de contraseña y dando información adicional sobre la contraseña anterior que se cambió, además al analizar el trafico con un proxy como Burp Suite, las credenciales usaban un cifrado en las comunicaciones débil y por lo tanto aparecían en texto plano. 
-
-
-
-
-
-
-
-
-
-
-
+Insecurebankv2 al ser una aplicación de entrenamiento es creada a propósito como una aplicación bancaria vulnerable, existe inyección SQL cuando se aprovecha el intent TrackUserContentProvider, almacenamiento inseguro debido a sus credenciales en texto plano o con cifrados débiles, sticky broadcast tampering al aprovecharse del receiver theBroadcast para enviar un mensaje de texto produciendo el cambio de contraseña y dando información adicional sobre la contraseña anterior que se cambió, además al analizar el trafico con un proxy como Burp Suite, las credenciales usaban un cifrado en las comunicaciones débil y por lo tanto aparecían en texto plano. Muchas de estas vulnerabilidades podrian estar presentes en otras aplicaciones por lo tanto se realizara un analisis en una aplicacion de google Play y otra de un repositorio de apks de terceros.
