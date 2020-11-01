@@ -539,4 +539,33 @@ En este log tambien se muestra una peticion para ingresar con el usuario 0 (anon
 
 ![](/images/modulo7.3/img23.png)
 
+## Analisis de DeepLinks
+
+Durante este analisis se realiza una busqueda de funciones vulnerables en la activity donde se declaran los deeplinks en este caso StartActivity
+
++ setJavaScriptEnabled(true) puede producir XSS al llamar la aplicacion mediante un deeplink
++ getQueryParameter('parameter') puede producir algunos vectores de ataque como XSS, LFI.
++ Runtime.getRuntime().exec() puede producir RCE
+
+En los PathPatterns de los DeepLinks se presenta un posible path traversal  ya que el pathPathern es el siguiente `.*/.*\\.sku.*`.Para esto se creara una prueba de concepto para determinar si efectivamente se puede ejecutar un comando.
+
+```html
+<a href="https://shop.recanorm.de/.*/.*\\.sku.<svg onload=alert('1')>/">Path Pattern</a>
+<a href="https://shop.recanorm.de/.*/.*\\.sku.*"> Pattern 2</a>
+```
+
+En la primera linea se intenta ejecutar un alert en la url enviada y en la segunda es la instruccion sin modificacion.
+
+![](/images/modulo7.3/img24.png)
+
+Como resultado de la primera instruccion se dio un resultado desfavorable ya que el alert no se ejecuto y fue bloqueado ese intento de ejecutar codigo en la URL, ademas la ejecucion por JavaScript no estaba habilitada haciendo que no funcione.
+
+![](/images/modulo7.3/img25.png)
+
+En la segunda imagen se observa la ejecucion normal de la url los caracteres `\\` limitan la posibilidade de hacer el path traversal ya que se verifica de una u otra forma que lleve el patron correcto.
+
+
+
+
+
 
