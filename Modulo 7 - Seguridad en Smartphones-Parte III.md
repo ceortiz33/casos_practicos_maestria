@@ -644,6 +644,189 @@ En la segunda imagen se observa la ejecucion normal de la url los caracteres `\\
 
 Al ejecutar el comando `run app.activity.start --component project.apriljune.recanorm com.sic.android.wuerth.wuerthapp.views.StartActivity_` se lanza la activity principal donde se muestran las ultimas novedades en cuanto articulos de ferreteria.
 
+**Broadcast Receiver**
+
++ com.sic.android.wuerth.wuerthapp.helper.general.GeofenceBroadcastReceiver
+
+`run app.broadcast.send --component  project.apriljune.recanorm com.sic.android.wuerth.wuerthapp.helper.general.GeofenceBroadcastReceiver`
+
+```java
+
+public class GeofenceBroadcastReceiver extends BroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
+        GeofenceTransitionsIntentService.a(context, intent);
+    }
+}
+```
+No se obtuvo respuesta de este broadcast receiver, la aplicacion se crasheaba.
+
++ com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+
+```java
+public final class AppMeasurementInstallReferrerReceiver extends BroadcastReceiver implements zzgf {
+    private zzgc zzadd;
+
+    public final BroadcastReceiver.PendingResult doGoAsync() {
+        return goAsync();
+    }
+
+    public final void doStartService(Context context, Intent intent) {
+    }
+
+    public final void onReceive(Context context, Intent intent) {
+        if (this.zzadd == null) {
+            this.zzadd = new zzgc(this);
+        }
+        this.zzadd.onReceive(context, intent);
+    }
+}
+```
+
+No se obtuvo respuesta de este broadcast receiver
+
++ com.google.firebase.iid.FirebaseInstanceidReceiver
+
+```
+private final void zza(Context context, Intent intent, String str) {
+        String str2 = null;
+        intent.setComponent((ComponentName) null);
+        intent.setPackage(context.getPackageName());
+        if (Build.VERSION.SDK_INT <= 18) {
+            intent.removeCategory(context.getPackageName());
+        }
+        String stringExtra = intent.getStringExtra("gcm.rawData64");
+        boolean z = false;
+        if (stringExtra != null) {
+            intent.putExtra("rawData", Base64.decode(stringExtra, 0));
+            intent.removeExtra("gcm.rawData64");
+        }
+        if ("google.com/iid".equals(intent.getStringExtra("from")) || "com.google.firebase.INSTANCE_ID_EVENT".equals(str)) {
+            str2 = "com.google.firebase.INSTANCE_ID_EVENT";
+        } else if ("com.google.android.c2dm.intent.RECEIVE".equals(str) || "com.google.firebase.MESSAGING_EVENT".equals(str)) {
+            str2 = "com.google.firebase.MESSAGING_EVENT";
+        } else {
+            Log.d("FirebaseInstanceId", "Unexpected intent");
+        }
+
+```
+
+`run app.broadcast.send --component  project.apriljune.recanorm com.google.firebase.iid.FirebaseInstanceidReceiver --extra string from google.com/iid`
+
+Este broadcast receiver espera una llamda de google para enviar la rawData a la instancia de Firebase Id, no se obtuvo respuesta.
+
++ 
+
+```java
+
+public class InstallReferrerReceiver extends BroadcastReceiver {
+    static final List<String> a = Collections.singletonList("com.android.vending.INSTALL_REFERRER");
+
+    public void onReceive(Context context, Intent intent) {
+        String stringExtra;
+        Timber.a("PIWIK:InstallReferrerReceiver").b(intent.toString(), new Object[0]);
+        if (intent.getAction() == null || !a.contains(intent.getAction())) {
+            Timber.a("PIWIK:InstallReferrerReceiver").c("Got called outside our responsibilities: %s", intent.getAction());
+        } else if (intent.getBooleanExtra("forwarded", false)) {
+            Timber.a("PIWIK:InstallReferrerReceiver").b("Dropping forwarded intent", new Object[0]);
+        } else {
+            SharedPreferences c = Piwik.a(context.getApplicationContext()).c();
+            if (intent.getAction().equals("com.android.vending.INSTALL_REFERRER") && (stringExtra = intent.getStringExtra("referrer")) != null) {
+                c.edit().putString("referrer.extras", stringExtra).apply();
+                Timber.a("PIWIK:InstallReferrerReceiver").b("Stored Google Play referrer extras: %s", stringExtra);
+            }
+            intent.setComponent((ComponentName) null);
+            intent.setPackage(context.getPackageName());
+            intent.putExtra("forwarded", true);
+            context.sendBroadcast(intent);
+        }
+    }
+}
+```
+
+Este receiver se encarga de recibir las llamadas a  Google Play para la instalacion de elementos de la aplicacion.
+
+**Services Exportados**
+
+**com.sic.android.wuerth.wuerthapp.platformspeciic.GeofenceTransitionsIntentService**
+
+```java
+public void a(Intent intent) {
+        System.out.println("Geofence: Android service triggered");
+        GeofencingEvent fromIntent = GeofencingEvent.fromIntent(intent);
+        if (!fromIntent.hasError()) {
+            int geofenceTransition = fromIntent.getGeofenceTransition();
+            for (Geofence next : fromIntent.getTriggeringGeofences()) {
+                if (geofenceTransition == 1) {
+                    PrintStream printStream = System.out;
+                    printStream.println("Geofence: on enter region: " + next.getRequestId());
+                    this.j.a(next.getRequestId());
+                } else {
+                    PrintStream printStream2 = System.out;
+                    printStream2.println("Geofence: on exit region: " + next.getRequestId());
+                    this.j.b(next.getRequestId());
+                }
+            }
+```
+
+Geofence establece un perimetro alrededor de un punto establecido, en esta clase se realiza la transicion de una zona a la otra.
+
+```java
+public final void zzd(Intent intent) {
+        if ("com.google.firebase.iid.TOKEN_REFRESH".equals(intent.getAction())) {
+            onTokenRefresh();
+            return;
+        }
+        String stringExtra = intent.getStringExtra("CMD");
+        if (stringExtra != null) {
+            if (Log.isLoggable("FirebaseInstanceId", 3)) {
+                String valueOf = String.valueOf(intent.getExtras());
+                StringBuilder sb = new StringBuilder(String.valueOf(stringExtra).length() + 21 + String.valueOf(valueOf).length());
+                sb.append("Received command: ");
+                sb.append(stringExtra);
+                sb.append(" - ");
+                sb.append(valueOf);
+                Log.d("FirebaseInstanceId", sb.toString());
+            }
+            if ("RST".equals(stringExtra) || "RST_FULL".equals(stringExtra)) {
+                FirebaseInstanceId.getInstance().zzj();
+            } else if ("SYNC".equals(stringExtra)) {
+                FirebaseInstanceId.getInstance().zzk();
+            }
+        }
+    }
+```
+
+Implementacion del Servicio Firebase Id en el cual se crea un string  y se sincroniza con Firebase.
+
+
+## Evaluacion general de la aplicacion
+
+RECA tiene una version sdk que es compatible con versiones antiguas, si bien esta al alcance de mas dispositivos moviles esto tambien la hace vulnerable a ataques usando la vulnerabilidad Janus, tiene una cantidad excesiva de privilegios que no deberian estar en una aplicacion de compras como el almacenamiento externo e interno activo, uso de la camara y el microfono que cuando son mal usados estos repercuten en la privacidad y en la seguridad de los dispositivos moivles.
+
+A nivel de codigo RECA aplica muy pocos mecanismos de seguridad como ofuscacion debido a que la mayoria de su codigo es legible, unas cuantas variables son renombradas pero la mayoria de las clases, metodos y strings se muestran en texto plano sin necesidad de recurrir a desofucadores o a un analisis exhaustivo mas detallado.
+
+Esta aplicacion no cuenta con permisos peligrosos relacionados a servicios con SMS y servicios de mensaje premium, ademas de no emplear mecanismos de seguridad en la comunicacion para evitar ataques MITM como captchas, SSL Pinning u otras validaciones que dificulten el trabajo al analista, ademas de utilizar una gran cantidad de logs para cada uno de los elementos de su tienda con el fin de gestionar el historial de compra de los usuarios.
+
+Como punto a destacar es la validacion en la creacion de las cuentas en la aplicacion, no utilizan servicios de terceros como Google o Facebook para realizar la autenticacion, emplean un sistema de registro personalizado y validan esta informacion con el numero de telefono proporcionado, asi que de una u otra forma validan que el cliente sea real.
+
+En cuanto a la aplicacion en la web no se encontro un vector de ataque que pueda exponer DeepLinks o permita realizar XSS u otros ataques web y cuando se intentaba utilizar una prueba de concepto con codigo vulnerable, la aplicacion la bloqueaba.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
