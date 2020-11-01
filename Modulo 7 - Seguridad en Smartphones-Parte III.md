@@ -710,7 +710,7 @@ private final void zza(Context context, Intent intent, String str) {
 
 Este broadcast receiver espera una llamada de google para enviar la rawData a la instancia de Firebase Id, no se obtuvo respuesta.
 
-+ 
++ org.piwik.sdk.extra.InstallReferrerReceiver 
 
 ```java
 
@@ -743,7 +743,7 @@ Este receiver se encarga de recibir las llamadas a  Google Play para la instalac
 
 **Services Exportados**
 
-**com.sic.android.wuerth.wuerthapp.platformspeciic.GeofenceTransitionsIntentService**
++ com.sic.android.wuerth.wuerthapp.platformspeciic.GeofenceTransitionsIntentService
 
 ```java
 public void a(Intent intent) {
@@ -766,7 +766,7 @@ public void a(Intent intent) {
 
 Geofence establece un perimetro alrededor de un punto establecido, en esta clase se realiza la transicion de una zona a la otra.
 
-+ 
++ com.google.firebase.iid.FirebaseInstanceIdService
 
 ```java
 public final void zzd(Intent intent) {
