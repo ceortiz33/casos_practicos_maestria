@@ -272,7 +272,7 @@ content://co.brainly.tutoringsdk.fileProvider/external_files_files/default_image
 content://co.brainly.tutoringsdk.fileProvider/external_files/default_images.jpg
 ```
 
-Compartir un file-provider con path="." puede ser peligroso incluso si el provider no esta exportado si existiese otra vulnerabilidad.[REVISAR PARA EXPLOTACION]
+Compartir un file-provider con path="." puede ser peligroso incluso si el provider no esta exportado si existiese otra vulnerabilidad.
 
 ### File Recon
 
@@ -625,12 +625,17 @@ El segundo servicio expuesto es una implementacion de la API swrve que esta a la
 
 **Services exportados**
 
+## Evaluacion general de la aplicacion
 
+Brainly es una aplicacion con propositos educativos, utilizado para preguntas y respuestas cortas que permite a estudiantes de diversas edades consultar y que respondan su duda, no se utilizan excesivos privilegios con la excepcion de la camara que esta justificada ya que es parte de la aplicacion, no se utiliza la mensajeria SMS.
 
+A nivel de seguridad en la comunicacion Brainly usa un sistema captcha que limita la cantidad de peticiones que se puede enviar a la aplicacion, luego de cierto numero de peticiones el sistema bloquea la IP y no permite visualizar el contenido. Ademas usa SSL Pinning para evitar que las peticiones puedan ser interceptadas con un proxy.
+
+Brainly permite el texto plano para ciertos dominios y esto hace que las credenciales puedan ser filtradas, por otra parte en cuanto a los logs no se muestra informacion sensible de este lado.
+
+Brainly utiliza servicios de terceros para autenticacion y seguimiento de los usuarios a traves de metricas y APIs, usa una configuracion no recomendada ya que expone las APIs en la aplicacion sin embargo al intentar explotarlas, estas estaban restringidas.
 
 ### Referencias
 
 1. **Bypass Emulator Detection** https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-I/ ,https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-II/, https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-III/
 2. **Testing API Keys** https://github.com/streaak/keyhacks
-
-
