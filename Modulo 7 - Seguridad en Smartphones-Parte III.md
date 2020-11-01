@@ -591,6 +591,13 @@ Se produciria dano reputacional por no tener precaucion con el manejo de la info
   
 ## Analisis Dinamico
 
+**Bypass Root Detection**
+
+![](/images/modulo7.3/img26.png)
+
+
+**Analisis de **
+
 ![](/images/modulo7.3/img20.png)
 
 **Analisis del trafico con Burpsuite**
